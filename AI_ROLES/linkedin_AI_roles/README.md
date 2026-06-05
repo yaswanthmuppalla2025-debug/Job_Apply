@@ -113,7 +113,7 @@ For each search:
 4. Set workplace to remote, hybrid, or onsite based on the target location. For Remote USA, use remote-only where possible.
 5. Set Date posted to `Past week` first.
 6. After exhausting strong 0-7 day matches, use `Past month` only to manually verify roles still fall within the 0-15 day gate.
-7. Use experience filters for mid-senior/senior/backend/platform roles when useful; do not over-filter if it hides close matches.
+7. Use experience filters for mid-senior/senior/backend/platform roles when useful; do not over-filter if it hides strong matches.
 8. Use `Under 10 applicants` as an optional quality slice after the main search, not as a required gate.
 9. Use `Easy Apply` as a separate slice. Do not run only Easy Apply searches.
 10. Save promising roles only as a temporary queue; the durable state is the tracker.

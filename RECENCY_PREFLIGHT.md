@@ -1,6 +1,6 @@
 # Recency Preflight
 
-Use this before spending time on a form. The goal is to save tokens and apply only to fresh, quality, non-duplicate roles.
+Use this before spending time on a form. The goal is to save tokens and apply only to fresh, strong-fit, quality, non-duplicate roles.
 
 ## Rule
 
@@ -13,13 +13,14 @@ Autopilot applies only to roles verified as posted or genuinely reposted within 
 
 Do not stop the run because a date is unavailable. Skip the role as unknown/stale and continue to fresher roles.
 
-## Quality, Location, And Duplicate Gate
+## Fit, Quality, Location, And Duplicate Gate
 
 Before filling a form, run these quick checks after the recency check:
 
-1. Quality: prefer direct employer roles at product, AI, SaaS, platform, cloud, fintech, enterprise, healthcare-tech, infrastructure, major-retail, transportation, or similar durable companies. Skip random staffing, consulting, vendor, recruiter, W2-only, client-confidential, and aggregator-proxy postings.
-2. Location: prioritize Georgia/Atlanta, Dallas/Austin/Texas, Virginia, Texas, North Carolina, Tennessee, Florida, and Remote US. Treat SF/Bay Area/California as the last option unless the company and role are unusually strong.
-3. Duplicate: scan `Company`, `Role`, and `Application URL` across the `AI`, `SDE`, and `Blockers` sheets in `JOB_APPLICATION_TRACKER.xlsx` before applying. If the same company has the same normalized role title already submitted/attempted, or the same official job id/application URL is already present, skip as duplicate or record `Already Applied` when proof is clear. Do not block a different company just because it has a common title like `Senior Software Engineer`.
+1. Fit: submit only `High`/`Strong` lane matches. `Medium` is a skip unless it is a `Strategic Exception` with target geography/company quality and at least 2-3 resume-backed core requirements.
+2. Quality: prefer direct employer roles at product, AI, SaaS, platform, cloud, fintech, enterprise, healthcare-tech, infrastructure, major-retail, transportation, or similar durable companies. Skip random staffing, consulting, vendor, recruiter, W2-only, client-confidential, and aggregator-proxy postings.
+3. Location: prioritize Georgia/Atlanta, Dallas/Austin/Texas, Virginia, Texas, North Carolina, Tennessee, Florida, and Remote US. Treat SF/Bay Area/California as the last option unless the company and role are unusually strong.
+4. Duplicate: scan `Company`, `Role`, and `Application URL` across the `AI`, `SDE`, and `Blockers` sheets in `JOB_APPLICATION_TRACKER.xlsx` before applying. If the same company has the same normalized role title already submitted/attempted, or the same official job id/application URL is already present, skip as duplicate or record `Already Applied` when proof is clear. Do not block a different company just because it has a common title like `Senior Software Engineer`.
 
 ## Fast Source Order
 
@@ -70,6 +71,7 @@ Skip and move on when:
 - Official page is closed, expired, or no longer accepting applications.
 - Recency is unknown and no reliable proof shows the role is within 15 days.
 - Aggregator result does not resolve to an official open application page.
+- Fit is low, unknown, merely adjacent, or medium without a strategic-exception reason.
 - The posting is a low-quality staffing/consulting/vendor/recruiter/aggregator-proxy role.
 - The same company and normalized role title, official job id, or application URL is already present in the trackers.
 

@@ -57,7 +57,7 @@
 
 Mode: `Aggressive Autopilot`.
 
-Goal: maximize truthful submissions for roles that fit Yaswanth's AI/SDE profile and are compatible with H-1B transfer. Codex should not pause for ordinary uncertainty, missing wording, optional fields, account creation, Gmail codes, upload friction, or normal ATS issues. Codex should use the resume, JD, company context, tracker, `ANSWER_BANK.md`, and judgment to keep moving.
+Goal: maximize truthful submissions for high/strong-fit roles that match Yaswanth's AI/SDE profile and are compatible with H-1B transfer. Codex should not pause for ordinary uncertainty, missing wording, optional fields, account creation, Gmail codes, upload friction, or normal ATS issues once a role passes the fit gate. Codex should use the resume, JD, company context, tracker, `ANSWER_BANK.md`, and judgment to keep moving.
 
 Preflight source of truth: use `RECENCY_PREFLIGHT.md` for recency, employer/source quality, location priority, and duplicate checks before filling any form.
 
@@ -83,7 +83,7 @@ Runtime state machine:
 3. Use `TRACKER_SCHEMA.md` for status labels and tracker row rules.
 4. Select the role lane: AI resume for AI roles, SDE resume for SDE/backend roles.
 5. Fill from `APPLICATION_PLAN.md`, `ANSWER_BANK.md`, the resume, JD, company context, and best truthful judgment.
-6. Submit matching applications without per-role approval.
+6. Submit high/strong-fit applications without per-role approval.
 7. Confirm submission from screen text, application ID, portal state, or Gmail.
 8. Update `JOB_APPLICATION_TRACKER.xlsx` immediately after each submitted, already-applied, or blocked outcome.
 9. Close/finalize unneeded tabs and continue to the next role.
@@ -93,21 +93,20 @@ Recovery state machine:
 
 Use `AUTOPILOT_BLOCKER_PLAYBOOK.md` as the single recovery source, and use `ATS_RETRY_MATRIX.md` only for ATS-specific fixes. Normal friction must be retried through distinct recovery paths before a blocker is recorded. After recovery succeeds or fails, update the tracker using the simplified statuses in `TRACKER_SCHEMA.md` and continue the batch.
 
-## Scale Targets
+## Quality Targets
 
-- Current AI autopilot minimum: reach at least 150 submitted AI-role applications.
-- Long-run AI autopilot target: keep building toward 300-400 submitted AI-role applications while quality and H-1B compatibility remain intact.
+- Strong-fit target: prioritize verified high/strong-fit submissions over raw submission count.
 - Interview target: optimize the pipeline for at least 10 interview opportunities in the next 30 days.
 - Do not spend time on obvious poor fits, no-sponsorship roles, citizen/GC-only roles, expired roles, clearance-only roles, or roles older than 15 days.
-- Submission-volume targets never override the recency gate; when no close matches exist inside the 0-15 day window, stop applying stale roles and summarize the gap for Yaswanth.
-- Submission-volume targets never override the quality gate; skip random staffing, consulting, vendor, recruiter, W2-only, client-confidential, and aggregator-proxy roles even when they are easy submissions.
+- Submission-volume pressure never overrides the fit gate or recency gate; when no high/strong matches exist inside the 0-15 day window, keep scraping strong sources or summarize the shortage for Yaswanth.
+- Quality targets never override the employer/source gate; skip random staffing, consulting, vendor, recruiter, W2-only, client-confidential, and aggregator-proxy roles even when they are easy submissions.
 - For strong-fit roles in target locations, push through normal ATS friction aggressively: direct company page, direct ATS URL, account creation, email verification, manual resume entry, reload/refill, and sensible form retries.
 
 ## Search And Preflight Rules
 
 Use `RECENCY_PREFLIGHT.md` as the single source of truth for freshness, source quality, location priority, and duplicate prevention. Search broadly across company career pages, ATS boards, LinkedIn, Indeed, Wellfound, Y Combinator jobs, Built In, and reputable company-backed hiring sites, but submit through the official company/ATS page whenever available.
 
-If no close resume matches exist inside the preflight gate, report the shortage instead of applying stale, duplicate, low-quality, or off-location roles to chase volume. Mix sources and ATS platforms during long runs to reduce CAPTCHA/possible-spam pressure.
+If no high/strong resume matches exist inside the preflight gate, scrape deeper across official/company/ATS sources first, then report the shortage instead of applying stale, duplicate, medium-adjacent, low-quality, or off-location roles to chase volume. Mix sources and ATS platforms during long runs to reduce CAPTCHA/possible-spam pressure.
 
 ## Dedicated Chrome Profile
 

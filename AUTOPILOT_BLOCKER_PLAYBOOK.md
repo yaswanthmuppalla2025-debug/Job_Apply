@@ -2,7 +2,7 @@
 
 Use this as the single blocker/recovery playbook for AI, SDE, and LinkedIn application runs.
 
-The goal is Aggressive Autopilot with Hard Stop Only: recover and submit fitting roles whenever the form can be completed truthfully. A blocker is a row outcome after recovery fails, not a reason to stop the batch.
+The goal is Aggressive Autopilot with Hard Stop Only: recover and submit high/strong-fit roles whenever the form can be completed truthfully. A blocker is a row outcome after recovery fails, not a reason to stop the batch.
 
 ## Core Rules
 

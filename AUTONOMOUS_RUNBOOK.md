@@ -13,7 +13,7 @@ This file owns the execution loop only. Do not duplicate policy here:
 
 ## Mission
 
-Maximize truthful, profile-fit submissions without per-role approval. Push through normal ATS friction, account creation, Gmail codes, upload fallbacks, form validation, and Chrome recovery. A hard-stopped role is one row outcome, not a stopped batch.
+Maximize truthful, high/strong-fit submissions without per-role approval. Push through normal ATS friction, account creation, Gmail codes, upload fallbacks, form validation, and Chrome recovery after a role passes the fit gate. A hard-stopped role is one row outcome, not a stopped batch.
 
 ## Runtime Loop
 
@@ -21,13 +21,13 @@ For each role:
 
 1. Discover latest open roles from official company pages, ATS boards, LinkedIn, and reputable hiring portals.
 2. Run `RECENCY_PREFLIGHT.md` before filling anything.
-3. Skip early when the role is stale, closed, duplicate, low-quality, no-sponsorship, legally ineligible, outside priority location, or poor fit.
+3. Skip early when the role is stale, closed, duplicate, low-quality, no-sponsorship, legally ineligible, outside priority location, poor fit, or only medium/adjacent without a strategic-exception reason.
 4. Choose the lane:
    - AI roles: `AI_ROLES/Yaswanth_Muppalla_AI_Resume.pdf`
    - SDE/backend roles: `SDE_ROLES/Yaswanth_Muppalla_SDE_Resume.pdf`
 5. Fill identity, contact, education, work authorization, sponsorship, location, EEO, and custom fields from `APPLICATION_PLAN.md`, `ANSWER_BANK.md`, the resume, JD, company context, and best truthful judgment.
 6. Use normal account creation, Gmail codes, and official ATS private identity fields when required.
-7. Submit when all required fields are truthfully complete.
+7. Submit when the role is high/strong fit and all required fields are truthfully complete.
 8. Capture proof from confirmation page, application ID, portal state, or Gmail receipt.
 9. Update `JOB_APPLICATION_TRACKER.xlsx` immediately using `TRACKER_SCHEMA.md`: submissions/already-applied outcomes go to `AI` or `SDE`, and real blockers go to `Blockers`.
 10. Do not log broad skip-noise. Stale, no-sponsorship, duplicate, staffing/vendor, aggregator-proxy, fit-mismatch, closed, and strategic skip decisions are still skipped early unless they are useful `Already Applied` proof or a real blocker/manual-review item.

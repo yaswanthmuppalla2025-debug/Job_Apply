@@ -7,14 +7,14 @@ Read this first for any AI or SDE application batch.
 1. Use the `Job Apply - Yaswanth` Chrome profile.
 2. Run in `Aggressive Autopilot / Hard Stop Only` mode.
 3. Enforce the recency gate before filling: prioritize roles posted 0-7 days ago, use 8-15 day roles only for strong resume matches, and skip anything older than 15 days.
-4. Apply quality-first: prefer direct employer product/platform/enterprise roles, not random staffing, consulting, vendor, recruiter, or aggregator-proxy postings.
+4. Apply strong-fit-first: submit only high/strong AI or SDE/backend matches; treat medium/adjacent roles as skips unless they are a documented strategic exception.
 5. Before filling any form, do the simple duplicate check in `JOB_APPLICATION_TRACKER.xlsx`: scan `Company`, `Role`, and `Application URL` across `AI`, `SDE`, and `Blockers`. If the same company has the same normalized role title already submitted/attempted, or the same official URL/job id is already present, skip as duplicate/already applied. A common role title at a different company is only a warning, not a blocker.
 6. Location priority: Georgia/Atlanta, Dallas/Austin/Texas, Virginia, Texas, North Carolina, Tennessee, Florida, Remote US, then SF/Bay Area/California only as a last option for unusually strong AI/platform/company fit.
 7. Strictly skip no-sponsorship, no-H-1B-transfer, citizen/GC-only, U.S.-person-only, clearance-only, stale, closed, over-15-day, unknown-recency without proof, duplicate, staffing/vendor/aggregator-proxy, and obvious poor-fit roles.
 8. Use `RECENCY_PREFLIGHT.md` for fast posting-age checks and `TRACKER_SCHEMA.md` for tracker updates.
 9. Use the AI resume for AI roles and the SDE resume for SDE/backend roles. Record outcomes in `JOB_APPLICATION_TRACKER.xlsx`.
 10. Fill from `APPLICATION_PLAN.md`, `ANSWER_BANK.md`, the resume, JD, company context, and best truthful judgment.
-11. Submit matching applications without per-role approval.
+11. Submit high/strong-fit applications without per-role approval.
 12. Recover normal friction before blocking: required-widget sweep, direct ATS URL, embedded form, PDF -> DOCX -> text fallback, account creation, Gmail code, reload/refill, Chrome reconnect.
 13. No first-attempt technical blockers: except CAPTCHA/security/legal/manual/hard-eligibility boundaries, a blocked role requires at least 2 serious attempts and at least 2 distinct recovery paths.
 14. Account/login walls are recoverable: create account, try existing login, use password reset through the job Gmail when available, retrieve Gmail codes, then return to the exact job URL before blocking.
@@ -40,6 +40,7 @@ Only retry these if the role still passes the 0-15 day recency gate and `Retry E
 Before final submit, verify:
 
 - Role is official, open, verified 0-15 days old, fit-aligned, and sponsorship-compatible.
+- Fit is `High`/`Strong` for the selected lane. `Medium` is allowed only as `Strategic Exception` when the role has target geography/company quality and at least 2-3 resume-backed core requirements.
 - Posting date is verified from an official company/ATS source or reliable dated search result before spending time on the form: 0-7 days preferred, 8-15 days strong fit only, >15 days skipped.
 - Employer is a direct product/platform/enterprise employer or a clearly high-quality direct company role; skip obvious staffing, consulting, vendor, recruiter, W2-only, client-confidential, or aggregator-proxy postings.
 - Location matches the priority order: Georgia/Atlanta, Dallas/Austin/Texas, Virginia, Texas, North Carolina, Tennessee, Florida, Remote US, then SF/Bay Area/California only for elite fit.

@@ -17,7 +17,7 @@ The tracker helps Codex move faster, not create new blockers. Keep `AI` and `SDE
 - Update the tracker after every submitted, already-applied, or blocked outcome.
 - Do not log broad skip-noise in the workbook. Stale, no-sponsorship, closed, low-quality staffing/vendor, poor-fit, and over-15-day roles are still skipped, but they are not daily-readable rows unless they become `Already Applied` or a real blocker/manual-review item.
 - Before filling a form, duplicate-check the `Company`, `Role`, and `Application URL` columns across `AI`, `SDE`, and `Blockers`.
-- Leave optional metadata blank when it is not derivable quickly. Blank helper fields are not blockers.
+- Leave optional metadata blank when it is not derivable quickly. Blank helper fields are not blockers, but `Fit` is not a helper field for new `Submitted` rows.
 - Never store passwords, email codes, full SSN, DOB values, private identity values, passport, bank/payment details, or private email content in tracker cells.
 
 ## AI And SDE Sheets
@@ -39,7 +39,7 @@ Columns:
 | Application URL | Official company/ATS/LinkedIn application URL. |
 | Source | Discovery or apply source, such as `Greenhouse`, `LinkedIn Easy Apply`, or `LinkedIn -> Workday`. |
 | ATS | Greenhouse, Ashby, Lever, Workday, Workable, Oracle/Taleo, LinkedIn Easy Apply, etc. |
-| Fit | Short fit signal such as `High`, `Medium`, or a concise reason. |
+| Fit | Required for new `Submitted` rows: `High`, `Strong`, or `Strategic Exception: <why>`. Do not submit blank, low, unknown, or merely adjacent fits. |
 | Sponsorship | `Yes`, `No`, `Unknown`, or `N/A`; use `Yes` only after checking JD/form language. |
 | Confirmation Proof | Gmail receipt, success page, application ID, or clear portal proof. |
 | Notes | Concise non-private proof or duplicate detail. |
@@ -164,4 +164,4 @@ Autopilot applies only to verified `0-15 day` roles.
 - `Over 15 days`: skip.
 - `Unknown`: skip unless a reliable dated source proves the role is within 15 days and the official application page is open.
 
-If no close matches exist inside the 15-day gate, report the shortage instead of applying stale roles to chase volume.
+If no high/strong matches exist inside the 15-day gate, report the shortage instead of applying stale, medium-adjacent, or weak roles to chase volume.

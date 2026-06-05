@@ -180,6 +180,7 @@ Do not add generic run narration, motivation, credentials, passwords, one-off fr
 ## Discovery Lessons
 
 - Discovery should be profile/geography-first, not company-cluster-first: prioritize AI Engineer, LLM/RAG, backend AI, AI platform, and data/ML platform roles in Austin/Dallas TX, Atlanta GA, Virginia, North Carolina, Tennessee, and remote US.
+- For the 100-fresh AI target, do not count or chase merely adjacent data-science/ML roles unless the role is clearly an AI engineering/platform/RAG/LLM/agentic/MLOps/backend-AI match supported by the AI resume. Sumble-style LLM/data-quality overlap is not enough by itself; spend effort on discovery and company-page verification instead of applying weak fits for volume.
 - Do not over-focus on Greenhouse/Ashby; use LinkedIn and Indeed for discovery, then apply through company career pages and ATS systems including Workday, Lever, SmartRecruiters, iCIMS, Oracle, Greenhouse, Ashby, and company-native portals.
 - Avoid applying to a long run of roles at one company when broader matching roles are available; mix companies and ATS sources so the batch has better spread and fewer repeated anti-abuse/security gates.
 - Filter out Canada-only, foreign-only, NYC-only, and Chicago-only roles; keep mixed-location roles only when a non-excluded U.S. option exists.
@@ -200,7 +201,9 @@ Do not add generic run narration, motivation, credentials, passwords, one-off fr
 - Teamtailor forms may expose a hidden resume file input that opens a chooser but still leaves `Upload resume can't be blank`; retry through the visible `Upload resume` button, wait for the filename and remote URL to appear, then submit.
 - Ashby forms can clip the required resume input so direct file-input clicking times out; use the scoped visible button inside `[data-field-path="_systemfield_resume"]` and verify the filename appears in the resume block before submitting.
 - Ashby UUID-like field ids that begin with digits can break plain CSS `#id` selectors; use quoted attribute selectors such as `input[id="..."]`, then verify hidden radio or checkbox state before submitting.
+- Ashby can repeatedly flag rapid same-company submissions as possible spam even after clean reloads, resume reupload, shorter answers, and verified required fields; after three serious attempts, log an anti-spam blocker and pivot to other companies/ATS sources before retrying after cooldown.
 - Keka forms can expose a required plain `captcha` input immediately on the apply page; verify whether reload, job-details apply, and direct apply URL all keep the field before logging `Blocked - CAPTCHA`.
+- Workday dropdown automation must exact-match short EEO values before falling back to substring matching; fuzzy matching `Male` can incorrectly select `Female`, so re-snapshot and verify final review values before submit.
 
 ## Resume Lessons
 
