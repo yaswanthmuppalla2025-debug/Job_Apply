@@ -13,7 +13,7 @@ Use this when a specific ATS behaves badly. The goal is to recover and submit wh
 7. Try a second distinct recovery path before blocking, such as direct ATS URL, embedded URL, official company route, reload/refill, PDF -> DOCX, text resume fallback, account reset, Gmail code, or Chrome reconnect.
 8. For high-fit roles, use a third serious attempt when a safe path remains.
 9. Check Gmail before marking failed.
-10. Add a real tracker blocker only after recovery fails, with `Attempt Count`, `Recovery Tried`, and `Next Retry Path` filled.
+10. Add a real `Blockers` row only after recovery fails, with `Attempt Count`, `Recovery Tried`, and `Next Action` filled.
 
 ## Greenhouse
 

@@ -174,7 +174,7 @@ LinkedIn does not provide an exact `<15 days` filter. Treat LinkedIn recency as 
 - `Past 24 hours` and `Past week`: normally eligible for recency preflight.
 - `Past month`: inspect the visible LinkedIn age and official posting date. Apply only if evidence shows 0-15 days.
 - `2 weeks ago`: acceptable only when the official or visible age still fits the 0-15 day gate.
-- `3 weeks ago`, `1 month ago`, unknown age, or no reliable proof: skip or cache as stale.
+- `3 weeks ago`, `1 month ago`, unknown age, or no reliable proof: skip as stale and continue.
 
 ## Apply Path Decision
 
@@ -214,7 +214,7 @@ Use the external apply route when LinkedIn sends the agent to a company site or 
 5. Record `Source` as `LinkedIn -> <ATS/company>`.
 6. Record `ATS Type` as Greenhouse, Ashby, Lever, Workday, Workable, SmartRecruiters, iCIMS, Oracle/Taleo, Phenom, LinkedIn Easy Apply, or company-native.
 
-If the external site is stale, closed, no-sponsorship, or not official, do not force it. Mark or cache the skip and continue.
+If the external site is stale, closed, no-sponsorship, or not official, do not force it. Skip and continue without creating skip-noise.
 
 ## Sponsorship And Eligibility Gate
 
@@ -260,7 +260,7 @@ Useful LinkedIn values:
 
 Leave optional fields blank or `Unknown` when not derivable quickly. Blank helper fields are not blockers.
 
-Do not log broad LinkedIn skip/cache noise. Stale, no-sponsorship, duplicate, fit-mismatch, staffing/vendor, aggregator-proxy, and strategic LinkedIn discoveries are skipped unless they are useful `Already Applied` proof or a real blocker/manual-review item.
+Do not log broad LinkedIn skip-noise. Stale, no-sponsorship, duplicate, fit-mismatch, staffing/vendor, aggregator-proxy, and strategic LinkedIn discoveries are skipped unless they are useful `Already Applied` proof or a real blocker/manual-review item.
 
 ## LinkedIn Queue Discipline
 

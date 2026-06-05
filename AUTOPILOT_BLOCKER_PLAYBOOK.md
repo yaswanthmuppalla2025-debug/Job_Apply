@@ -44,7 +44,7 @@ Do not bypass CAPTCHA, spam checks, security controls, paywalls, or platform ant
 | Required resume upload cannot be completed after recovery | `Blocked - Other`; record exact upload controls tried |
 | Account/login/email-auth wall cannot be completed after recovery | `Blocked - Other` or `Blocked - CAPTCHA`; record exact wall |
 | Manual exercise, external artifact, risky legal field, or missing required fact | `Blocked - Other`; record exact requested item |
-| No-sponsorship, stale/closed, fit mismatch, duplicate, staffing/vendor, or strategic skip | Skip without broad cache logging |
+| No-sponsorship, stale/closed, fit mismatch, duplicate, staffing/vendor, or strategic skip | Skip without broad skip logging |
 | Already applied with proof | `Already Applied`; record proof in `AI` or `SDE` |
 
 ## Recovery Budget Proof
@@ -162,7 +162,7 @@ Never store passwords, codes, or private email content in trackers, docs, screen
 
 ### Duplicate / Already Applied / Strategic Cap
 
-- Before filling, scan active tracker `Role` columns and official job IDs/application URLs.
+- Before filling, scan `Company`, `Role`, and `Application URL` across the `AI`, `SDE`, and `Blockers` sheets in `JOB_APPLICATION_TRACKER.xlsx`, plus official job IDs when visible.
 - Same company + same normalized role title or same official job ID/application URL means skip or `Already Applied`.
 - Common role title at a different company is not a duplicate.
 - If the ATS says already applied, mark `Already Applied`.

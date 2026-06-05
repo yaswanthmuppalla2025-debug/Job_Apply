@@ -153,7 +153,7 @@ Codex selection rule:
 - `Recovery Tried` should name concrete actions, not vague text. Example: `required-widget sweep; direct Greenhouse embed; Gmail code; reload/refill`.
 - `Next Action` should be actionable. Example: `Retry Workday after account login; use Apply Manually`.
 - Mark `Learning` only for rows that reveal reusable ATS/company behavior worth adding to `LEARNING_LOOP.md`.
-- Do not log broad skip/cache noise. Stale, no-sponsorship, closed, over-15-day, low-quality staffing/vendor, and poor-fit roles are still skipped, but only `Already Applied` and real blockers are tracked.
+- Do not log broad skip-noise. Stale, no-sponsorship, closed, over-15-day, low-quality staffing/vendor, and poor-fit roles are still skipped, but only `Already Applied` and real blockers are tracked.
 
 ## Learning Cadence
 

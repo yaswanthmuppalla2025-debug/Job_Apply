@@ -30,7 +30,7 @@ For each role:
 7. Submit when all required fields are truthfully complete.
 8. Capture proof from confirmation page, application ID, portal state, or Gmail receipt.
 9. Update `JOB_APPLICATION_TRACKER.xlsx` immediately using `TRACKER_SCHEMA.md`: submissions/already-applied outcomes go to `AI` or `SDE`, and real blockers go to `Blockers`.
-10. Do not log broad skip/cache noise. Stale, no-sponsorship, duplicate, staffing/vendor, aggregator-proxy, fit-mismatch, closed, and strategic skip decisions are still skipped early unless they are useful `Already Applied` proof or a real blocker/manual-review item.
+10. Do not log broad skip-noise. Stale, no-sponsorship, duplicate, staffing/vendor, aggregator-proxy, fit-mismatch, closed, and strategic skip decisions are still skipped early unless they are useful `Already Applied` proof or a real blocker/manual-review item.
 11. Close or finalize stale/completed tabs and continue to the next role.
 
 ## Recovery Loop

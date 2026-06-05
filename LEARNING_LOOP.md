@@ -17,7 +17,7 @@ Do not add generic run narration, motivation, credentials, passwords, one-off fr
 
 1. Use `START_HERE_AUTOPILOT.md`, `RECENCY_PREFLIGHT.md`, and `TRACKER_SCHEMA.md` before any daily run; `JOB_APPLICATION_TRACKER.xlsx` is the single active tracker.
 2. Apply only to verified 0-15 day roles: 0-7 days first, 8-15 days only for strong resume/JD fit, and skip unknown or older roles unless reliable proof shows <=15 days.
-3. Do not rebuild broad skip caches. Skip stale, no-sponsorship, fit-mismatch, staffing/vendor, closed, and over-15-day roles quickly; record only `Already Applied` proof or real blockers.
+3. Do not rebuild broad skip logs. Skip stale, no-sponsorship, fit-mismatch, staffing/vendor, closed, and over-15-day roles quickly; record only `Already Applied` proof or real blockers.
 4. Blank helper fields are not blockers. Fill lean tracker metadata when derivable quickly, but do not disturb the submission goal.
 5. Do not count a role as submitted without proof: Gmail receipt, success page, application ID, or clear portal state.
 6. Keep Chrome light: one active apply tab, one discovery tab, one Gmail/security-code tab, and close completed/blocked tabs after tracker updates.

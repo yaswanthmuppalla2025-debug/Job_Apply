@@ -19,7 +19,7 @@ Before filling a form, run these quick checks after the recency check:
 
 1. Quality: prefer direct employer roles at product, AI, SaaS, platform, cloud, fintech, enterprise, healthcare-tech, infrastructure, major-retail, transportation, or similar durable companies. Skip random staffing, consulting, vendor, recruiter, W2-only, client-confidential, and aggregator-proxy postings.
 2. Location: prioritize Georgia/Atlanta, Dallas/Austin/Texas, Virginia, Texas, North Carolina, Tennessee, Florida, and Remote US. Treat SF/Bay Area/California as the last option unless the company and role are unusually strong.
-3. Duplicate: scan the existing tracker `Role` columns before applying. If the same company has the same normalized role title already submitted/attempted, or the same official job id/application URL is already present, skip as duplicate or `Already Applied`. Do not block a different company just because it has a common title like `Senior Software Engineer`.
+3. Duplicate: scan `Company`, `Role`, and `Application URL` across the `AI`, `SDE`, and `Blockers` sheets in `JOB_APPLICATION_TRACKER.xlsx` before applying. If the same company has the same normalized role title already submitted/attempted, or the same official job id/application URL is already present, skip as duplicate or record `Already Applied` when proof is clear. Do not block a different company just because it has a common title like `Senior Software Engineer`.
 
 ## Fast Source Order
 
@@ -75,7 +75,7 @@ Skip and move on when:
 
 Status mapping:
 
-- Stale, closed, expired, no-sponsorship, fit-mismatch, staffing, consulting, vendor, recruiter, client-confidential, aggregator-proxy, or low-value location/source choices: skip without logging broad cache noise.
+- Stale, closed, expired, no-sponsorship, fit-mismatch, staffing, consulting, vendor, recruiter, client-confidential, aggregator-proxy, or low-value location/source choices: skip without logging broad skip-noise.
 - Same-company same-role, same official job id, same application URL, or portal-proven prior submission: record `Already Applied` in the appropriate `AI` or `SDE` sheet when proof is clear; otherwise skip and continue.
 
 Continue to the next fresh role immediately.

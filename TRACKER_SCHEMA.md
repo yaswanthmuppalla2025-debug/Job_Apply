@@ -15,7 +15,7 @@ The tracker helps Codex move faster, not create new blockers. Keep `AI` and `SDE
 
 - New rows go at the top under the header.
 - Update the tracker after every submitted, already-applied, or blocked outcome.
-- Do not log broad skip/cache noise in the workbook. Stale, no-sponsorship, closed, low-quality staffing/vendor, poor-fit, and over-15-day roles are still skipped, but they are not daily-readable rows unless they become `Already Applied` or a real blocker/manual-review item.
+- Do not log broad skip-noise in the workbook. Stale, no-sponsorship, closed, low-quality staffing/vendor, poor-fit, and over-15-day roles are still skipped, but they are not daily-readable rows unless they become `Already Applied` or a real blocker/manual-review item.
 - Before filling a form, duplicate-check the `Company`, `Role`, and `Application URL` columns across `AI`, `SDE`, and `Blockers`.
 - Leave optional metadata blank when it is not derivable quickly. Blank helper fields are not blockers.
 - Never store passwords, email codes, full SSN, DOB values, private identity values, passport, bank/payment details, or private email content in tracker cells.
@@ -49,7 +49,7 @@ Allowed statuses:
 - `Submitted`
 - `Already Applied`
 
-Do not use proof-flavored statuses such as `Submitted - Email Confirmed`. Keep status simple and put proof in `Confirmation Proof` or `Notes`.
+Do not use proof-flavored submitted status variants. Keep status simple and put proof in `Confirmation Proof` or `Notes`.
 
 ## Blockers Sheet
 
