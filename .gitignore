@@ -1,0 +1,8 @@
+.DS_Store
+.idea/
+*.bak
+*~
+*.tmp
+
+# Keep private identity values local only.
+PRIVATE_APPLICATION_FIELDS.md

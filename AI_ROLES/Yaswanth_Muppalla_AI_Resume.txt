@@ -1,0 +1,40 @@
+Yaswanth Muppalla
+Atlanta, GA | +1 845-663-4330 | yaswanthmuppalla2025@gmail.com | LinkedIn | GitHub
+AI Platform Engineer | Senior Software Engineer | Backend Systems | AWS | Data Engineering
+FOUNDER-LED TECHNICAL PROJECTS
+OmInsights - Founder-Led AI Platform Build	Jan 2024 - Present
+Impact: Built a 6-component AI platform with tenant-scoped RAG, Context Engine orchestration, MCP tool execution, async file processing, and source-backed answers over owned documents.
+Architected Angular UI, FastAPI Business Service, Context Engine, MCP Server, File Processing worker, and AWS-backed deployment paths with CI/CD and tenant-aware AWS operations.
+Built document intelligence pipelines for upload, parse, normalize, chunk, embed, persist, retrieve, and cite flows for grounded RAG responses with source ledgers and retrieval quality controls.
+Designed Context Engine flows for chat/session memory, selected context, KB injection, prompt assembly, and LLM/context harness design for multi-turn RAG orchestration and scoped answer grounding.
+Implemented MCP/API runtime patterns with tool catalog APIs, native/template tools, scoped document search, execution logging, cache behavior, and access-aware tool selection.
+Combined source-ledger, citation, guardrail, caching, and semantic caching patterns to keep AI outputs grounded and traceable.
+PROFESSIONAL EXPERIENCE
+American Express | Senior Software Engineer	Apr 2023 - Present
+Impact: Consolidated 10M+ financial records, improved reporting efficiency by 35%, achieved 99% data accuracy, reduced rerun/debug cycles by 3x, and accelerated AI copilot support.
+Engineered a financial data platform consolidating 10M+ records into MemSQL, improving reporting efficiency by 35%.
+Designed JSON-configurable Java/Spring and Apache Flink ingestion jobs for high-volume transformation with 99% data accuracy.
+Automated Airflow workflows with modular operators, shell orchestration, and data-quality checks, reducing rerun/debug cycles by 3x.
+Improved pipeline observability with validation, lineage, SLA, auditability, and operational controls across financial analytics workflows.
+Built RAG copilots for pipeline automation over Airflow DAGs, run history, schema mappings, data-quality checks, and support context.
+Used GitHub Copilot and agent-assisted development to scaffold Java/Spring, Airflow operators, tests, runbooks, and automation utilities.
+Skechers | Software Engineer	Oct 2020 - Mar 2023
+Impact: Delivered 15+ Python APIs and event-driven services, maintained 99.9% uptime, reduced costs by 22%, migrated 35M+ records, and cut incident resolution time by 40%.
+Developed 15+ Python/Pydantic REST APIs on microservices-style, event-driven AWS Lambda/Step Functions, sustaining 99.9% uptime and cutting costs 22%.
+Migrated 35M+ SFMC records into MongoDB and improved query performance by 50% through indexing, caching, and data-access optimization.
+Integrated SessionM, SFMC, MongoDB, and AWS serverless services for loyalty/marketing workflows and sub-500ms transactions.
+Applied event-driven API architecture across Lambda, Step Functions, validation, orchestration, and data-access layers.
+Improved production resilience with CloudWatch/Datadog alerts, API failure tracing, retry handling, and SLA-focused incident feedback.
+SOCH Inc. | Full-Stack Developer - Richmond, VA	Jan 2020 - Sep 2020
+Built a Spring Boot ticketing system with REST microservices and full-stack workflow screens for government clients.
+Used Java ExecutorService/CompletableFuture for async ticket updates, notifications, and background job handling.
+Managed concurrency with synchronized services, thread-safe collections, timeouts, and Spring Boot exception handling.
+TECHNICAL SKILLS
+AI/LLM Systems: RAG, embeddings, vector search, LangChain, MCP/FastMCP, OpenAI, Amazon Bedrock, prompt engineering, LLMOps, semantic caching, context orchestration
+Backend: Python, FastAPI, Pydantic, Java 17, Spring Boot, REST APIs, JWT, microservices, Java concurrency, ExecutorService, CompletableFuture, TypeScript, Angular
+Cloud & Data: AWS Lambda, ECS, S3, SQS, Step Functions, API Gateway, EventBridge, Docker, CI/CD, MongoDB, Redis, MemSQL, Kafka, Apache Flink, Airflow
+Retrieval & Storage: OpenSearch Vector DB, MongoDB, document chunking, source ledgers, searchable chunk publishing, Elasticsearch
+Observability: Datadog, CloudWatch, Kibana, X-Ray, ELK Stack, structured logging, SLA alerts, failure tracing
+EDUCATION
+State University of New York, New Paltz | Master of Science, Computer Science | CGPA: 3.6/4.0	May 2020
+JNTUK | Bachelor of Technology | CGPA: 8.5/10	2018
