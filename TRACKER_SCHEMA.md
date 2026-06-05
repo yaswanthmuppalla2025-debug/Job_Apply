@@ -1,115 +1,159 @@
 # Tracker Schema
 
-Use this file as the source of truth for both `AI_ROLES/AI_job_tracker.xlsx` and `SDE_ROLES/SDE_job_tracker.xlsx`.
+Use `JOB_APPLICATION_TRACKER.xlsx` as the single source of truth for application tracking.
 
-Both trackers must use the same columns, in the same order. `Lane` distinguishes AI from SDE. Existing rows may have blank operational fields; future agents should fill what is derivable without slowing the submission goal.
+The workbook has exactly four active sheets:
 
-All active trackers, including the LinkedIn AI sub-tracker, must stay visually consistent: same columns, same simplified status labels, same colors, same filters, and newest rows at the top below the header.
+- `Summary`
+- `AI`
+- `SDE`
+- `Blockers`
+
+The tracker helps Codex move faster, not create new blockers. Keep `AI` and `SDE` lean for readable submission history. Put recovery detail in `Blockers` only when it helps future retries or Yaswanth review.
 
 ## Core Principle
 
-The tracker helps Codex move faster, not create new blockers.
+- New rows go at the top under the header.
+- Update the tracker after every submitted, already-applied, or blocked outcome.
+- Do not log broad skip/cache noise in the workbook. Stale, no-sponsorship, closed, low-quality staffing/vendor, poor-fit, and over-15-day roles are still skipped, but they are not daily-readable rows unless they become `Already Applied` or a real blocker/manual-review item.
+- Before filling a form, duplicate-check the `Company`, `Role`, and `Application URL` columns across `AI`, `SDE`, and `Blockers`.
+- Leave optional metadata blank when it is not derivable quickly. Blank helper fields are not blockers.
+- Never store passwords, email codes, full SSN, DOB values, private identity values, passport, bank/payment details, or private email content in tracker cells.
 
-- Fill fields when the information is visible, derivable from the official page, or learned during the application.
-- Leave optional operational fields blank or `Unknown` when they are not derivable quickly.
-- Do not stop a valid application just because `Fit Score`, `ATS Type`, `Recovery Tried`, or another helper field is blank.
-- For `Blocked - ATS` and `Blocked - Other`, recovery fields are mandatory. A non-CAPTCHA technical blocker must prove at least 2 serious attempts and at least 2 distinct recovery paths unless a hard boundary appeared immediately.
-- For high-fit roles, agents should use up to 3 serious attempts when safe paths remain, especially account/login, upload fallback, direct ATS routing, hidden required fields, and Chrome recovery.
-- Do not apply when a hard gate fails: posting is older than 15 days, recency cannot be proven within 15 days, role is closed, sponsorship is incompatible, role is already applied, employer/source quality is too low, or a hard security/legal/manual blocker appears.
-- Before filling a form, scan the existing `Role` columns in the active trackers. If the same company has the same normalized role title already submitted/attempted, or the same official job id/application URL is already present, record `Already Applied` or `Skipped` and move on. A common role title at a different company is not a duplicate by itself.
-- Do not create visible `.backup` tracker files in `AI_ROLES/`, `SDE_ROLES/`, or the workspace root during routine runs. Backup clutter makes future agents and humans read the wrong files.
-- Never store passwords, private identity values, email codes, full SSN, passport, bank/payment details, or private email content in tracker cells.
-- New rows go at the top of the data area, directly under the header. Do not append new outcomes at the bottom.
+## AI And SDE Sheets
 
-## Canonical Columns
+Use `AI` for AI-first roles and LinkedIn-sourced AI roles. Use `SDE` for backend/SDE roles.
+
+Columns:
 
 | Column | Fill Rule |
 |---|---|
-| Date Applied | Date the row outcome was recorded. |
-| Lane | `AI` or `SDE`. |
-| Job ID | Internal queue/job id when available. Optional. |
+| Date | Date the outcome was recorded. |
 | Company | Company name. |
 | Role | Role title. |
-| Location | Job location/remote eligibility when visible. Do not put Yaswanth's current city or form-answer location here unless it is also the job location. Optional if not derivable quickly. |
-| Status | Use only the simplified approved statuses below. Put proof and exact reasons in `Confirmation Proof` and `Notes`, not in many status variants. |
+| Location | Job location or remote eligibility when visible. |
+| Status | `Submitted` or `Already Applied` only. |
 | Posted Date | Official posting/repost date when available. |
-| Posting Age Days | Days from posted date to check/application date. Optional; fill when easy. |
-| Recency Bucket | `0-7 days`, `8-15 days`, `Over 15 days`, or `Unknown`. |
-| Recency Proof URL | Official/dated source proving the posting date. |
-| Application URL | Official company/ATS application URL. |
-| Source | Discovery or ATS source, such as `Greenhouse:reddit`, LinkedIn, Indeed, company site. |
-| ATS Type | Greenhouse, Ashby, Lever, Workday, Workable, Oracle/Taleo, Indeed, Phenom, etc. Optional if not obvious. |
-| Fit Score | Optional quick score such as `High`, `Medium`, `Low`, or `1-5`. |
-| Fit Reason | One concise phrase explaining why the role fits or does not fit. Optional. |
-| Sponsorship Checked | `Yes`, `No`, `Unknown`, or `N/A`. Use `Yes` only after checking JD/form language. |
-| Open Checked At | Date/time official open status was checked. |
-| Attempt Count | Number of meaningful attempts on the same role. Use mainly for blockers/retries. |
-| Recovery Tried | Concrete recovery actions tried, not vague text. |
-| Next Retry Path | Exact next action if retry is worthwhile and still within the 15-day gate. |
-| Retry Eligible | `Yes`, `No`, `Expired`, or `Manual Review`. |
-| Learning Candidate | `Yes` only for reusable ATS/company learning. |
-| Gmail Checked At | Date/time Gmail was checked for code or confirmation. |
-| Confirmation Proof | Gmail receipt, success page, application ID, or portal proof. |
-| Notes | Concise old proof/blocker text and details. Do not store private values. |
+| Age Days | Days from posted date to check/application date when easy. |
+| Recency Proof | Official or reliable dated proof URL. |
+| Application URL | Official company/ATS/LinkedIn application URL. |
+| Source | Discovery or apply source, such as `Greenhouse`, `LinkedIn Easy Apply`, or `LinkedIn -> Workday`. |
+| ATS | Greenhouse, Ashby, Lever, Workday, Workable, Oracle/Taleo, LinkedIn Easy Apply, etc. |
+| Fit | Short fit signal such as `High`, `Medium`, or a concise reason. |
+| Sponsorship | `Yes`, `No`, `Unknown`, or `N/A`; use `Yes` only after checking JD/form language. |
+| Confirmation Proof | Gmail receipt, success page, application ID, or clear portal proof. |
+| Notes | Concise non-private proof or duplicate detail. |
 
-## Approved Statuses
+Allowed statuses:
 
 - `Submitted`
+- `Already Applied`
+
+Do not use proof-flavored statuses such as `Submitted - Email Confirmed`. Keep status simple and put proof in `Confirmation Proof` or `Notes`.
+
+## Blockers Sheet
+
+Use `Blockers` for CAPTCHA, ATS, upload, account/login, anti-spam, manual/legal, missing-info, Chrome/profile, and other real recovery items.
+
+Columns:
+
+| Column | Fill Rule |
+|---|---|
+| Date | Date the blocker was recorded. |
+| Lane | `AI` or `SDE`. |
+| Company | Company name. |
+| Role | Role title. |
+| Location | Job location or remote eligibility when visible. |
+| Status | One of the approved blocker statuses below. |
+| Blocker Type | Short exact type, such as `CAPTCHA Parked`, `Upload`, `Account/Login`, `Anti-spam`, `Manual/Legal`, or `Chrome/Profile`. |
+| Posted Date | Official posting/repost date when available. |
+| Age Days | Days from posted date to check/application date when easy. |
+| Application URL | Official company/ATS/LinkedIn application URL. |
+| Source | Discovery or apply source. |
+| ATS | ATS/platform name when known. |
+| Fit | Short fit signal. |
+| Attempt Count | Meaningful attempts on the same role. |
+| Recovery Tried | Concrete recovery actions tried, not vague text. |
+| Next Action | Exact next action if retry or human review is worthwhile. |
+| Retry Eligible | `Yes`, `No`, `Expired`, or `Manual Review`. |
+| Parked Tab | `Yes` only when a useful CAPTCHA/security tab is intentionally left open for Yaswanth. |
+| Learning | `Yes` only for reusable ATS/company learning. |
+| Notes | Exact non-private blocker evidence. |
+
+Allowed blocker statuses:
+
 - `Blocked - CAPTCHA`
 - `Blocked - ATS`
 - `Blocked - Other`
-- `Skipped`
-- `Already Applied`
 
-Keep the status column simple. Use `Confirmation Proof`, `Gmail Checked At`, and `Notes` to distinguish email proof, screen proof, no confirmation yet, upload failure, account/login wall, manual/legal blocker, no sponsorship, stale role, staffing/vendor skip, or fit mismatch.
+Allowed `Retry Eligible` values:
+
+- `Yes`
+- `No`
+- `Expired`
+- `Manual Review`
+
+## CAPTCHA Parking
+
+Do not bypass CAPTCHA, hCaptcha, visual puzzles, anti-abuse pages, or security challenges.
+
+For a high-fit role that already passed recency, sponsorship, quality, location, and duplicate gates:
+
+- Fill every truthful field possible.
+- Stop at the CAPTCHA/security challenge.
+- Leave the tab open for Yaswanth.
+- Add a `Blockers` row:
+  - `Status`: `Blocked - CAPTCHA`
+  - `Blocker Type`: `CAPTCHA Parked`
+  - `Retry Eligible`: `Manual Review`
+  - `Parked Tab`: `Yes`
+  - `Next Action`: `Yaswanth solve CAPTCHA, then submit/resume from same tab`
+  - `Notes`: `Form filled; CAPTCHA parked for human review`
+- Continue applying in another tab.
+
+Keep at most 5 parked CAPTCHA tabs open. If 5 are already parked, record the next CAPTCHA as `Blocked - CAPTCHA` with `Parked Tab` blank and move on.
+
+Never park low-quality, stale, no-sponsorship, duplicate, staffing/vendor, or poor-fit roles.
 
 ## Minimum Row Standard
 
-For a clean submitted row, fill at least:
+For a submitted row, fill at least:
 
-- `Date Applied`
-- `Lane`
+- `Date`
 - `Company`
 - `Role`
 - `Status`
 - `Application URL`
 - `Confirmation Proof` or concise proof in `Notes`
 
-For a skipped stale/no-sponsorship/fit/staffing/vendor/strategic row, fill at least:
+For an already-applied row, fill at least:
 
-- `Date Applied`
+- `Date`
+- `Company`
+- `Role`
+- `Status`
+- `Application URL` when available
+- `Notes` with duplicate/prior-submission proof
+
+For a blocker row, fill at least:
+
+- `Date`
 - `Lane`
 - `Company`
 - `Role`
 - `Status`
-- `Application URL` or discovery URL
-- `Notes` with the skip reason
-
-For a skipped duplicate, staffing/vendor/aggregator-proxy, or low-quality strategic row, fill at least:
-
-- `Date Applied`
-- `Lane`
-- `Company`
-- `Role`
-- `Status` as `Already Applied` or `Skipped`
-- `Application URL` or discovery URL when available
-- `Notes` with the short reason, such as `duplicate same company+role`, `staffing/vendor`, or `aggregator proxy; no official company apply`
-
-For a real blocker after recovery fails, fill at least:
-
-- `Date Applied`
-- `Lane`
-- `Company`
-- `Role`
-- `Status`
+- `Blocker Type`
 - `Application URL`
-- `Attempt Count`, normally `2` or higher for non-CAPTCHA technical blockers
-- `Recovery Tried`, with at least 2 distinct paths for non-CAPTCHA technical blockers
-- `Next Retry Path`, or a clear reason no truthful AI-safe retry remains
 - `Retry Eligible`
-- `Notes` with exact blocker evidence
+- `Notes`
 
-Do not allow vague blocker rows such as `site broken`, `login issue`, `upload failed`, or `validation loop` without the concrete attempt trail. The next agent should know exactly whether to retry account reset, direct ATS URL, manual resume text, Gmail code, hidden-widget sweep, or Chrome reconnect.
+For `Blocked - ATS` and non-CAPTCHA `Blocked - Other`, also fill:
+
+- `Attempt Count`
+- `Recovery Tried`
+- `Next Action`
+
+A non-CAPTCHA technical blocker must show at least 2 serious attempts and 2 distinct recovery paths unless a true hard boundary appeared immediately.
 
 ## 15-Day Gate
 
@@ -118,6 +162,6 @@ Autopilot applies only to verified `0-15 day` roles.
 - `0-7 days`: highest priority.
 - `8-15 days`: apply only for strong resume/JD matches.
 - `Over 15 days`: skip.
-- `Unknown`: skip unless a reliable dated source proves the posting is within 15 days and the official application page is open.
+- `Unknown`: skip unless a reliable dated source proves the role is within 15 days and the official application page is open.
 
 If no close matches exist inside the 15-day gate, report the shortage instead of applying stale roles to chase volume.

@@ -14,8 +14,8 @@ The goal is Aggressive Autopilot with Hard Stop Only: recover and submit fitting
 - Do not repeat the same failed click, selector, upload, or submit action more than twice. Switch recovery paths.
 - Use `ATS_RETRY_MATRIX.md` for ATS-specific fixes before assigning `Blocked - ATS`.
 - Use `TRACKER_SCHEMA.md` as the only source of truth for status labels.
-- Put proof and exact blocker details in `Confirmation Proof`, `Recovery Tried`, `Next Retry Path`, and `Notes`, not in custom status labels.
-- Real blockers must stay in the AI/SDE trackers after recovery fails so Yaswanth can review patterns and improve the system.
+- Put proof and exact blocker details in `Confirmation Proof`, `Recovery Tried`, `Next Action`, and `Notes`, not in custom status labels.
+- Real blockers must stay in the `Blockers` sheet after recovery fails so Yaswanth can review patterns and improve the system.
 - Blank helper fields, optional fields, N/A fields, unfamiliar wording, or unlisted ordinary questions are not blockers when the answer can be derived truthfully from the resume, JD, `ANSWER_BANK.md`, `APPLICATION_PLAN.md`, tracker notes, or common application meaning.
 
 ## Hard Stops
@@ -39,13 +39,13 @@ Do not bypass CAPTCHA, spam checks, security controls, paywalls, or platform ant
 | Gmail receipt found | `Submitted`; put Gmail proof in `Confirmation Proof` and fill `Gmail Checked At` |
 | Success page, application ID, or clear final message shown | `Submitted`; put screen/app ID proof in `Confirmation Proof` |
 | Submit likely completed but proof is weak | `Submitted`; record proof gap in `Notes`; check Gmail once |
-| CAPTCHA/security challenge blocks form | `Blocked - CAPTCHA`; record exact challenge in `Notes` |
-| ATS submit, validation, or broken portal still fails after recovery | `Blocked - ATS`; fill `Attempt Count`, `Recovery Tried`, `Next Retry Path`, and exact notes |
+| CAPTCHA/security challenge blocks form | `Blocked - CAPTCHA`; park high-fit filled forms for Yaswanth when useful |
+| ATS submit, validation, or broken portal still fails after recovery | `Blocked - ATS`; fill `Attempt Count`, `Recovery Tried`, `Next Action`, and exact notes |
 | Required resume upload cannot be completed after recovery | `Blocked - Other`; record exact upload controls tried |
 | Account/login/email-auth wall cannot be completed after recovery | `Blocked - Other` or `Blocked - CAPTCHA`; record exact wall |
 | Manual exercise, external artifact, risky legal field, or missing required fact | `Blocked - Other`; record exact requested item |
-| No-sponsorship, stale/closed, fit mismatch, duplicate, staffing/vendor, or strategic skip | `Skipped`; record exact skip reason |
-| Already applied with proof | `Already Applied`; record proof in `Confirmation Proof` or `Notes` |
+| No-sponsorship, stale/closed, fit mismatch, duplicate, staffing/vendor, or strategic skip | Skip without broad cache logging |
+| Already applied with proof | `Already Applied`; record proof in `AI` or `SDE` |
 
 ## Recovery Budget Proof
 
@@ -55,9 +55,29 @@ Before writing `Blocked - ATS` or `Blocked - Other`, the tracker row must prove:
 2. At least 2 serious attempts were made, unless a hard boundary appeared immediately.
 3. At least 2 distinct recovery paths were tried.
 4. Gmail was checked when a submission might already have happened.
-5. `Attempt Count`, `Recovery Tried`, `Next Retry Path`, and `Notes` explain the issue without credentials, codes, or private identity values.
+5. `Attempt Count`, `Recovery Tried`, `Next Action`, and `Notes` explain the issue without credentials, codes, or private identity values.
 
 Examples of distinct recovery paths: reload/refill, cleaned URL, direct ATS URL, embedded ATS URL, official company route, required-widget sweep, PDF -> DOCX upload, `.txt` resume fallback, account creation, password reset through Gmail, fresh email code, Chrome reconnect, or restarting from the exact job URL.
+
+## CAPTCHA Parking
+
+Do not bypass CAPTCHA, hCaptcha, visual puzzles, anti-abuse pages, spam checks, or security challenges.
+
+For high-fit roles that passed the 0-15 day recency gate, sponsorship check, quality gate, location priority, and duplicate check:
+
+1. Fill every truthful field possible.
+2. Stop at the CAPTCHA/security challenge.
+3. Leave the tab open for Yaswanth.
+4. Record a `Blockers` row:
+   - `Status`: `Blocked - CAPTCHA`
+   - `Blocker Type`: `CAPTCHA Parked`
+   - `Retry Eligible`: `Manual Review`
+   - `Parked Tab`: `Yes`
+   - `Next Action`: `Yaswanth solve CAPTCHA, then submit/resume from same tab`
+   - `Notes`: `Form filled; CAPTCHA parked for human review`
+5. Continue applying in another tab.
+
+Keep at most 5 parked CAPTCHA tabs open. If 5 are already parked, record the CAPTCHA without parking another tab and continue. Never park stale, no-sponsorship, duplicate, low-quality staffing/vendor, or poor-fit roles.
 
 ## Blocker Type Recovery
 
@@ -188,7 +208,7 @@ Before abandoning a non-CAPTCHA role, confirm:
 4. I checked Gmail when submission might have happened.
 5. I did not invent legal, credential, private, salary, reference, or employer-confidential facts.
 6. If official ATS identity fields were required, I used `PRIVATE_APPLICATION_FIELDS.md` and did not record the values.
-7. I filled `Attempt Count`, `Recovery Tried`, `Next Retry Path`, and `Notes` for every `Blocked - ATS` or `Blocked - Other`.
+7. I filled `Attempt Count`, `Recovery Tried`, `Next Action`, and `Notes` for every `Blocked - ATS` or non-CAPTCHA `Blocked - Other`.
 8. I added a real blocker only after recovery failed.
 9. I closed or finalized the tab and continued the batch.
 
@@ -201,6 +221,7 @@ At the end of an overnight run, summarize:
 - Screen-confirmed count.
 - Unconfirmed submissions.
 - Skipped no-sponsorship/ineligible/stale/duplicate/low-quality roles.
-- CAPTCHA and ATS blockers, with exact details kept in tracker notes.
+- CAPTCHA and ATS blockers, with exact details kept in `Blockers`.
+- Parked CAPTCHA tabs waiting for Yaswanth.
 - Best roles worth manual retry.
 - Gmail replies or recruiter messages that need attention.

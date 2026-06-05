@@ -11,7 +11,7 @@ Autopilot applies only to roles verified as posted or genuinely reposted within 
 - `>15 days`: skip.
 - Unknown date: skip unless reliable dated evidence proves the role is within 15 days.
 
-Do not stop the run because a date is unavailable. Mark or cache the role as unknown/stale and continue to fresher roles.
+Do not stop the run because a date is unavailable. Skip the role as unknown/stale and continue to fresher roles.
 
 ## Quality, Location, And Duplicate Gate
 
@@ -52,7 +52,7 @@ Do not let a newer `updated_at` hide an old first-published date on evergreen ro
 
 ## What To Record
 
-When applying, fill what is available in the tracker:
+When applying, fill what is available in `JOB_APPLICATION_TRACKER.xlsx`:
 
 - `Posted Date`
 - `Posting Age Days`
@@ -64,7 +64,7 @@ If any of these are not derivable quickly, leave them blank or `Unknown` unless 
 
 ## Skip Cases
 
-Use the appropriate skip status or the decision cache when:
+Skip and move on when:
 
 - Posted date is older than 15 days.
 - Official page is closed, expired, or no longer accepting applications.
@@ -75,7 +75,7 @@ Use the appropriate skip status or the decision cache when:
 
 Status mapping:
 
-- Stale, closed, expired, no-sponsorship, fit-mismatch, staffing, consulting, vendor, recruiter, client-confidential, aggregator-proxy, or low-value location/source choices: `Skipped`.
-- Same-company same-role, same official job id, same application URL, or portal-proven prior submission: `Already Applied` when proof is clear; otherwise `Skipped` with duplicate notes.
+- Stale, closed, expired, no-sponsorship, fit-mismatch, staffing, consulting, vendor, recruiter, client-confidential, aggregator-proxy, or low-value location/source choices: skip without logging broad cache noise.
+- Same-company same-role, same official job id, same application URL, or portal-proven prior submission: record `Already Applied` in the appropriate `AI` or `SDE` sheet when proof is clear; otherwise skip and continue.
 
 Continue to the next fresh role immediately.

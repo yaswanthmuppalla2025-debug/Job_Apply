@@ -15,17 +15,17 @@ Do not add generic run narration, motivation, credentials, passwords, one-off fr
 
 ## Current Top 12 Lessons
 
-1. Use `START_HERE_AUTOPILOT.md`, `RECENCY_PREFLIGHT.md`, and `TRACKER_SCHEMA.md` before any daily run; both AI and SDE trackers now share one canonical schema.
+1. Use `START_HERE_AUTOPILOT.md`, `RECENCY_PREFLIGHT.md`, and `TRACKER_SCHEMA.md` before any daily run; `JOB_APPLICATION_TRACKER.xlsx` is the single active tracker.
 2. Apply only to verified 0-15 day roles: 0-7 days first, 8-15 days only for strong resume/JD fit, and skip unknown or older roles unless reliable proof shows <=15 days.
-3. Cache stale, no-sponsorship, duplicate, fit-mismatch, and strategic skip decisions in `ROLE_DECISION_CACHE.xlsx` when doing so prevents rediscovery.
-4. Blank helper fields are not blockers. Fill tracker metadata when derivable quickly, but do not disturb the submission goal.
+3. Do not rebuild broad skip caches. Skip stale, no-sponsorship, fit-mismatch, staffing/vendor, closed, and over-15-day roles quickly; record only `Already Applied` proof or real blockers.
+4. Blank helper fields are not blockers. Fill lean tracker metadata when derivable quickly, but do not disturb the submission goal.
 5. Do not count a role as submitted without proof: Gmail receipt, success page, application ID, or clear portal state.
 6. Keep Chrome light: one active apply tab, one discovery tab, one Gmail/security-code tab, and close completed/blocked tabs after tracker updates.
 7. Before marking ATS validation blocked, sweep phone `+1`, selected location typeahead, resume file/manual text, exact EEO/self-ID values, radios, acknowledgements, and hidden required widgets.
 8. Use direct ATS/embed URLs when company buttons fail, especially for Greenhouse-hosted company pages.
 9. For upload failures, try PDF, DOCX, visible attach/import controls, accessible file input, and manual `.txt` resume fallback when available.
 10. Use Gmail codes and confirmations from the job mailbox only; do not read unrelated mail or store codes/private values.
-11. CAPTCHA, hCaptcha, visual challenges, human-only prompts, and anti-abuse pages are hard boundaries; check Gmail proof once, mark the role, and keep moving.
+11. CAPTCHA, hCaptcha, visual challenges, human-only prompts, and anti-abuse pages are hard boundaries; for high-fit filled forms, park up to 5 tabs for Yaswanth, record `Blocked - CAPTCHA` in `Blockers`, and keep moving.
 12. Learnings should be observed pattern -> successful recovery/action. Do not add broad policy restatements, one-off frustration, credentials, or private identity values.
 
 ## Chrome And Run Stability
@@ -40,7 +40,7 @@ Do not add generic run narration, motivation, credentials, passwords, one-off fr
 - In long batches, navigate the same application tab to the next official apply URL; keep only discovery/Gmail tabs when needed, then close completed or blocked tabs after tracker update.
 - If Gmail connector errors or points to the wrong account, verify the job mailbox through the `Job Apply - Yaswanth` Chrome profile.
 - A reusable Codex skill exists at `/Users/yaswanthmuppala/.codex/skills/job-application-autopilot/SKILL.md`; use it for future job-application runs so Chrome cleanup, tracker rules, account creation, Gmail codes, and blocker handling stay consistent.
-- When rebuilding trackers, treat job IDs as authoritative; fuzzy company/role matching can collapse distinct roles such as submitted and blocked variants at the same company.
+- When rebuilding trackers, treat job IDs and application URLs as authoritative; fuzzy company/role matching can collapse distinct roles such as submitted and blocked variants at the same company.
 - For screen-confirmed rows, avoid wording like `receipt email not found`; tracker classifiers may treat `receipt email` as proof unless the no-proof phrase is explicitly handled.
 
 ## Confirmation Lessons
@@ -186,7 +186,7 @@ Do not add generic run narration, motivation, credentials, passwords, one-off fr
 - Greenhouse roles can stay open long after first publication; use official `first_published` as the date posted and skip over-15-day roles even when `updated_at` or the form still looks active.
 - Ashby company pages and aggregators can look freshly posted while official JSON-LD still has an older `datePosted`; curl/check the official Ashby JSON-LD before filling the form, and treat the official date as authoritative.
 - LinkedIn can disable an otherwise good Easy Apply role with a daily-submission quality-limit message; log it as a retryable platform blocker with a next-day/direct-source retry path instead of counting it as a fit skip or a submission.
-- Before applying, check exact job IDs across both AI and SDE trackers plus the decision cache; cross-lane duplicates such as a backend AI role already submitted in the SDE tracker should be logged as already applied and not counted again.
+- Before applying, check exact job IDs and application URLs across the `AI`, `SDE`, and `Blockers` sheets; cross-lane duplicates such as a backend AI role already submitted in the SDE sheet should be logged as already applied and not counted again.
 - Newer Greenhouse country widgets can leave stale `Select a country` text even after the phone shows `+1`; if the form advances to security code or confirmation, treat the country/phone as accepted and continue after verifying no other real errors remain.
 - Graphcore Greenhouse confirmed the stricter country-widget path: after reload/refill, inspect hidden invalid inputs; if `Country` remains invalid despite `+1`, type `United States`, click the exact `United States +1` option, then submit to trigger the security-code gate.
 - Optiver Greenhouse showed the stricter version of the same phone-country issue: all React selects can be valid, but submit still fails when `Country` remains invalid after `United States +1`; retry the phone country widget first on a clean stable embed, and if it will not clear after click, keyboard, and full-number retries, log a retryable ATS blocker instead of refilling the whole form again.

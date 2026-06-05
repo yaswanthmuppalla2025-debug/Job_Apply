@@ -1,6 +1,6 @@
 # LinkedIn AI Roles Autopilot
 
-This folder is the LinkedIn-specific source layer for AI-first job discovery and application runs. It does not replace the main autopilot system, duplicate resumes, or create separate application policy. Agents must read the root workflow first, then use this README for LinkedIn filters, Easy Apply behavior, external ATS handoff, and LinkedIn-specific tracking.
+This folder is the LinkedIn-specific source layer for AI-first job discovery and application runs. It does not replace the main autopilot system, duplicate resumes, or create separate application policy. Agents must read the root workflow first, then use this README for LinkedIn filters, Easy Apply behavior, and external ATS handoff.
 
 ## Read First
 
@@ -18,7 +18,7 @@ The root rules win on authorization, sponsorship, recency, hard blockers, Gmail 
 
 ## Folder Contents
 
-- `LinkedIn_AI_job_tracker.xlsx`: LinkedIn-specific tracker using the same canonical columns as the main AI/SDE trackers.
+This folder contains LinkedIn-specific instructions only. Do not create or use a separate LinkedIn tracker. Record LinkedIn outcomes in the root `JOB_APPLICATION_TRACKER.xlsx`.
 
 Use the canonical resumes directly:
 
@@ -35,12 +35,12 @@ Do not store resume copies or resume symlinks in this folder. If a resume change
 
 This folder is ready when these are true:
 
-- The only files in this folder are this README and `LinkedIn_AI_job_tracker.xlsx`.
-- The tracker has `AI Tracker`, `Summary`, and `Schema` sheets, matching the AI tracker pattern.
-- The tracker uses the same canonical 26-column schema as the AI and SDE trackers.
+- The only file in this folder is this README.
+- LinkedIn-sourced outcomes go into root `JOB_APPLICATION_TRACKER.xlsx`.
+- LinkedIn Easy Apply AI outcomes go to the `AI` sheet when submitted/already-applied, or `Blockers` when blocked.
 - Resume paths, LinkedIn filters, email routing, and Easy Apply rules live in this README instead of extra workbook setup sheets.
 - Agents use LinkedIn Jobs in the `Job Apply - Yaswanth` Chrome profile.
-- Agents use the tracker as durable state and LinkedIn saved jobs only as a temporary queue.
+- Agents use `JOB_APPLICATION_TRACKER.xlsx` as durable state and LinkedIn saved jobs only as a temporary queue.
 - Agents do not create local resume copies, scratch scripts, screenshots, or backup trackers in this folder.
 
 ## Email Routing
@@ -235,7 +235,7 @@ If sponsorship is not mentioned, continue and answer sponsorship questions truth
 
 ## Tracking Rules
 
-Use `LinkedIn_AI_job_tracker.xlsx` for LinkedIn-sourced work. It follows the same canonical columns as `../../TRACKER_SCHEMA.md`.
+Use root `JOB_APPLICATION_TRACKER.xlsx` for LinkedIn-sourced work. It follows the lean workbook schema in `../../TRACKER_SCHEMA.md`.
 
 Required for submitted rows:
 
@@ -256,11 +256,11 @@ Useful LinkedIn values:
 - `ATS Type`: `LinkedIn Easy Apply` for direct LinkedIn applications.
 - `Recency Proof URL`: LinkedIn job URL or official posting URL proving recency.
 - `Sponsorship Checked`: `Yes`, `No`, `Unknown`, or `N/A`.
-- `Retry Eligible`: `Yes`, `No`, `Expired`, or `Manual Review`.
+- Blocked LinkedIn outcomes go to `Blockers`, where `Retry Eligible` is `Yes`, `No`, `Expired`, or `Manual Review`.
 
 Leave optional fields blank or `Unknown` when not derivable quickly. Blank helper fields are not blockers.
 
-Use `../../ROLE_DECISION_CACHE.xlsx` for stale, no-sponsorship, duplicate, fit-mismatch, and strategic LinkedIn discoveries that are likely to be rediscovered.
+Do not log broad LinkedIn skip/cache noise. Stale, no-sponsorship, duplicate, fit-mismatch, staffing/vendor, aggregator-proxy, and strategic LinkedIn discoveries are skipped unless they are useful `Already Applied` proof or a real blocker/manual-review item.
 
 ## LinkedIn Queue Discipline
 
@@ -268,7 +268,7 @@ LinkedIn saved jobs are a temporary queue, not the system of record.
 
 - Save only roles that pass a quick title/location/recency/fit scan.
 - Do not let saved jobs pile up as hidden state.
-- After each role, update the tracker, then unsave/archive/close the completed tab when practical.
+- After each role, update `JOB_APPLICATION_TRACKER.xlsx`, then unsave/archive/close the completed tab when practical.
 - Keep one LinkedIn search tab, one active apply tab, and one Gmail/security-code tab if needed.
 - Every 10-20 attempts, close stale tabs and rotate search keywords or location.
 

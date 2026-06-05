@@ -2,8 +2,9 @@
 
 ## Folder Rules
 
-- `AI_ROLES/` contains the canonical AI resume and AI tracker only.
-- `SDE_ROLES/` contains the canonical SDE resume and SDE tracker only.
+- `AI_ROLES/` contains the canonical AI resume only.
+- `SDE_ROLES/` contains the canonical SDE resume only.
+- `JOB_APPLICATION_TRACKER.xlsx` is the single active tracker workbook with `Summary`, `AI`, `SDE`, and `Blockers` sheets.
 - `START_HERE_AUTOPILOT.md` is the first-read command center for every AI/SDE batch.
 - `ANSWER_BANK.md` contains reusable short, medium, and long answers for recurring custom application questions.
 - `PRIVATE_APPLICATION_FIELDS.md` contains application-only private identity values for official ATS fields; never copy those values into trackers, notes, screenshots, or learning-loop entries.
@@ -11,8 +12,7 @@
 - `AUTOPILOT_BLOCKER_PLAYBOOK.md` is the single blocker and recovery source for ATS validation, upload, account/login, Gmail confirmation, manual/legal blockers, duplicate/cap handling, and morning-review rules.
 - `ATS_RETRY_MATRIX.md` contains Greenhouse, Ashby, Lever, Workday, Oracle/Taleo, SmartRecruiters/iCIMS/native, Workable, Indeed, and Phenom/SuccessFactors recovery patterns.
 - `RECENCY_PREFLIGHT.md` contains the fast 15-day posting-age verification rules.
-- `TRACKER_SCHEMA.md` is the source of truth for AI/SDE tracker columns and status labels.
-- `ROLE_DECISION_CACHE.xlsx` stores stale, no-sponsorship, duplicate, staffing/vendor/aggregator-proxy, fit-mismatch, and strategic skip decisions so future runs do not rediscover the same rejected roles.
+- `TRACKER_SCHEMA.md` is the source of truth for the master workbook columns, status labels, blocker logging, and CAPTCHA parking.
 - `LEARNING_LOOP.md` contains short high-value lessons from applications, blockers, platform behavior, and repeat answers.
 - Do not keep duplicate resumes in the root folder.
 - Do not keep render previews, old versions, or scratch scripts in this workspace.
@@ -23,11 +23,10 @@
 - AI roles: `AI_ROLES/Yaswanth_Muppalla_AI_Resume.pdf`
 - AI editable source: `AI_ROLES/Yaswanth_Muppalla_AI_Resume.docx`
 - AI manual-entry fallback: `AI_ROLES/Yaswanth_Muppalla_AI_Resume.txt`
-- AI tracker: `AI_ROLES/AI_job_tracker.xlsx` using the canonical schema in `TRACKER_SCHEMA.md`
 - SDE roles: `SDE_ROLES/Yaswanth_Muppalla_SDE_Resume.pdf`
 - SDE editable source: `SDE_ROLES/Yaswanth_Muppalla_SDE_Resume.docx`
 - SDE manual-entry fallback: `SDE_ROLES/Yaswanth_Muppalla_SDE_Resume.txt`
-- SDE tracker: `SDE_ROLES/SDE_job_tracker.xlsx` using the canonical schema in `TRACKER_SCHEMA.md`
+- Master tracker: `JOB_APPLICATION_TRACKER.xlsx` using the lean schema in `TRACKER_SCHEMA.md`
 
 ## Target AI Roles
 
@@ -82,11 +81,11 @@ Runtime state machine:
 1. Discover latest open jobs deeply across official company career pages, ATS boards, and reputable hiring portals.
 2. Run `RECENCY_PREFLIGHT.md`, then verify sponsorship compatibility and fit before opening/filling the application form.
 3. Use `TRACKER_SCHEMA.md` for status labels and tracker row rules.
-4. Select the role lane: AI resume/tracker for AI roles, SDE resume/tracker for SDE/backend roles.
+4. Select the role lane: AI resume for AI roles, SDE resume for SDE/backend roles.
 5. Fill from `APPLICATION_PLAN.md`, `ANSWER_BANK.md`, the resume, JD, company context, and best truthful judgment.
 6. Submit matching applications without per-role approval.
 7. Confirm submission from screen text, application ID, portal state, or Gmail.
-8. Update tracker immediately after each submitted, skipped, blocked, duplicate, or unconfirmed outcome.
+8. Update `JOB_APPLICATION_TRACKER.xlsx` immediately after each submitted, already-applied, or blocked outcome.
 9. Close/finalize unneeded tabs and continue to the next role.
 10. Add only high-value observed lessons to `LEARNING_LOOP.md`.
 
@@ -147,13 +146,14 @@ Codex selection rule:
 
 ## Tracker Recovery Fields
 
-Both AI and SDE trackers use the same canonical columns in `TRACKER_SCHEMA.md`. Existing rows may have blanks in helper fields. Future agents should fill fields that are derivable quickly, but blank helper fields are not blockers.
+`JOB_APPLICATION_TRACKER.xlsx` is the only active tracker. Use `AI` and `SDE` for lean `Submitted` and `Already Applied` rows. Use `Blockers` for CAPTCHA, ATS, upload, account/login, anti-spam, manual/legal, missing-info, Chrome/profile, and other real recovery rows.
 
-- Use `Attempt Count`, `Recovery Tried`, `Next Retry Path`, and `Learning Candidate` for real blockers or meaningful retries.
-- Do not overfill these columns for clean submissions.
+- Use `Attempt Count`, `Recovery Tried`, `Next Action`, and `Learning` for real blockers or meaningful retries.
+- Do not overfill the lean AI/SDE submission sheets.
 - `Recovery Tried` should name concrete actions, not vague text. Example: `required-widget sweep; direct Greenhouse embed; Gmail code; reload/refill`.
-- `Next Retry Path` should be actionable. Example: `Retry Workday after account login; use Apply Manually`.
-- Mark `Learning Candidate` only for rows that reveal reusable ATS/company behavior worth adding to `LEARNING_LOOP.md`.
+- `Next Action` should be actionable. Example: `Retry Workday after account login; use Apply Manually`.
+- Mark `Learning` only for rows that reveal reusable ATS/company behavior worth adding to `LEARNING_LOOP.md`.
+- Do not log broad skip/cache noise. Stale, no-sponsorship, closed, over-15-day, low-quality staffing/vendor, and poor-fit roles are still skipped, but only `Already Applied` and real blockers are tracked.
 
 ## Learning Cadence
 
@@ -178,12 +178,13 @@ Both AI and SDE trackers use the same canonical columns in `TRACKER_SCHEMA.md`. 
 - Closest-option behavior: if a form option does not exactly match the default answer, choose the closest truthful option and continue.
 - Blocker behavior: use `AUTOPILOT_BLOCKER_PLAYBOOK.md`; recover aggressively when safe, mark the role clearly only after recovery attempts, and continue the run instead of stopping.
 - No first-attempt technical blockers: except CAPTCHA/security/legal/manual/hard-eligibility boundaries, do not mark `Blocked - ATS` or `Blocked - Other` until at least 2 serious attempts and 2 distinct recovery paths have been tried. For high-fit roles, use up to 3 serious attempts when safe paths remain.
-- Blocked-row proof behavior: every `Blocked - ATS` and `Blocked - Other` row must fill `Attempt Count`, `Recovery Tried`, `Next Retry Path`, and exact non-private blocker notes.
+- Blocked-row proof behavior: every `Blocked - ATS` and non-CAPTCHA `Blocked - Other` row must fill `Attempt Count`, `Recovery Tried`, `Next Action`, and exact non-private blocker notes in `Blockers`.
 - Hard blockers: mark and move on only for CAPTCHA/security challenge, duplicate/already-applied state, payment/request-for-money, missing required information that cannot be truthfully derived from the resume/JD/defaults/private-field file, no-sponsorship/ineligible role, or a form that remains technically impossible after the recovery ladder. Use the simplified tracker statuses in `TRACKER_SCHEMA.md`.
 - Account creation is not a hard blocker when the form accepts normal email/password signup and the application email is usable.
 - Account/login recovery behavior: create the normal ATS/company account, try existing login once if the account exists, use password reset through the job Gmail when available, retrieve Gmail codes/links, complete required profile sections, and return to the exact job application URL before blocking.
 - Last-4 SSN, DOB, and month/day DOB are not blockers when requested by a normal official ATS form; use `PRIVATE_APPLICATION_FIELDS.md`.
 - Do not bypass CAPTCHA, anti-abuse pages, security challenges, or legal eligibility requirements. Treat those as hard blockers or manual review.
+- CAPTCHA parking behavior: for high-fit roles that pass all gates, fill every truthful field possible, leave the CAPTCHA/security tab open for Yaswanth, record `Blocked - CAPTCHA` with `Blocker Type = CAPTCHA Parked`, `Retry Eligible = Manual Review`, `Parked Tab = Yes`, and continue in another tab. Keep at most 5 parked CAPTCHA tabs and never park stale/no-sponsorship/low-quality roles.
 - Sponsorship hard skip: strictly skip any role whose JD or application says the employer does not sponsor visas, does not provide immigration support, cannot sponsor or transfer H-1B, does not sponsor now or in the future, requires no current/future sponsorship, or otherwise rejects visa-related work authorization support.
 - Compliance hard skip: strictly skip any role that clearly requires U.S. citizenship, permanent residency/green card, U.S.-person status, export-control eligibility that H-1B does not satisfy, active security clearance, or government/clearance eligibility not compatible with H-1B transfer.
 - If sponsorship is not mentioned or is ambiguous, apply and answer sponsorship questions truthfully from the defaults below.

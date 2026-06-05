@@ -8,18 +8,18 @@ Read this first for any AI or SDE application batch.
 2. Run in `Aggressive Autopilot / Hard Stop Only` mode.
 3. Enforce the recency gate before filling: prioritize roles posted 0-7 days ago, use 8-15 day roles only for strong resume matches, and skip anything older than 15 days.
 4. Apply quality-first: prefer direct employer product/platform/enterprise roles, not random staffing, consulting, vendor, recruiter, or aggregator-proxy postings.
-5. Before filling any form, do the simple duplicate check: scan the existing tracker `Role` columns. If the same company has the same normalized role title already submitted/attempted, or the same official URL/job id is already present, skip as duplicate/already applied. A common role title at a different company is only a warning, not a blocker.
+5. Before filling any form, do the simple duplicate check in `JOB_APPLICATION_TRACKER.xlsx`: scan `Company`, `Role`, and `Application URL` across `AI`, `SDE`, and `Blockers`. If the same company has the same normalized role title already submitted/attempted, or the same official URL/job id is already present, skip as duplicate/already applied. A common role title at a different company is only a warning, not a blocker.
 6. Location priority: Georgia/Atlanta, Dallas/Austin/Texas, Virginia, Texas, North Carolina, Tennessee, Florida, Remote US, then SF/Bay Area/California only as a last option for unusually strong AI/platform/company fit.
 7. Strictly skip no-sponsorship, no-H-1B-transfer, citizen/GC-only, U.S.-person-only, clearance-only, stale, closed, over-15-day, unknown-recency without proof, duplicate, staffing/vendor/aggregator-proxy, and obvious poor-fit roles.
 8. Use `RECENCY_PREFLIGHT.md` for fast posting-age checks and `TRACKER_SCHEMA.md` for tracker updates.
-9. Use the AI resume/tracker for AI roles and the SDE resume/tracker for SDE/backend roles.
+9. Use the AI resume for AI roles and the SDE resume for SDE/backend roles. Record outcomes in `JOB_APPLICATION_TRACKER.xlsx`.
 10. Fill from `APPLICATION_PLAN.md`, `ANSWER_BANK.md`, the resume, JD, company context, and best truthful judgment.
 11. Submit matching applications without per-role approval.
 12. Recover normal friction before blocking: required-widget sweep, direct ATS URL, embedded form, PDF -> DOCX -> text fallback, account creation, Gmail code, reload/refill, Chrome reconnect.
 13. No first-attempt technical blockers: except CAPTCHA/security/legal/manual/hard-eligibility boundaries, a blocked role requires at least 2 serious attempts and at least 2 distinct recovery paths.
 14. Account/login walls are recoverable: create account, try existing login, use password reset through the job Gmail when available, retrieve Gmail codes, then return to the exact job URL before blocking.
-15. Confirm from screen, application ID, portal state, or Gmail; update the tracker after every outcome.
-16. Put each new tracker row at the top under the header, using the simplified status labels.
+15. Confirm from screen, application ID, portal state, or Gmail; update `JOB_APPLICATION_TRACKER.xlsx` after every outcome.
+16. Put submissions/already-applied rows in `AI` or `SDE`; put CAPTCHA, ATS, upload, account/login, anti-spam, manual/legal, missing-info, and Chrome/profile blockers in `Blockers`.
 17. Close/finalize stale tabs and continue to the next role.
 
 ## Current Retry Priority
@@ -43,7 +43,7 @@ Before final submit, verify:
 - Posting date is verified from an official company/ATS source or reliable dated search result before spending time on the form: 0-7 days preferred, 8-15 days strong fit only, >15 days skipped.
 - Employer is a direct product/platform/enterprise employer or a clearly high-quality direct company role; skip obvious staffing, consulting, vendor, recruiter, W2-only, client-confidential, or aggregator-proxy postings.
 - Location matches the priority order: Georgia/Atlanta, Dallas/Austin/Texas, Virginia, Texas, North Carolina, Tennessee, Florida, Remote US, then SF/Bay Area/California only for elite fit.
-- Existing tracker `Role` columns have been scanned for a simple duplicate check before filling.
+- `JOB_APPLICATION_TRACKER.xlsx` has been scanned for a simple duplicate check before filling.
 - Correct lane resume is uploaded, parsed, or pasted through the lane `.txt` fallback.
 - Official ATS identity fields such as last-4 SSN, DOB, or month/day DOB are filled from `PRIVATE_APPLICATION_FIELDS.md` when required.
 - Phone includes United States / `+1` when a country selector exists.
@@ -76,17 +76,23 @@ Bad learning:
 
 Private-field rule: never copy values from `PRIVATE_APPLICATION_FIELDS.md` into trackers, blocker reasons, learning-loop entries, screenshots, or result JSON.
 
-## Tracker Recovery Fields
+## Tracker Rules
 
-Both AI and SDE trackers use the same canonical schema in `TRACKER_SCHEMA.md`. Existing rows may have blank helper fields; future agents should fill what is derivable without disturbing the apply goal.
+`JOB_APPLICATION_TRACKER.xlsx` is the only active tracker. Use the lean `AI` and `SDE` sheets for `Submitted` and `Already Applied` rows. Use `Blockers` for CAPTCHA, ATS, upload, account/login, anti-spam, manual/legal, missing-info, Chrome/profile, and other real recovery items.
 
 Use these fields only when they add signal:
 
 - `Attempt Count`: increment for retries on the same role.
 - `Recovery Tried`: concise list such as `reload/refill; direct Greenhouse; Gmail code; text resume`.
-- `Next Retry Path`: the next concrete action if the role is worth retrying.
-- `Learning Candidate`: `Yes` only when the row reveals a reusable ATS/company pattern for `LEARNING_LOOP.md`.
+- `Next Action`: the next concrete action if the role is worth retrying.
+- `Learning`: `Yes` only when the row reveals a reusable ATS/company pattern for `LEARNING_LOOP.md`.
 
-For `Blocked - ATS` and `Blocked - Other`, these fields are not optional. A non-CAPTCHA technical blocker must show the serious attempts, distinct recovery paths, and the next retry path or a clear reason no truthful AI-safe retry remains.
+For `Blocked - ATS` and non-CAPTCHA `Blocked - Other`, these fields are not optional. A non-CAPTCHA technical blocker must show the serious attempts, distinct recovery paths, and the next action or a clear reason no truthful AI-safe retry remains.
 
-If a role is skipped before filling because it is stale, no-sponsorship, duplicate, staffing/vendor/aggregator-proxy, outside the location priority, or a fit mismatch, add it to `ROLE_DECISION_CACHE.xlsx` when doing so prevents future rediscovery.
+Do not log broad skip/cache noise. Stale, no-sponsorship, duplicate, staffing/vendor/aggregator-proxy, outside-location, or fit-mismatch roles are skipped and the run continues; only record `Already Applied` when duplicate proof is useful.
+
+## CAPTCHA Parking
+
+For high-fit roles that already pass freshness, sponsorship, quality, location, and duplicate gates, CAPTCHA should not discard the opportunity. Fill every truthful field possible, leave the CAPTCHA/security tab open for Yaswanth, record the row in `Blockers` as `Blocked - CAPTCHA` with `Blocker Type = CAPTCHA Parked`, `Retry Eligible = Manual Review`, `Parked Tab = Yes`, and continue applying in another tab.
+
+Keep at most 5 parked CAPTCHA tabs open. Never park low-quality, stale, no-sponsorship, duplicate, staffing/vendor, or poor-fit roles.
