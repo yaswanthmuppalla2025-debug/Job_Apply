@@ -1,6 +1,6 @@
 # Learning Loop
 
-Purpose: record short, high-value observations from real applications. This is not the runtime policy file. Runtime rules live in `START_HERE_AUTOPILOT.md`, `APPLICATION_PLAN.md`, `AUTONOMOUS_RUNBOOK.md`, `AUTOPILOT_BLOCKER_PLAYBOOK.md`, `AGENT_RECOVERY_TRAINING.md`, and `ATS_RETRY_MATRIX.md`.
+Purpose: record short, high-value observations from real applications. This is not the runtime policy file. Runtime rules live in `START_HERE_AUTOPILOT.md`, `APPLICATION_PLAN.md`, `AUTONOMOUS_RUNBOOK.md`, `AUTOPILOT_BLOCKER_PLAYBOOK.md`, and `ATS_RETRY_MATRIX.md`.
 
 Cadence: every 2-3 hours of applying, or every 50 submitted applications, add 5-6 high-value sentences only when the run produced reusable observations. Each entry should be an observed pattern plus the recovery/action that made future submissions smoother.
 

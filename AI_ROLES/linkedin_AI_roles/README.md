@@ -12,8 +12,7 @@ Before using LinkedIn, read these root files:
 4. `../../TRACKER_SCHEMA.md`
 5. `../../ANSWER_BANK.md`
 6. `../../AUTOPILOT_BLOCKER_PLAYBOOK.md`
-7. `../../AGENT_RECOVERY_TRAINING.md`
-8. `../../ATS_RETRY_MATRIX.md`
+7. `../../ATS_RETRY_MATRIX.md`
 
 The root rules win on authorization, sponsorship, recency, hard blockers, Gmail proof, account creation, resume use, tracker statuses, and private-data hygiene.
 

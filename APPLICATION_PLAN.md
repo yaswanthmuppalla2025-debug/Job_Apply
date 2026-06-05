@@ -7,9 +7,8 @@
 - `START_HERE_AUTOPILOT.md` is the first-read command center for every AI/SDE batch.
 - `ANSWER_BANK.md` contains reusable short, medium, and long answers for recurring custom application questions.
 - `PRIVATE_APPLICATION_FIELDS.md` contains application-only private identity values for official ATS fields; never copy those values into trackers, notes, screenshots, or learning-loop entries.
-- `AUTONOMOUS_RUNBOOK.md` contains the days/overnight state machine, Chrome recovery loop, and checkpoint rules.
-- `AUTOPILOT_BLOCKER_PLAYBOOK.md` contains blocker recovery, skip, Gmail confirmation, and morning-review rules for overnight runs.
-- `AGENT_RECOVERY_TRAINING.md` teaches agents the right recovery path for ATS validation, upload, manual exercise, strategic duplicate/cap, legal attestation, and account/login blockers.
+- `AUTONOMOUS_RUNBOOK.md` contains the compact days/overnight execution loop, Chrome loop, checkpoints, and summary format.
+- `AUTOPILOT_BLOCKER_PLAYBOOK.md` is the single blocker and recovery source for ATS validation, upload, account/login, Gmail confirmation, manual/legal blockers, duplicate/cap handling, and morning-review rules.
 - `ATS_RETRY_MATRIX.md` contains Greenhouse, Ashby, Lever, Workday, Oracle/Taleo, SmartRecruiters/iCIMS/native, Workable, Indeed, and Phenom/SuccessFactors recovery patterns.
 - `RECENCY_PREFLIGHT.md` contains the fast 15-day posting-age verification rules.
 - `TRACKER_SCHEMA.md` is the source of truth for AI/SDE tracker columns and status labels.
@@ -93,14 +92,7 @@ Runtime state machine:
 
 Recovery state machine:
 
-1. Retry normal form friction once with a clean required-widget sweep.
-2. For blocker types 2-7, follow `AGENT_RECOVERY_TRAINING.md` before assigning any blocker status.
-3. Use `ATS_RETRY_MATRIX.md` for ATS-specific recovery.
-4. Try alternate path: direct ATS URL, official company page, embedded ATS form, or cleaned URL.
-5. Try resume fallback: PDF -> DOCX -> manual resume text entry from the lane `.txt` fallback if available.
-6. Try account/email path: create normal ATS account, use Gmail code, return to the same application.
-7. Reconnect/refresh Chrome if the browser bridge gets stale, then resume from tracker.
-8. Only then update the tracker using the simplified statuses in `TRACKER_SCHEMA.md`.
+Use `AUTOPILOT_BLOCKER_PLAYBOOK.md` as the single recovery source, and use `ATS_RETRY_MATRIX.md` only for ATS-specific fixes. Normal friction must be retried through distinct recovery paths before a blocker is recorded. After recovery succeeds or fails, update the tracker using the simplified statuses in `TRACKER_SCHEMA.md` and continue the batch.
 
 ## Scale Targets
 
