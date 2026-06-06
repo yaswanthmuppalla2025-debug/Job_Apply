@@ -204,6 +204,7 @@ Do not add generic run narration, motivation, credentials, passwords, one-off fr
 - Ashby can repeatedly flag rapid same-company submissions as possible spam even after clean reloads, resume reupload, shorter answers, and verified required fields; after three serious attempts, log an anti-spam blocker and pivot to other companies/ATS sources before retrying after cooldown.
 - Keka forms can expose a required plain `captcha` input immediately on the apply page; verify whether reload, job-details apply, and direct apply URL all keep the field before logging `Blocked - CAPTCHA`.
 - Workday dropdown automation must exact-match short EEO values before falling back to substring matching; fuzzy matching `Male` can incorrectly select `Female`, so re-snapshot and verify final review values before submit.
+- GDIT Workday can recover from a prior sign-in blocker by creating the candidate account, using the Workday verification email link, then returning to the same apply URL; after that, treat broad conflict-of-interest questions such as future paid/unpaid work for another entity as manual/legal facts rather than guessing.
 
 ## Resume Lessons
 

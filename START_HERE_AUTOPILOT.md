@@ -6,11 +6,11 @@ Read this first for any AI or SDE application batch.
 
 1. Use the `Job Apply - Yaswanth` Chrome profile.
 2. Run in `Aggressive Autopilot / Hard Stop Only` mode.
-3. Enforce the recency gate before filling: prioritize roles posted 0-7 days ago, use 8-15 day roles only for strong resume matches, and skip anything older than 15 days.
+3. Enforce the recency gate before filling: prioritize roles posted 0-7 days ago, use 8-15 day roles only for strong resume matches, and use the <=50 day exception only for exceptional AI matches that are officially live, in-bounds, and sponsorship-compatible.
 4. Apply strong-fit-first: submit only high/strong AI or SDE/backend matches; treat medium/adjacent roles as skips unless they are a documented strategic exception.
 5. Before filling any form, do the simple duplicate check in `JOB_APPLICATION_TRACKER.xlsx`: scan `Company`, `Role`, and `Application URL` across `AI`, `SDE`, and `Blockers`. If the same company has the same normalized role title already submitted/attempted, or the same official URL/job id is already present, skip as duplicate/already applied. A common role title at a different company is only a warning, not a blocker.
 6. Location priority: Georgia/Atlanta, Dallas/Austin/Texas, Virginia, Texas, North Carolina, Tennessee, Florida, Remote US, then SF/Bay Area/California only as a last option for unusually strong AI/platform/company fit.
-7. Strictly skip no-sponsorship, no-H-1B-transfer, citizen/GC-only, U.S.-person-only, clearance-only, stale, closed, over-15-day, unknown-recency without proof, duplicate, staffing/vendor/aggregator-proxy, and obvious poor-fit roles.
+7. Strictly skip no-sponsorship, no-H-1B-transfer, citizen/GC-only, U.S.-person-only, clearance-only, stale, closed, over-50-day, unknown-recency without proof, duplicate, staffing/vendor/aggregator-proxy, and obvious poor-fit roles. Roles older than 15 days still need the exceptional AI-fit live-post exception.
 8. Use `RECENCY_PREFLIGHT.md` for fast posting-age checks and `TRACKER_SCHEMA.md` for tracker updates.
 9. Use the AI resume for AI roles and the SDE resume for SDE/backend roles. Record outcomes in `JOB_APPLICATION_TRACKER.xlsx`.
 10. Fill from `APPLICATION_PLAN.md`, `ANSWER_BANK.md`, the resume, JD, company context, and best truthful judgment.
@@ -39,9 +39,9 @@ Only retry these if the role still passes the 0-15 day recency gate and `Retry E
 
 Before final submit, verify:
 
-- Role is official, open, verified 0-15 days old, fit-aligned, and sponsorship-compatible.
+- Role is official, open, verified 0-15 days old by default or <=50 days old under the exceptional AI-fit live-post exception, fit-aligned, and sponsorship-compatible.
 - Fit is `High`/`Strong` for the selected lane. `Medium` is allowed only as `Strategic Exception` when the role has target geography/company quality and at least 2-3 resume-backed core requirements.
-- Posting date is verified from an official company/ATS source or reliable dated search result before spending time on the form: 0-7 days preferred, 8-15 days strong fit only, >15 days skipped.
+- Posting date is verified from an official company/ATS source or reliable dated search result before spending time on the form: 0-7 days preferred, 8-15 days strong fit only, 16-50 days only for exceptional AI matches with official live proof, >50 days skipped.
 - Employer is a direct product/platform/enterprise employer or a clearly high-quality direct company role; skip obvious staffing, consulting, vendor, recruiter, W2-only, client-confidential, or aggregator-proxy postings.
 - Location matches the priority order: Georgia/Atlanta, Dallas/Austin/Texas, Virginia, Texas, North Carolina, Tennessee, Florida, Remote US, then SF/Bay Area/California only for elite fit.
 - `JOB_APPLICATION_TRACKER.xlsx` has been scanned for a simple duplicate check before filling.

@@ -155,13 +155,14 @@ For `Blocked - ATS` and non-CAPTCHA `Blocked - Other`, also fill:
 
 A non-CAPTCHA technical blocker must show at least 2 serious attempts and 2 distinct recovery paths unless a true hard boundary appeared immediately.
 
-## 15-Day Gate
+## Recency Gate
 
-Autopilot applies only to verified `0-15 day` roles.
+Autopilot applies to verified `0-15 day` roles by default. AI roles may use Yaswanth's exceptional live-post exception up to `50 days` only when the role is an excellent/strong match, official page is still accepting applications, location is in-bounds, and sponsorship answers are compatible.
 
 - `0-7 days`: highest priority.
 - `8-15 days`: apply only for strong resume/JD matches.
-- `Over 15 days`: skip.
+- `16-50 days`: AI roles only, exceptional strong-fit live-post exception.
+- `Over 50 days`: skip.
 - `Unknown`: skip unless a reliable dated source proves the role is within 15 days and the official application page is open.
 
-If no high/strong matches exist inside the 15-day gate, report the shortage instead of applying stale, medium-adjacent, or weak roles to chase volume.
+If no high/strong matches exist inside the recency gate, scrape deeper through official/company/ATS sources instead of applying stale, medium-adjacent, or weak roles to chase volume.

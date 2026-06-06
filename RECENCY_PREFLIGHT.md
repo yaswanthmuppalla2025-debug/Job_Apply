@@ -4,11 +4,12 @@ Use this before spending time on a form. The goal is to save tokens and apply on
 
 ## Rule
 
-Autopilot applies only to roles verified as posted or genuinely reposted within the last 15 days.
+Autopilot applies to roles verified as posted or genuinely reposted within the last 15 days by default. For exceptional AI matches only, Yaswanth allows a narrow live-post exception up to 50 days old when the role is a clear strong fit, the official employer/ATS page is still accepting applications, the location is in-bounds, and sponsorship answers can be truthful.
 
 - `0-7 days`: apply first.
 - `8-15 days`: apply only when the resume/JD match is strong.
-- `>15 days`: skip.
+- `16-50 days`: AI roles only, apply only for excellent/strong matches with official live proof.
+- `>50 days`: skip.
 - Unknown date: skip unless reliable dated evidence proves the role is within 15 days.
 
 Do not stop the run because a date is unavailable. Skip the role as unknown/stale and continue to fresher roles.
@@ -67,7 +68,8 @@ If any of these are not derivable quickly, leave them blank or `Unknown` unless 
 
 Skip and move on when:
 
-- Posted date is older than 15 days.
+- Posted date is older than 15 days, unless it is an exceptional AI-role match that meets the <=50 day live-post exception.
+- Posted date is older than 50 days.
 - Official page is closed, expired, or no longer accepting applications.
 - Recency is unknown and no reliable proof shows the role is within 15 days.
 - Aggregator result does not resolve to an official open application page.
