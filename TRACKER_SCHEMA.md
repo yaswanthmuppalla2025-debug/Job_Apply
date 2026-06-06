@@ -18,6 +18,7 @@ The tracker helps Codex move faster, not create new blockers. Keep `AI` and `SDE
 - Do not log broad skip-noise in the workbook. Stale, no-sponsorship, closed, low-quality staffing/vendor, poor-fit, and over-15-day roles are still skipped, but they are not daily-readable rows unless they become `Already Applied` or a real blocker/manual-review item.
 - Before filling a form, duplicate-check the `Company`, `Role`, and `Application URL` columns across `AI`, `SDE`, and `Blockers`.
 - Leave optional metadata blank when it is not derivable quickly. Blank helper fields are not blockers, but `Fit` is not a helper field for new `Submitted` rows.
+- Do not create separate report, queue, cache, CSV, or JSONL files for routine runs. `JOB_APPLICATION_TRACKER.xlsx` is the durable state.
 - Never store passwords, email codes, full SSN, DOB values, private identity values, passport, bank/payment details, or private email content in tracker cells.
 
 ## AI And SDE Sheets

@@ -20,7 +20,8 @@ Read this first for any AI or SDE application batch.
 14. Account/login walls are recoverable: create account, try existing login, use password reset through the job Gmail when available, retrieve Gmail codes, then return to the exact job URL before blocking.
 15. Confirm from screen, application ID, portal state, or Gmail; update `JOB_APPLICATION_TRACKER.xlsx` after every outcome.
 16. Put submissions/already-applied rows in `AI` or `SDE`; put CAPTCHA, ATS, upload, account/login, anti-spam, manual/legal, missing-info, and Chrome/profile blockers in `Blockers`.
-17. Close/finalize stale tabs and continue to the next role.
+17. Do not create report, queue, cache, CSV, or JSONL artifacts for routine runs; the master workbook is the only durable state.
+18. Close/finalize stale tabs and continue to the next role.
 
 ## Current Retry Priority
 
@@ -75,7 +76,7 @@ Bad learning:
 - Credentials, passwords, codes, or private email content.
 - Policies already written in `APPLICATION_PLAN.md`, `AUTONOMOUS_RUNBOOK.md`, or `AUTOPILOT_BLOCKER_PLAYBOOK.md`.
 
-Private-field rule: never copy values from `PRIVATE_APPLICATION_FIELDS.md` into trackers, blocker reasons, learning-loop entries, screenshots, or result JSON.
+Private-field rule: never copy values from `PRIVATE_APPLICATION_FIELDS.md` into trackers, blocker reasons, learning-loop entries, screenshots, scratch files, or summaries.
 
 ## Tracker Rules
 

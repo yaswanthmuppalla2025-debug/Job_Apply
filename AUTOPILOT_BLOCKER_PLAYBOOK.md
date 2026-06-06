@@ -128,7 +128,7 @@ Use this ordered protocol:
 8. If the portal requires profile setup before the job form, complete only required profile sections from resume/defaults and return to the job.
 9. If CAPTCHA, security prompt, OTP outside Gmail, inaccessible reset, or another non-AI challenge blocks the account, use `Blocked - CAPTCHA` or `Blocked - Other`.
 
-Never store passwords, codes, or private email content in trackers, docs, screenshots, result JSON, or learning notes.
+Never store passwords, codes, or private email content in trackers, docs, screenshots, scratch outputs, summaries, or learning notes.
 
 ### Email Security Code
 
@@ -157,7 +157,7 @@ Never store passwords, codes, or private email content in trackers, docs, screen
 - Standard official ATS fields for last-4 SSN, DOB, and month/day DOB are not blockers when the page is an official company/ATS application.
 - Use `PRIVATE_APPLICATION_FIELDS.md` only inside the live official form.
 - In tracker notes, write only generic wording such as `required identity fields completed from private application defaults`.
-- Never write private identity values into tracker rows, notes, learning entries, screenshots, result JSON, morning summaries, or GitHub.
+- Never write private identity values into tracker rows, notes, learning entries, screenshots, scratch outputs, morning summaries, or GitHub.
 - If the site asks for full SSN, passport, bank/payment data, payment, or suspicious identity collection, do not complete it.
 
 ### Duplicate / Already Applied / Strategic Cap

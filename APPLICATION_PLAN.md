@@ -17,6 +17,7 @@
 - Do not keep duplicate resumes in the root folder.
 - Do not keep render previews, old versions, or scratch scripts in this workspace.
 - Do not create visible tracker backup files during routine application runs or tracker updates. If a rare structural migration truly needs a safety copy, use a temporary location outside this workspace and clean it up before finishing.
+- Do not create routine reports, target queues, cache sheets, CSV files, or JSONL files. Use `JOB_APPLICATION_TRACKER.xlsx` plus `LEARNING_LOOP.md` only.
 
 ## Current Resume Use
 
@@ -86,8 +87,9 @@ Runtime state machine:
 6. Submit high/strong-fit applications without per-role approval.
 7. Confirm submission from screen text, application ID, portal state, or Gmail.
 8. Update `JOB_APPLICATION_TRACKER.xlsx` immediately after each submitted, already-applied, or blocked outcome.
-9. Close/finalize unneeded tabs and continue to the next role.
-10. Add only high-value observed lessons to `LEARNING_LOOP.md`.
+9. Do not create separate queue/report/cache files; keep durable state in the master workbook.
+10. Close/finalize unneeded tabs and continue to the next role.
+11. Add only high-value observed lessons to `LEARNING_LOOP.md`.
 
 Recovery state machine:
 
@@ -124,7 +126,7 @@ Profile lock:
 Codex selection rule:
 
 - Do not use the default Chrome extension instance blindly. First list available Chrome browser instances and select the extension instance whose metadata has `profileName: Job Apply - Yaswanth`.
-- If `Job Apply - Yaswanth` is not available through the Codex Chrome Extension, first reconnect/reopen Chrome and reselect the profile. If it remains unavailable, continue discovery-only queue building with official links and note the profile issue in the morning summary instead of switching to a personal/dev profile.
+- If `Job Apply - Yaswanth` is not available through the Codex Chrome Extension, first reconnect/reopen Chrome and reselect the profile. If it remains unavailable, continue discovery-only review in the browser and note official links in the morning summary instead of switching to a personal/dev profile or creating queue files.
 - Do not use personal/dev browsing sessions for applications unless Yaswanth explicitly says to.
 - Safe AI command wording from Yaswanth: `Use the Job Apply - Yaswanth Chrome profile and start the AI job batch.`
 - Safe SDE command wording from Yaswanth: `Use the Job Apply - Yaswanth Chrome profile and start the SDE job batch.`
@@ -169,8 +171,8 @@ Codex selection rule:
 - Recency/open-status behavior: apply only after confirming the role is open, within the verified 0-15 day gate, and reachable through an official company/ATS application page when available.
 - Submit behavior: when Yaswanth starts an autopilot batch, that command is explicit approval to submit matching applications without per-application review.
 - Account creation behavior: during an approved autopilot run, create normal ATS/job-board/company-career accounts when required using the job email and user-provided live credential. Do not pause for ordinary account creation.
-- Credential hygiene: the live credential is allowed for job-application account creation in this workspace. Do not write it into trackers, learning-loop notes, screenshots, result reasons, JSON outputs, or browser-visible notes. Use it only to complete account/login flows.
-- Private identity hygiene: values in `PRIVATE_APPLICATION_FIELDS.md` are allowed only for official ATS identity fields. Do not write those values into trackers, learning-loop notes, screenshots, result reasons, JSON outputs, or browser-visible notes.
+- Credential hygiene: the live credential is allowed for job-application account creation in this workspace. Do not write it into trackers, learning-loop notes, screenshots, summaries, scratch outputs, or browser-visible notes. Use it only to complete account/login flows.
+- Private identity hygiene: values in `PRIVATE_APPLICATION_FIELDS.md` are allowed only for official ATS identity fields. Do not write those values into trackers, learning-loop notes, screenshots, summaries, scratch outputs, or browser-visible notes.
 - Do not ask Yaswanth for approval during an approved autopilot run. Decide ordinary fields from `APPLICATION_PLAN.md`, `ANSWER_BANK.md`, the JD, posted salary range, location, and available form options.
 - Judgment fallback: if a normal application field is not explicitly listed here, use best truthful judgment from the resume, JD, company context, tracker notes, and common application meaning. Do not turn ordinary missing wording, optional fields, or N/A-style fields into blockers.
 - N/A behavior: if a field is optional, irrelevant, or not applicable, use `N/A`, `Not applicable`, the closest truthful dropdown option, or leave it blank when the form allows blank values.
