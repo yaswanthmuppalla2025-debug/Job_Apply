@@ -24,7 +24,7 @@ Do not add generic run narration, motivation, credentials, passwords, one-off fr
 7. Before marking ATS validation blocked, sweep phone `+1`, selected location typeahead, resume file/manual text, exact EEO/self-ID values, radios, acknowledgements, and hidden required widgets.
 8. Use direct ATS/embed URLs when company buttons fail, especially for Greenhouse-hosted company pages.
 9. For upload failures, try PDF, DOCX, visible attach/import controls, accessible file input, and manual `.txt` resume fallback when available.
-10. Use Gmail codes and confirmations from the job mailbox only; do not read unrelated mail or store codes/private values.
+10. Use Gmail codes and confirmations from the job mailbox only; do not read unrelated mail or store codes/private values. Greenhouse/job-Gmail email-code gates are recoverable ATS steps, not CAPTCHA.
 11. CAPTCHA, hCaptcha, visual challenges, human-only prompts, and anti-abuse pages are hard boundaries; for high-fit filled forms, park up to 5 tabs for Yaswanth, record `Blocked - CAPTCHA` in `Blockers`, and keep moving.
 12. Learnings should be observed pattern -> successful recovery/action. Do not add broad policy restatements, one-off frustration, credentials, or private identity values.
 
@@ -133,6 +133,7 @@ Do not add generic run narration, motivation, credentials, passwords, one-off fr
 - Greenhouse security-code boxes can also turn attempted keypress entry into literal `undefined`; clear all eight boxes, fill one character per box, then if each value doubles, press `End` and `Backspace` once in every box before verifying the joined 8-character code.
 - Tebra Greenhouse confirmed the same doubled-code recovery: after the email-code gate appears, if each one-character entry becomes doubled, press `End` and `Backspace` once in every security-code box, then submit once the button enables.
 - Material Bank Greenhouse showed the Simplify overlay can cover the submit area; close the overlay, trigger the email-code gate, then if each security-code box doubles its character, press `Backspace` once in every box and verify the joined code before final submit.
+- Classification rule: Greenhouse email/security-code gates from the job Gmail are recoverable ATS verification, not `Blocked - CAPTCHA`; only visual CAPTCHA/hCaptcha/reCAPTCHA/anti-abuse challenges belong in CAPTCHA blockers.
 - Arize Greenhouse security-code recovery: if per-box typing or clipboard paste doubles the first character, clear all boxes, paste the full 8-character code into the first box, then focus box 1, press `End`, and backspace the extra pasted tail until the eight boxes each contain one character before submit.
 - Some Greenhouse selected dropdowns can keep stale `[invalid]` and `This field is required` text after a valid value is visibly selected; if the form advances to the security-code gate, treat the selected clearable values as accepted and continue through verification.
 - Newer Greenhouse forms may require selecting application `country` before the `candidate-location` city typeahead will commit; choose United States first, then select the Atlanta-area city token before resubmitting.

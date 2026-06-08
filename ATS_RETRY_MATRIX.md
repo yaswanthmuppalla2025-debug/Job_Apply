@@ -20,6 +20,7 @@ Use this when a specific ATS behaves badly. The goal is to recover and submit wh
 Common issues:
 
 - Email/security code boxes duplicate characters.
+- Generic submit or processing error may actually be waiting for an email-code verification step.
 - Resume upload looks complete but no file card appears.
 - EEO dropdown labels differ by company.
 - Invisible reCAPTCHA leaves the form on the same page.
@@ -29,7 +30,7 @@ Recovery:
 - Use official `job-boards.greenhouse.io` or embedded `job_app` URL when company button fails.
 - Confirm resume file card or use manual resume entry.
 - Use exact EEO option text; avoid fuzzy dropdown matching.
-- For security codes, clear all boxes first, then type one character per box; if duplicate characters appear, press End then Backspace once in each box and verify the joined code.
+- For Greenhouse security codes, treat the Gmail-delivered code as recoverable ATS verification, not CAPTCHA. Retrieve the newest relevant code from job Gmail, clear all boxes, type one character per box, and if duplicate characters appear, press End then Backspace once in each box before verifying the joined code.
 - If final submit returns to the form, wait briefly, check Gmail, then reload/refill once before blocking.
 
 ## Ashby

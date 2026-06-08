@@ -42,14 +42,14 @@ When normal friction appears, do not give up:
 3. Use `ATS_RETRY_MATRIX.md` for ATS-specific behavior.
 4. Try a distinct recovery path instead of repeating the same failed action: reload/refill, direct ATS URL, embedded form, official company page, PDF -> DOCX, `.txt` resume fallback, account creation/reset, Gmail code, or Chrome reconnect.
 5. For high-fit roles, use up to 3 serious attempts when safe paths remain.
-6. Check Gmail once when a submit might already have completed.
+6. Check Gmail when a submit might already have completed or an ATS asks for an email/security code; use only the newest relevant code for the active job.
 7. If recovery fails, record the real blocker in `Blockers` with `Attempt Count`, `Recovery Tried`, `Next Action`, and exact non-private notes.
 8. Continue the batch.
 
 ## CAPTCHA Parking
 
-- Do not bypass CAPTCHA, hCaptcha, visual puzzles, anti-abuse pages, or security challenges.
-- For high-fit roles that already pass freshness, sponsorship, quality, location, and duplicate gates, fill every truthful field possible and leave the CAPTCHA/security tab open for Yaswanth.
+- Do not bypass CAPTCHA, hCaptcha, visual puzzles, anti-abuse pages, or visual security puzzles.
+- For high-fit roles that already pass freshness, sponsorship, quality, location, and duplicate gates, fill every truthful field possible and leave the CAPTCHA/anti-abuse tab open for Yaswanth.
 - Record the row in `Blockers` as `Blocked - CAPTCHA`, `Blocker Type = CAPTCHA Parked`, `Retry Eligible = Manual Review`, `Parked Tab = Yes`, and `Next Action = Yaswanth solve CAPTCHA, then submit/resume from same tab`.
 - Keep at most 5 parked CAPTCHA tabs open. If 5 are already parked, record the CAPTCHA without parking another tab and move on.
 - Never park low-quality, stale, no-sponsorship, duplicate, staffing/vendor, or poor-fit roles.

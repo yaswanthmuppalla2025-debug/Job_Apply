@@ -187,7 +187,7 @@ Use Easy Apply when:
 - The role passes AI fit, location, sponsorship, and 0-15 day recency preflight.
 - The popup allows all required answers to be completed truthfully from root docs, resume, JD, answer bank, or safe judgment.
 - The selected resume is verified as the correct current resume before submit.
-- No CAPTCHA/security challenge, manual exercise, unusual legal/user-authored attestation, payment, or unsupported private fact appears.
+- No visual CAPTCHA/hCaptcha/reCAPTCHA/anti-abuse challenge, manual exercise, unusual legal/user-authored attestation, payment, or unsupported private fact appears.
 
 Before clicking final submit:
 
@@ -279,8 +279,8 @@ LinkedIn has Easy Apply speed/daily limits and anti-abuse controls. Respect them
 - Do not brute-force Easy Apply.
 - Mix Easy Apply with external ATS/company applications.
 - Slow down after repeated challenge, spam, or suspicious activity signals.
-- Do not bypass CAPTCHA, visual challenges, access controls, or security checks.
-- If LinkedIn shows a limit, suspicious activity prompt, CAPTCHA, or security challenge, mark the active role `Blocked - CAPTCHA` or `Blocked - Other` as appropriate and pivot to external official roles or another source.
+- Do not bypass CAPTCHA, visual challenges, access controls, or anti-abuse checks.
+- If LinkedIn shows a limit, suspicious activity prompt, visual CAPTCHA/hCaptcha/reCAPTCHA, or anti-abuse challenge, mark the active role `Blocked - CAPTCHA` for true CAPTCHA or `Blocked - Other` for limits/access walls, then pivot to external official roles or another source.
 
 ## Scam And Suspicious Job Handling
 

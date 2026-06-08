@@ -77,7 +77,7 @@ Columns:
 | Recovery Tried | Concrete recovery actions tried, not vague text. |
 | Next Action | Exact next action if retry or human review is worthwhile. |
 | Retry Eligible | `Yes`, `No`, `Expired`, or `Manual Review`. |
-| Parked Tab | `Yes` only when a useful CAPTCHA/security tab is intentionally left open for Yaswanth. |
+| Parked Tab | `Yes` only when a useful CAPTCHA/anti-abuse tab is intentionally left open for Yaswanth. |
 | Learning | `Yes` only for reusable ATS/company learning. |
 | Notes | Exact non-private blocker evidence. |
 
@@ -96,12 +96,12 @@ Allowed `Retry Eligible` values:
 
 ## CAPTCHA Parking
 
-Do not bypass CAPTCHA, hCaptcha, visual puzzles, anti-abuse pages, or security challenges.
+Do not bypass CAPTCHA, hCaptcha, visual puzzles, anti-abuse pages, or visual security puzzles. Job-Gmail email/security codes are recoverable ATS verification steps, not CAPTCHA.
 
 For a high-fit role that already passed recency, sponsorship, quality, location, and duplicate gates:
 
 - Fill every truthful field possible.
-- Stop at the CAPTCHA/security challenge.
+- Stop at the visual CAPTCHA/hCaptcha/reCAPTCHA/anti-abuse challenge.
 - Leave the tab open for Yaswanth.
 - Add a `Blockers` row:
   - `Status`: `Blocked - CAPTCHA`

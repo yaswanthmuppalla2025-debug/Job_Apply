@@ -22,7 +22,7 @@ The goal is Aggressive Autopilot with Hard Stop Only: recover and submit high/st
 
 Mark the role, record the exact reason, close or finalize the tab, and continue the batch:
 
-- CAPTCHA, hCaptcha, visual puzzle, anti-abuse page, security challenge, or OTP outside job Gmail.
+- CAPTCHA, hCaptcha, visual puzzle, anti-abuse page, or OTP/security code outside job Gmail.
 - Explicit no-sponsorship, no H-1B transfer, citizen-only, green-card-only, U.S.-person-only, ITAR-only, government-only, or clearance-required eligibility.
 - Payment/request-for-money, suspicious identity harvesting, full SSN, bank/payment info, passport, or unrelated private identity collection.
 - Required manual exercise, take-home, video, portfolio artifact, recruiter contact, referral contact, or long external artifact.
@@ -30,7 +30,7 @@ Mark the role, record the exact reason, close or finalize the tab, and continue 
 - Required material fact not available from the resume, JD, answer bank, plan, private-field file, or safe inference.
 - Portal remains technically impossible after the required recovery budget.
 
-Do not bypass CAPTCHA, spam checks, security controls, paywalls, or platform anti-abuse systems.
+Do not bypass CAPTCHA, spam checks, visual security puzzles, paywalls, or platform anti-abuse systems. Email/security codes sent to the job Gmail are normal recovery steps, not CAPTCHA.
 
 ## Outcome Mapping
 
@@ -39,10 +39,11 @@ Do not bypass CAPTCHA, spam checks, security controls, paywalls, or platform ant
 | Gmail receipt found | `Submitted`; put Gmail proof in `Confirmation Proof` and fill `Gmail Checked At` |
 | Success page, application ID, or clear final message shown | `Submitted`; put screen/app ID proof in `Confirmation Proof` |
 | Submit likely completed but proof is weak | `Submitted`; record proof gap in `Notes`; check Gmail once |
-| CAPTCHA/security challenge blocks form | `Blocked - CAPTCHA`; park high-fit filled forms for Yaswanth when useful |
+| Visual CAPTCHA/hCaptcha/reCAPTCHA/anti-abuse challenge blocks form | `Blocked - CAPTCHA`; park high-fit filled forms for Yaswanth when useful |
+| Job-Gmail email/security code requested | Recover through Gmail; if missing or failing after one fresh-code retry, use `Blocked - ATS` with `Blocker Type = Email Code` |
 | ATS submit, validation, or broken portal still fails after recovery | `Blocked - ATS`; fill `Attempt Count`, `Recovery Tried`, `Next Action`, and exact notes |
 | Required resume upload cannot be completed after recovery | `Blocked - Other`; record exact upload controls tried |
-| Account/login/email-auth wall cannot be completed after recovery | `Blocked - Other` or `Blocked - CAPTCHA`; record exact wall |
+| Account/login/email-auth wall cannot be completed after recovery | `Blocked - Other`; use `Blocked - CAPTCHA` only when a true visual CAPTCHA/anti-abuse challenge appears |
 | Manual exercise, external artifact, risky legal field, or missing required fact | `Blocked - Other`; record exact requested item |
 | No-sponsorship, stale/closed, fit mismatch, duplicate, staffing/vendor, or strategic skip | Skip without broad skip logging |
 | Already applied with proof | `Already Applied`; record proof in `AI` or `SDE` |
@@ -61,12 +62,12 @@ Examples of distinct recovery paths: reload/refill, cleaned URL, direct ATS URL,
 
 ## CAPTCHA Parking
 
-Do not bypass CAPTCHA, hCaptcha, visual puzzles, anti-abuse pages, spam checks, or security challenges.
+Do not bypass CAPTCHA, hCaptcha, visual puzzles, anti-abuse pages, spam checks, or visual security puzzles.
 
 For high-fit roles that passed the 0-15 day recency gate, sponsorship check, quality gate, location priority, and duplicate check:
 
 1. Fill every truthful field possible.
-2. Stop at the CAPTCHA/security challenge.
+2. Stop at the visual CAPTCHA/hCaptcha/reCAPTCHA/anti-abuse challenge.
 3. Leave the tab open for Yaswanth.
 4. Record a `Blockers` row:
    - `Status`: `Blocked - CAPTCHA`
@@ -126,14 +127,16 @@ Use this ordered protocol:
 6. Retrieve only the newest relevant Gmail code or link for the active application.
 7. After account creation, sign-in, or reset, return to the exact official job application URL, not just the careers homepage.
 8. If the portal requires profile setup before the job form, complete only required profile sections from resume/defaults and return to the job.
-9. If CAPTCHA, security prompt, OTP outside Gmail, inaccessible reset, or another non-AI challenge blocks the account, use `Blocked - CAPTCHA` or `Blocked - Other`.
+9. If CAPTCHA, visual anti-abuse prompt, OTP outside Gmail, inaccessible reset, or another non-AI challenge blocks the account, use `Blocked - CAPTCHA` or `Blocked - Other`.
 
 Never store passwords, codes, or private email content in trackers, docs, screenshots, scratch outputs, summaries, or learning notes.
 
 ### Email Security Code
 
+- Greenhouse or ATS email/security codes sent to the job Gmail are recoverable verification steps, not CAPTCHA.
 - Search `yaswanthmuppalla2025@gmail.com` only for the active company, ATS, or domain.
-- Use the code only for the active job flow.
+- Use only the newest relevant code for the active job flow, and never store the code in trackers, notes, screenshots, or learning entries.
+- For Greenhouse segmented code boxes, clear all boxes, enter one character per box, verify the joined code matches the email, then submit.
 - If the code expires, request one fresh code when supported.
 - If the code is missing or still fails after one fresh-code attempt, use `Blocked - ATS` and record the email-code issue.
 

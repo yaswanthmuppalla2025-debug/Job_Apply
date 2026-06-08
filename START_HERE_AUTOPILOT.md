@@ -16,8 +16,8 @@ Read this first for any AI or SDE application batch.
 10. Fill from `APPLICATION_PLAN.md`, `ANSWER_BANK.md`, the resume, JD, company context, and best truthful judgment.
 11. Submit high/strong-fit applications without per-role approval.
 12. Recover normal friction before blocking: required-widget sweep, direct ATS URL, embedded form, PDF -> DOCX -> text fallback, account creation, Gmail code, reload/refill, Chrome reconnect.
-13. No first-attempt technical blockers: except CAPTCHA/security/legal/manual/hard-eligibility boundaries, a blocked role requires at least 2 serious attempts and at least 2 distinct recovery paths.
-14. Account/login walls are recoverable: create account, try existing login, use password reset through the job Gmail when available, retrieve Gmail codes, then return to the exact job URL before blocking.
+13. No first-attempt technical blockers: except visual CAPTCHA/anti-abuse/legal/manual/hard-eligibility boundaries, a blocked role requires at least 2 serious attempts and at least 2 distinct recovery paths.
+14. Account/login and email-code walls are recoverable: create account, try existing login, use password reset through the job Gmail when available, retrieve the newest relevant Gmail code/link, then return to the exact job URL before blocking.
 15. Confirm from screen, application ID, portal state, or Gmail; update `JOB_APPLICATION_TRACKER.xlsx` after every outcome.
 16. Put submissions/already-applied rows in `AI` or `SDE`; put CAPTCHA, ATS, upload, account/login, anti-spam, manual/legal, missing-info, and Chrome/profile blockers in `Blockers`.
 17. Do not create report, queue, cache, CSV, or JSONL artifacts for routine runs; the master workbook is the only durable state.
@@ -33,7 +33,7 @@ Only retry these if the role still passes the 0-15 day recency gate and `Retry E
 4. Databricks direct Greenhouse/embed retries with country/phone hidden-value sweep.
 5. Upload blockers: Accompany Health, Chipply, Harvey AI Platform, Citi, Reddit SDE Ads, Scribd, Vogo. Do not retry staffing/vendor upload rows unless Yaswanth explicitly asks.
 6. Greenhouse validation loops: Instacart, Reddit ML, Scale AI.
-7. CAPTCHA rows only after Gmail proof check and source-mixing slowdown.
+7. CAPTCHA rows only for true visual CAPTCHA/hCaptcha/reCAPTCHA/anti-abuse blockers after Gmail proof check and source-mixing slowdown. Greenhouse/job-Gmail security-code gates are recoverable ATS steps, not CAPTCHA.
 8. Perplexity exercise and legal/user-authored attestation rows only if the real artifact/review exists.
 
 ## Pre-Submit Checklist
@@ -95,6 +95,6 @@ Do not log broad skip-noise. Stale, no-sponsorship, duplicate, staffing/vendor/a
 
 ## CAPTCHA Parking
 
-For high-fit roles that already pass freshness, sponsorship, quality, location, and duplicate gates, CAPTCHA should not discard the opportunity. Fill every truthful field possible, leave the CAPTCHA/security tab open for Yaswanth, record the row in `Blockers` as `Blocked - CAPTCHA` with `Blocker Type = CAPTCHA Parked`, `Retry Eligible = Manual Review`, `Parked Tab = Yes`, and continue applying in another tab.
+For high-fit roles that already pass freshness, sponsorship, quality, location, and duplicate gates, CAPTCHA should not discard the opportunity. Fill every truthful field possible, leave the CAPTCHA/anti-abuse tab open for Yaswanth, record the row in `Blockers` as `Blocked - CAPTCHA` with `Blocker Type = CAPTCHA Parked`, `Retry Eligible = Manual Review`, `Parked Tab = Yes`, and continue applying in another tab.
 
 Keep at most 5 parked CAPTCHA tabs open. Never park low-quality, stale, no-sponsorship, duplicate, staffing/vendor, or poor-fit roles.

@@ -64,14 +64,14 @@ Preflight source of truth: use `RECENCY_PREFLIGHT.md` for recency, employer/sour
 
 Hard-stop-only rule: do not stop the run. Mark a role skipped or blocked, record the exact reason, and continue unless the entire Chrome/profile/workspace is unavailable. Individual roles hard-stop only for:
 
-- CAPTCHA, hCaptcha, visual challenge, anti-abuse page, or security challenge that cannot be completed by AI.
+- CAPTCHA, hCaptcha, reCAPTCHA, visual challenge, or anti-abuse page that cannot be completed by AI.
 - Role says no visa sponsorship, no immigration support, no H-1B transfer, no current/future sponsorship, citizen/GC-only, U.S.-person-only, clearance-only, or incompatible legal eligibility.
 - Role is an obvious low-quality staffing/consulting/vendor/recruiter/aggregator-proxy posting instead of a direct employer application.
 - Payment/request-for-money, scam-like behavior, or a form requiring credentials or private facts not provided in `PRIVATE_APPLICATION_FIELDS.md`.
 - Required manual assessment, exercise URL, video, portfolio artifact, recruiter contact, reference, or legal attestation that cannot be truthfully completed from the plan/resume.
 - Portal remains technically impossible after the recovery ladder in `AUTOPILOT_BLOCKER_PLAYBOOK.md`.
 
-Normal friction is not a stop condition: account creation, email verification, upload failure with fallback, page reload, direct ATS URL, company page retry, manual resume text entry, unknown optional fields, N/A fields, and closest truthful dropdowns should be handled autonomously.
+Normal friction is not a stop condition: account creation, job-Gmail email/security-code verification, upload failure with fallback, page reload, direct ATS URL, company page retry, manual resume text entry, unknown optional fields, N/A fields, and closest truthful dropdowns should be handled autonomously.
 
 ## Workflow
 
@@ -178,14 +178,14 @@ Codex selection rule:
 - N/A behavior: if a field is optional, irrelevant, or not applicable, use `N/A`, `Not applicable`, the closest truthful dropdown option, or leave it blank when the form allows blank values.
 - Closest-option behavior: if a form option does not exactly match the default answer, choose the closest truthful option and continue.
 - Blocker behavior: use `AUTOPILOT_BLOCKER_PLAYBOOK.md`; recover aggressively when safe, mark the role clearly only after recovery attempts, and continue the run instead of stopping.
-- No first-attempt technical blockers: except CAPTCHA/security/legal/manual/hard-eligibility boundaries, do not mark `Blocked - ATS` or `Blocked - Other` until at least 2 serious attempts and 2 distinct recovery paths have been tried. For high-fit roles, use up to 3 serious attempts when safe paths remain.
+- No first-attempt technical blockers: except visual CAPTCHA/anti-abuse/legal/manual/hard-eligibility boundaries, do not mark `Blocked - ATS` or `Blocked - Other` until at least 2 serious attempts and 2 distinct recovery paths have been tried. For high-fit roles, use up to 3 serious attempts when safe paths remain.
 - Blocked-row proof behavior: every `Blocked - ATS` and non-CAPTCHA `Blocked - Other` row must fill `Attempt Count`, `Recovery Tried`, `Next Action`, and exact non-private blocker notes in `Blockers`.
-- Hard blockers: mark and move on only for CAPTCHA/security challenge, duplicate/already-applied state, payment/request-for-money, missing required information that cannot be truthfully derived from the resume/JD/defaults/private-field file, no-sponsorship/ineligible role, or a form that remains technically impossible after the recovery ladder. Use the simplified tracker statuses in `TRACKER_SCHEMA.md`.
+- Hard blockers: mark and move on only for visual CAPTCHA/anti-abuse challenge, duplicate/already-applied state, payment/request-for-money, missing required information that cannot be truthfully derived from the resume/JD/defaults/private-field file, no-sponsorship/ineligible role, or a form that remains technically impossible after the recovery ladder. Use the simplified tracker statuses in `TRACKER_SCHEMA.md`.
 - Account creation is not a hard blocker when the form accepts normal email/password signup and the application email is usable.
 - Account/login recovery behavior: create the normal ATS/company account, try existing login once if the account exists, use password reset through the job Gmail when available, retrieve Gmail codes/links, complete required profile sections, and return to the exact job application URL before blocking.
 - Last-4 SSN, DOB, and month/day DOB are not blockers when requested by a normal official ATS form; use `PRIVATE_APPLICATION_FIELDS.md`.
-- Do not bypass CAPTCHA, anti-abuse pages, security challenges, or legal eligibility requirements. Treat those as hard blockers or manual review.
-- CAPTCHA parking behavior: for high-fit roles that pass all gates, fill every truthful field possible, leave the CAPTCHA/security tab open for Yaswanth, record `Blocked - CAPTCHA` with `Blocker Type = CAPTCHA Parked`, `Retry Eligible = Manual Review`, `Parked Tab = Yes`, and continue in another tab. Keep at most 5 parked CAPTCHA tabs and never park stale/no-sponsorship/low-quality roles.
+- Do not bypass CAPTCHA, anti-abuse pages, visual security puzzles, or legal eligibility requirements. Treat those as hard blockers or manual review.
+- CAPTCHA parking behavior: for high-fit roles that pass all gates, fill every truthful field possible, leave the CAPTCHA/anti-abuse tab open for Yaswanth, record `Blocked - CAPTCHA` with `Blocker Type = CAPTCHA Parked`, `Retry Eligible = Manual Review`, `Parked Tab = Yes`, and continue in another tab. Keep at most 5 parked CAPTCHA tabs and never park stale/no-sponsorship/low-quality roles.
 - Sponsorship hard skip: strictly skip any role whose JD or application says the employer does not sponsor visas, does not provide immigration support, cannot sponsor or transfer H-1B, does not sponsor now or in the future, requires no current/future sponsorship, or otherwise rejects visa-related work authorization support.
 - Compliance hard skip: strictly skip any role that clearly requires U.S. citizenship, permanent residency/green card, U.S.-person status, export-control eligibility that H-1B does not satisfy, active security clearance, or government/clearance eligibility not compatible with H-1B transfer.
 - If sponsorship is not mentioned or is ambiguous, apply and answer sponsorship questions truthfully from the defaults below.
