@@ -16,8 +16,8 @@ Do not add generic run narration, motivation, credentials, passwords, one-off fr
 ## Current Top 12 Lessons
 
 1. Use `START_HERE_AUTOPILOT.md`, `RECENCY_PREFLIGHT.md`, and `TRACKER_SCHEMA.md` before any daily run; `JOB_APPLICATION_TRACKER.xlsx` is the single active tracker.
-2. Apply only to verified 0-15 day roles: 0-7 days first, 8-15 days only for strong resume/JD fit, and skip unknown or older roles unless reliable proof shows <=15 days.
-3. Do not rebuild broad skip logs. Skip stale, no-sponsorship, fit-mismatch, staffing/vendor, closed, and over-15-day roles quickly; record only `Already Applied` proof or real blockers.
+2. Apply verified 0-15 day roles first: 0-7 days first, 8-15 days only for strong resume/JD fit, and use the <=70-day live-post exception only for excellent/strong AI matches with official open proof.
+3. Do not rebuild broad skip logs. Skip stale, no-sponsorship, fit-mismatch, staffing/vendor, closed, unknown-recency without proof, and over-70-day roles quickly; record only `Already Applied` proof or real blockers.
 4. Blank helper fields are not blockers. Fill lean tracker metadata when derivable quickly, but do not disturb the submission goal.
 5. Do not count a role as submitted without proof: Gmail receipt, success page, application ID, or clear portal state.
 6. Keep Chrome light: one active apply tab, one discovery tab, one Gmail/security-code tab, and close completed/blocked tabs after tracker updates.
@@ -25,7 +25,7 @@ Do not add generic run narration, motivation, credentials, passwords, one-off fr
 8. Use direct ATS/embed URLs when company buttons fail, especially for Greenhouse-hosted company pages.
 9. For upload failures, try PDF, DOCX, visible attach/import controls, accessible file input, and manual `.txt` resume fallback when available.
 10. Use Gmail codes and confirmations from the job mailbox only; do not read unrelated mail or store codes/private values. Greenhouse/job-Gmail email-code gates are recoverable ATS steps, not CAPTCHA.
-11. CAPTCHA, hCaptcha, visual challenges, human-only prompts, and anti-abuse pages are hard boundaries; for high-fit filled forms, park up to 5 tabs for Yaswanth, record `Blocked - CAPTCHA` in `Blockers`, and keep moving.
+11. CAPTCHA, hCaptcha, visual challenges, human-only prompts, and anti-abuse pages are hard boundaries; for high-fit filled forms, park up to 5 tabs for Yaswanth, record `Blocked - CAPTCHA` in `Blockers`, and keep moving. Do not classify normal security codes or reasonable manual assessments as CAPTCHA.
 12. Learnings should be observed pattern -> successful recovery/action. Do not add broad policy restatements, one-off frustration, credentials, or private identity values.
 
 ## Chrome And Run Stability
@@ -60,6 +60,12 @@ Do not add generic run narration, motivation, credentials, passwords, one-off fr
 - Goldman Sachs Oracle applications may require email verification after submit; if the six code boxes ignore `fill`, clear them with Backspace/Delete and type the full code into the first box so it auto-advances.
 - If a Goldman Sachs Oracle code expires, click the visible `Send New Code` control and use only the newest `GSRecruiting@oracle.com` code.
 
+## Assessment Lessons
+
+- Manual assessments are not automatic blockers. Inspect the actual task and complete short questionnaires, work-style preference forms, and truthful written prompts using the AI resume, answer bank, JD, and careful judgment.
+- Block only long take-home projects, coding tests, video/audio recordings, legally sensitive attestations, or prompts requiring private facts Yaswanth has not provided.
+- When a recoverable assessment is completed successfully, add the reusable pattern here without storing private answers, email codes, or legal identity values.
+
 ## Required Widget Lessons
 
 - Before marking ATS validation as blocked, sweep required widgets: phone country `+1`, typeahead-selected location, resume file card/manual resume text, EEO dropdowns, yes/no radios, acknowledgements, and hidden required selectors.
@@ -76,6 +82,7 @@ Do not add generic run narration, motivation, credentials, passwords, one-off fr
 ## Upload Lessons
 
 - Confirm the uploaded resume shows as a visible file card before submitting; the file input may disappear after upload, but the visible file card is the reliable signal.
+- Workable can expose a visible `Choose file` label while the hidden file input does not open the chooser; click the visible label/control, then verify the resume filename appears in the page text before submitting.
 - For Greenhouse resume upload, click the visible `Attach` control and catch filechooser failures safely.
 - If upload fails but `Enter manually` is available, paste the resume text from the matching DOCX and continue.
 - Workable resume upload may time out through the Codex Chrome Extension. If resume is optional, submit with full profile/summary/LinkedIn/cover letter; if resume is required, retry after enabling Chrome extension file URL access or mark the ATS blocker.
@@ -84,6 +91,7 @@ Do not add generic run narration, motivation, credentials, passwords, one-off fr
 
 ## ATS-Specific Lessons
 
+- Workable custom salary expectation fields may reject free text and retain only punctuation; if the role asks for annual expectations, use a reasonable numeric value and verify the live input property before submit.
 - BNSF/Phenom work-history dropdowns can keep a stale required-field error even when a value is visible; toggle the dropdown to another option, select the intended option again, blur, then click NEXT.
 - BNSF/Phenom final submit can temporarily disable before navigating to the thank-you URL; wait 10-15 seconds and re-check the URL before calling it blocked.
 - Cargill SuccessFactors can block paste-style input on the email field; use real per-key presses, then verify the visible value before sign-in.
@@ -170,6 +178,9 @@ Do not add generic run narration, motivation, credentials, passwords, one-off fr
 - OneTrust Greenhouse can keep a stale `Please enter your location` error after the Atlanta city option is visibly selected; after cleaning doubled security-code boxes, re-check whether the final submit button is enabled before marking the role blocked.
 - Box Greenhouse showed a worse security-code failure mode: after doubled code-box entry, paste/clear retries could pollute each box with stale tail text or literal `undefined`; stop and retry from a fresh page/security code rather than continuing on a corrupted widget.
 - Some Greenhouse pages can reject fill/type and clipboard-backed DOM/CUA entry with a `virtual clipboard is not installed` browser-control error; before blocking, click the field and send one keypress per character, then verify the value. DevRev confirmed this character-keypress path can rescue the form and reach the Greenhouse code gate.
+- Jobvite/Blackboard forms can fail earlier than Greenhouse when the Chrome runtime lacks the virtual clipboard: normal fill, DOM CUA type, small field typing, and paste-resume fallback all return the same clipboard error, and the page sandbox prevents direct value mutation. A clean Node/Chrome reconnect restored clipboard support; after reconnect, the paste-resume fallback, standard fields, hidden EEO label clicks, and final Jobvite submit worked.
+- ApplyToJob/JazzHR can hide the paste-resume textarea until after an initial submit fails with `Resume* Attach resume or Paste resume`; click `Paste resume`, fill the now-visible `resumator-resumetext-value`, then resubmit. Career.io then reached a visible Google reCAPTCHA with `Please verify`, so park it as `Blocked - CAPTCHA` after the form is otherwise complete.
+- ADP Workforce Now can expose a Google Maps API/billing popup on the personal-address step; when that happens, address autocomplete may not populate state/city metadata and phone widgets can remain internally invalid even when a formatted number is visible. Try guest apply, Google sign-in, typed phone entry, country reselect, and shortened manual address before blocking. If `Correct the information in highlighted fields` persists with `Phone Number is required` or broken address state after those paths, log a retryable `Blocked - ATS` row with the Maps/widget evidence instead of looping on the same fields.
 
 ## Skip Lessons
 
@@ -185,27 +196,43 @@ Do not add generic run narration, motivation, credentials, passwords, one-off fr
 - Do not over-focus on Greenhouse/Ashby; use LinkedIn and Indeed for discovery, then apply through company career pages and ATS systems including Workday, Lever, SmartRecruiters, iCIMS, Oracle, Greenhouse, Ashby, and company-native portals.
 - Avoid applying to a long run of roles at one company when broader matching roles are available; mix companies and ATS sources so the batch has better spread and fewer repeated anti-abuse/security gates.
 - Filter out Canada-only, foreign-only, NYC-only, and Chicago-only roles; keep mixed-location roles only when a non-excluded U.S. option exists.
-- Greenhouse roles can stay open long after first publication; use official `first_published` as the date posted and skip over-15-day roles even when `updated_at` or the form still looks active.
+- Greenhouse roles can stay open long after first publication; use official `first_published` as the date posted and apply over-15-day roles only when they qualify for the strong AI live-post exception, not just because `updated_at` or the form still looks active.
 - Ashby company pages and aggregators can look freshly posted while official JSON-LD still has an older `datePosted`; curl/check the official Ashby JSON-LD before filling the form, and treat the official date as authoritative.
 - LinkedIn can disable an otherwise good Easy Apply role with a daily-submission quality-limit message; log it as a retryable platform blocker with a next-day/direct-source retry path instead of counting it as a fit skip or a submission.
 - Before applying, check exact job IDs and application URLs across the `AI`, `SDE`, and `Blockers` sheets; cross-lane duplicates such as a backend AI role already submitted in the SDE sheet should be logged as already applied and not counted again.
 - Newer Greenhouse country widgets can leave stale `Select a country` text even after the phone shows `+1`; if the form advances to security code or confirmation, treat the country/phone as accepted and continue after verifying no other real errors remain.
 - Graphcore Greenhouse confirmed the stricter country-widget path: after reload/refill, inspect hidden invalid inputs; if `Country` remains invalid despite `+1`, type `United States`, click the exact `United States +1` option, then submit to trigger the security-code gate.
+- In Codex in-app browser, Greenhouse security-code boxes may double characters when using normal `fill()`, `type()`, paste, or DOM CUA typing. Clear the boxes, use raw single-character keypresses per security-input box, verify all eight values, then submit.
 - Optiver Greenhouse showed the stricter version of the same phone-country issue: all React selects can be valid, but submit still fails when `Country` remains invalid after `United States +1`; retry the phone country widget first on a clean stable embed, and if it will not clear after click, keyboard, and full-number retries, log a retryable ATS blocker instead of refilling the whole form again.
 - LinkedIn Easy Apply numeric fields can reject normal `fill()` while still accepting keypress entry; if a salary field stays invalid after fill, click it, backspace, type digits one by one, then verify the review page.
 - LinkedIn Easy Apply follow checkboxes can ignore direct checkbox uncheck/click even after repeated attempts; on review, click the exact visible follow text such as `Follow Company to stay up to date with their page.` and verify the checkbox state before submitting.
+- LinkedIn Easy Apply / Greenhouse education screens with very large native school lists can time out browser control even when the exact option is present. For Carrot, `SUNY - New Paltz` was visible inside a 2,467-option select, but normal and long-timeout programmatic selection reset the browser bridge; next retry should use a manual browser touch or a lower-level visible keyboard path before reusing the same automation method.
 - ServiceNow SmartRecruiters custom dropdowns may expose option text in the accessibility tree while role-based option clicks fail; type the target value, use arrow/enter to commit, and verify the combobox value in the snapshot before submit. If a Yes/No dropdown accidentally selects `YES`, click the field again and use one arrow-down plus Enter to move to `NO`; this also avoids triggering unnecessary dependent export-control text boxes.
 - On SmartRecruiters forms with repeated Yes/No radios, do not rely on raw coordinates after scrolling; verify the accessibility order and set authorization Yes, sponsorship Yes, customer/government/debarment No, then re-snapshot to confirm checked states before final submit.
 - Oracle Candidate Experience dependent address fields may default to the first ZIP option if you arrow-enter too early; open the ZIP picker, type the full ZIP into the focused field, select the exact county row, then verify ZIP/city/state/county values. Oracle minimum-pay currency can reject `USD`; type `US Dollar`, use keyboard selection to commit it, and set Pay Frequency before final submit.
 - Oracle Candidate Experience resume import can attach the resume successfully while clearing manually completed profile fields and leaving parsed education tiles invalid. After upload/import, rerun the required-field sweep, reselect ZIP/source dropdown values, and use the built-in next-issue button to repair imported education degree/major/year before final submit.
 - Oracle Candidate Experience PIN widgets can ignore normal `fill()` and locator `.type()` even when calls report success. If the code fields remain visually empty, close any autofill/custom-application overlay, click each PIN circle by screen coordinate, send single-digit keypresses, verify all six backing values, then click Verify.
+- Texas Instruments Oracle confirmed three recoveries in one flow: clear the TI cookie banner before clicking Apply, select dependent address values from the exact ZIP/county grid row instead of raw-fill text, and type the six-digit verification code into the first PIN box so it auto-advances before pressing Enter/Verify.
+- McKinsey Avature forms use numeric element ids and Select2 widgets; target numeric ids with quoted selectors such as `[id="2161"]`, open each Select2 widget before choosing the exact visible option id, and park the role as `Blocked - CAPTCHA` when a visible reCAPTCHA appears before Continue after the page is otherwise filled.
 - Teamtailor forms may expose a hidden resume file input that opens a chooser but still leaves `Upload resume can't be blank`; retry through the visible `Upload resume` button, wait for the filename and remote URL to appear, then submit.
 - Ashby forms can clip the required resume input so direct file-input clicking times out; use the scoped visible button inside `[data-field-path="_systemfield_resume"]` and verify the filename appears in the resume block before submitting.
 - Ashby UUID-like field ids that begin with digits can break plain CSS `#id` selectors; use quoted attribute selectors such as `input[id="..."]`, then verify hidden radio or checkbox state before submitting.
+- Ashby yes/no widgets are not all equivalent: for legal/work-authorization questions, verify the visible active option and the correction banner after submit; do not switch a truthful H-1B/sponsorship answer to force progress. For generated radio ids starting with digits, quoted attribute selectors like `input[id="..."]` can recover required radios after label clicks fail.
 - Ashby can repeatedly flag rapid same-company submissions as possible spam even after clean reloads, resume reupload, shorter answers, and verified required fields; after three serious attempts, log an anti-spam blocker and pivot to other companies/ATS sources before retrying after cooldown.
+- Optro/AuditBoard Ashby forms can report `Missing entry for required field: Are you currently an Optro employee?` even after a visible click; map the repeated Yes/No buttons, select the first employee `No`, verify it gains Ashby's active option class, then submit once more before treating repeated possible-spam as an anti-spam blocker.
 - Keka forms can expose a required plain `captcha` input immediately on the apply page; verify whether reload, job-details apply, and direct apply URL all keep the field before logging `Blocked - CAPTCHA`.
+- NEOGOV/GovernmentJobs account creation can expose hidden duplicate password fields and stale validation where visible fields look filled but the account still fails; retry from a fresh page, try visible-node entry, sign-in, and reset-password/Gmail recovery before logging an account/apply-button blocker.
+- Lever can silently load full-viewport hCaptcha iframes after final submit while leaving the form visible and the `h-captcha-response` empty; treat that as a real CAPTCHA park, not an upload or validation loop, and keep the filled tab for Yaswanth.
+- Lever resume uploads can show a visible success card before `resumeStorageId` is populated; wait for that hidden token, then retry location-widget recovery and final submit before classifying a submit no-op as anti-spam/hCaptcha.
+- Firstup Lever showed a hidden zero-size upload error even after the visible resume card said success and `resumeStorageId` was populated; when those proof signals exist, classify the final stop by the visible hCaptcha rather than as an upload failure.
 - Workday dropdown automation must exact-match short EEO values before falling back to substring matching; fuzzy matching `Male` can incorrectly select `Female`, so re-snapshot and verify final review values before submit.
 - GDIT Workday can recover from a prior sign-in blocker by creating the candidate account, using the Workday verification email link, then returning to the same apply URL; after that, treat broad conflict-of-interest questions such as future paid/unpaid work for another entity as manual/legal facts rather than guessing.
+- IRC Workday resume upload succeeded through the visible `Select files` button after direct `input[type="file"]` clicking timed out; prefer the visible upload control and verify the uploaded filename/success alert before continuing.
+- Workday CC-305 date masks can preserve a polluted month and ignore direct day/year segment typing; open the calendar picker, navigate to the correct month, select the visible current date, then click the disability answer label/checkbox and verify review values.
+- McKesson/CoverMyMeds Workday requires Create Account or Sign In before resume autofill; if no approved password is available and no saved browser password appears after entering the application email, log a manual account/login blocker rather than inventing credentials.
+- Ascertain Ashby possible-spam screens can recover on a clean same-tab retry: reopen the official `/application` URL, refill required fields, reupload the AI resume through the visible `Upload File` button, and submit once more before logging an anti-spam blocker.
+- UHG Taleo guest apply may recognize the application email as an existing record before reaching the form; if the email already exists, Taleo requires username/password setup through an emailed link, so log an account/login blocker unless an approved UHG credential is available.
+- JPMC Oracle Candidate Experience can load the job detail page with a frontend binding error that makes normal Apply clicks no-op; reload the official job URL, focus the Apply button, and use Enter/Space to reach `/apply/email`. If hCaptcha appears after email and terms, park the strong-fit role as `Blocked - CAPTCHA` with the tab open.
 
 ## Resume Lessons
 
@@ -214,3 +241,4 @@ Do not add generic run narration, motivation, credentials, passwords, one-off fr
 - SDE roles use American Express/Skechers backend platform impact as the lead story, with OmInsights as supporting AI/product ownership.
 - Heavy AI, LLM, GenAI, and AI/FDE roles should use the AI resume source in `AI_ROLES/Yaswanth_Muppalla_AI_Resume.docx` when the ATS accepts DOCX; backend, SDE, distributed systems, and platform roles should use `SDE_ROLES/Yaswanth_Muppalla_SDE_Resume.pdf`.
 - LinkedIn Easy Apply resume radio clicks can appear to advance while the review page still shows the previously selected resume. For role-specific resume discipline, verify the review page filename before submit; if it is wrong, edit Resume, click the visible resume card/title text rather than only the radio, then re-review and confirm the filename.
+- Current AI-role recency rule: strong/open official AI matches can be applied up to 70 days old when they are in-bounds for Remote US, Atlanta/Georgia, Austin/Dallas/Texas, Virginia/DC, North Carolina, Tennessee, or Florida; skip over-70-day roles and west-only/SF/CA roles even if technically strong.

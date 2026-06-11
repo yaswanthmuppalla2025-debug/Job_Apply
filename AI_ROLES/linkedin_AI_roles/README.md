@@ -200,8 +200,9 @@ Before clicking final submit:
 
 Record proof with the simplified tracker status from `../../TRACKER_SCHEMA.md`:
 
-- Use `Submitted` when LinkedIn shows success, the LinkedIn Applied tab confirms the application, Gmail has a real confirmation email, or the submit appeared complete.
-- Put screen proof, Gmail proof, or weak-proof notes in `Confirmation Proof`, `Gmail Checked At`, and `Notes`.
+- Use `Submitted` only when LinkedIn shows success, the LinkedIn Applied tab confirms the application, Gmail/LinkedIn email proof exists, or the external portal shows a clear submitted state or application ID.
+- Do not count "submit appeared complete" by itself as proof. If proof is unclear, check the Applied tab and relevant email once before recording the outcome.
+- Put screen proof, email proof, application ID, or concise proof notes in `Confirmation Proof` and `Notes`.
 
 ### Apply / External ATS
 
@@ -212,7 +213,7 @@ Use the external apply route when LinkedIn sends the agent to a company site or 
 3. Continue under the normal autopilot flow and `../../ATS_RETRY_MATRIX.md`.
 4. Use direct ATS URLs over broken LinkedIn redirect pages when available.
 5. Record `Source` as `LinkedIn -> <ATS/company>`.
-6. Record `ATS Type` as Greenhouse, Ashby, Lever, Workday, Workable, SmartRecruiters, iCIMS, Oracle/Taleo, Phenom, LinkedIn Easy Apply, or company-native.
+6. Record `ATS` as Greenhouse, Ashby, Lever, Workday, Workable, SmartRecruiters, iCIMS, Oracle/Taleo, Phenom, LinkedIn Easy Apply, or company-native.
 
 If the external site is stale, closed, no-sponsorship, or not official, do not force it. Skip and continue without creating skip-noise.
 
@@ -237,25 +238,31 @@ If sponsorship is not mentioned, continue and answer sponsorship questions truth
 
 Use root `JOB_APPLICATION_TRACKER.xlsx` for LinkedIn-sourced work. It follows the lean workbook schema in `../../TRACKER_SCHEMA.md`.
 
-Required for submitted rows:
+For submitted or already-applied rows, use the exact `AI` / `SDE` sheet columns from `../../TRACKER_SCHEMA.md`:
 
-- `Date Applied`
-- `Lane`
+- `Date`
 - `Company`
 - `Role`
+- `Location`
 - `Status`
+- `Posted Date`
+- `Age Days`
+- `Recency Proof`
 - `Application URL`
 - `Source`
-- `ATS Type`
+- `ATS`
+- `Fit`
+- `Sponsorship`
 - `Confirmation Proof` or concise proof in `Notes`
 
 Useful LinkedIn values:
 
-- `Lane`: `AI` by default; `SDE` only for backend-heavy roles where the SDE resume is used.
+- Sheet choice: use `AI` by default; use `SDE` only for backend-heavy roles where the SDE resume is the stronger truthful match.
 - `Source`: `LinkedIn`, `LinkedIn Easy Apply`, or `LinkedIn -> <ATS/company>`.
-- `ATS Type`: `LinkedIn Easy Apply` for direct LinkedIn applications.
-- `Recency Proof URL`: LinkedIn job URL or official posting URL proving recency.
-- `Sponsorship Checked`: `Yes`, `No`, `Unknown`, or `N/A`.
+- `ATS`: `LinkedIn Easy Apply` for direct LinkedIn applications; otherwise the external ATS/company platform.
+- `Recency Proof`: LinkedIn job URL or official posting URL proving recency.
+- `Fit`: `High`, `Strong`, or `Strategic Exception: <why>` only; do not submit blank, low, unknown, or merely adjacent fits.
+- `Sponsorship`: `Yes`, `No`, `Unknown`, or `N/A`; use `Yes` only after checking JD/form language.
 - Blocked LinkedIn outcomes go to `Blockers`, where `Retry Eligible` is `Yes`, `No`, `Expired`, or `Manual Review`.
 
 Leave optional fields blank or `Unknown` when not derivable quickly. Blank helper fields are not blockers.
@@ -293,7 +300,7 @@ Skip or report when a LinkedIn job asks for:
 - unclear employer identity or wrong company page
 - application through a non-official suspicious domain
 
-Record the role as skipped or blocked with a short reason, then continue.
+Skip suspicious or low-quality roles without a tracker row unless there is useful `Already Applied` proof or a real blocker/manual-review item. If the form already reached a suspicious private-data, payment, CAPTCHA, access-limit, or anti-abuse wall worth reviewing, record the exact non-private blocker in `Blockers`, then continue.
 
 ## Job Alerts
 
@@ -320,10 +327,10 @@ Summarize LinkedIn runs with:
 - submitted total
 - Easy Apply submitted count
 - external ATS submitted count
+- proof-backed submitted count
 - email-confirmed count
 - screen-confirmed count
-- unconfirmed count
-- skipped no-sponsorship/ineligible/stale count
+- rough skipped no-sponsorship/ineligible/stale count, if useful, without adding skip-noise tracker rows
 - CAPTCHA/account/ATS/manual blockers
 - best manual retries
 - Gmail confirmations or recruiter replies needing attention

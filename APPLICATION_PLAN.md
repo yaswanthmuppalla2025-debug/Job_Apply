@@ -99,7 +99,7 @@ Use `AUTOPILOT_BLOCKER_PLAYBOOK.md` as the single recovery source, and use `ATS_
 
 - Strong-fit target: prioritize verified high/strong-fit submissions over raw submission count.
 - Interview target: optimize the pipeline for at least 10 interview opportunities in the next 30 days.
-- Do not spend time on obvious poor fits, no-sponsorship roles, citizen/GC-only roles, expired roles, clearance-only roles, or roles older than 15 days.
+- Do not spend time on obvious poor fits, no-sponsorship roles, citizen/GC-only roles, expired roles, clearance-only roles, or roles older than 15 days unless they qualify for the strong AI live-post exception in `RECENCY_PREFLIGHT.md`.
 - Submission-volume pressure never overrides the fit gate or recency gate; when no high/strong matches exist inside the 0-15 day window, keep scraping strong sources or summarize the shortage for Yaswanth.
 - Quality targets never override the employer/source gate; skip random staffing, consulting, vendor, recruiter, W2-only, client-confidential, and aggregator-proxy roles even when they are easy submissions.
 - For strong-fit roles in target locations, push through normal ATS friction aggressively: direct company page, direct ATS URL, account creation, email verification, manual resume entry, reload/refill, and sensible form retries.
@@ -154,7 +154,7 @@ Codex selection rule:
 - `Recovery Tried` should name concrete actions, not vague text. Example: `required-widget sweep; direct Greenhouse embed; Gmail code; reload/refill`.
 - `Next Action` should be actionable. Example: `Retry Workday after account login; use Apply Manually`.
 - Mark `Learning` only for rows that reveal reusable ATS/company behavior worth adding to `LEARNING_LOOP.md`.
-- Do not log broad skip-noise. Stale, no-sponsorship, closed, over-15-day, low-quality staffing/vendor, and poor-fit roles are still skipped, but only `Already Applied` and real blockers are tracked.
+- Do not log broad skip-noise. Stale, no-sponsorship, closed, over-15-day roles outside the strong AI live-post exception, low-quality staffing/vendor, and poor-fit roles are still skipped, but only `Already Applied` and real blockers are tracked.
 
 ## Learning Cadence
 
@@ -168,7 +168,7 @@ Codex selection rule:
 - Salary fields: decide at application time from the posted range, role seniority, location, and market context.
 - Location fields: decide at application time using the preferred and excluded locations below.
 - Role-specific long answers: draft directly from the JD, company context, and resume.
-- Recency/open-status behavior: apply only after confirming the role is open, within the verified 0-15 day gate, and reachable through an official company/ATS application page when available.
+- Recency/open-status behavior: apply only after confirming the role is open, within the verified 0-15 day gate by default or within the <=70 day strong AI live-post exception, and reachable through an official company/ATS application page when available.
 - Submit behavior: when Yaswanth starts an autopilot batch, that command is explicit approval to submit matching applications without per-application review.
 - Account creation behavior: during an approved autopilot run, create normal ATS/job-board/company-career accounts when required using the job email and user-provided live credential. Do not pause for ordinary account creation.
 - Credential hygiene: the live credential is allowed for job-application account creation in this workspace. Do not write it into trackers, learning-loop notes, screenshots, summaries, scratch outputs, or browser-visible notes. Use it only to complete account/login flows.
@@ -227,7 +227,7 @@ Codex follows this rule: use the defaults below. If a field depends on the job, 
 
 | Question | Default Answer                                                     |
 |---|--------------------------------------------------------------------|
-| Preferred work location | Georgia/Atlanta; Dallas/Austin/Texas; Virginia; Texas; North Carolina; Tennessee; Florida; Remote US; SF/Bay Area/California only as last-option strong fit |
+| Preferred work location | Georgia/Atlanta; Dallas/Austin/Texas; Virginia/DC; North Carolina; Tennessee; Florida; Remote US only |
 | Open to remote roles? | Yes                                                                |
 | Open to hybrid roles? | Yes                                                                |
 | Open to onsite roles? | Yes                                                                |
@@ -240,13 +240,11 @@ Location search priority for agents:
 
 1. Georgia / Atlanta
 2. Dallas / Austin / Texas
-3. Virginia
-4. Texas
-5. North Carolina
-6. Tennessee
-7. Florida
-8. Remote US
-9. SF / Bay Area / California only as the last option for unusually strong AI/platform/backend fit
+3. Virginia / DC
+4. North Carolina
+5. Tennessee
+6. Florida
+7. Remote US
 
 ### Availability And Compensation
 

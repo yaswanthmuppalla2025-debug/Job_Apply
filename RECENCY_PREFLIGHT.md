@@ -4,12 +4,12 @@ Use this before spending time on a form. The goal is to save tokens and apply on
 
 ## Rule
 
-Autopilot applies to roles verified as posted or genuinely reposted within the last 15 days by default. For exceptional AI matches only, Yaswanth allows a narrow live-post exception up to 50 days old when the role is a clear strong fit, the official employer/ATS page is still accepting applications, the location is in-bounds, and sponsorship answers can be truthful.
+Autopilot applies to roles verified as posted or genuinely reposted within the last 15 days by default. For exceptional AI matches only, Yaswanth allows a live-post exception up to 70 days old when the role is a clear strong fit, the official employer/ATS page is still accepting applications, the location is in-bounds, and sponsorship answers can be truthful.
 
 - `0-7 days`: apply first.
 - `8-15 days`: apply only when the resume/JD match is strong.
-- `16-50 days`: AI roles only, apply only for excellent/strong matches with official live proof.
-- `>50 days`: skip.
+- `16-70 days`: AI roles only, apply only for excellent/strong matches with official live proof.
+- `>70 days`: skip.
 - Unknown date: skip unless reliable dated evidence proves the role is within 15 days.
 
 Do not stop the run because a date is unavailable. Skip the role as unknown/stale and continue to fresher roles.
@@ -20,7 +20,7 @@ Before filling a form, run these quick checks after the recency check:
 
 1. Fit: submit only `High`/`Strong` lane matches. `Medium` is a skip unless it is a `Strategic Exception` with target geography/company quality and at least 2-3 resume-backed core requirements.
 2. Quality: prefer direct employer roles at product, AI, SaaS, platform, cloud, fintech, enterprise, healthcare-tech, infrastructure, major-retail, transportation, or similar durable companies. Skip random staffing, consulting, vendor, recruiter, W2-only, client-confidential, and aggregator-proxy postings.
-3. Location: prioritize Georgia/Atlanta, Dallas/Austin/Texas, Virginia, Texas, North Carolina, Tennessee, Florida, and Remote US. Treat SF/Bay Area/California as the last option unless the company and role are unusually strong.
+3. Location: apply only to Remote US, Georgia/Atlanta, Dallas/Austin/Texas, Virginia/DC, North Carolina, Tennessee, or Florida. Skip SF/Bay Area/California/west-only roles even when the company is attractive; keep California-based companies only when the specific role is truly Remote US and does not require west-coast presence.
 4. Duplicate: scan `Company`, `Role`, and `Application URL` across the `AI`, `SDE`, and `Blockers` sheets in `JOB_APPLICATION_TRACKER.xlsx` before applying. If the same company has the same normalized role title already submitted/attempted, or the same official job id/application URL is already present, skip as duplicate or record `Already Applied` when proof is clear. Do not block a different company just because it has a common title like `Senior Software Engineer`.
 
 ## Fast Source Order
@@ -68,10 +68,11 @@ If any of these are not derivable quickly, leave them blank or `Unknown` unless 
 
 Skip and move on when:
 
-- Posted date is older than 15 days, unless it is an exceptional AI-role match that meets the <=50 day live-post exception.
-- Posted date is older than 50 days.
+- Posted date is older than 15 days, unless it is an exceptional AI-role match that meets the <=70 day live-post exception.
+- Posted date is older than 70 days.
 - Official page is closed, expired, or no longer accepting applications.
 - Recency is unknown and no reliable proof shows the role is within 15 days.
+- Location is SF/Bay Area/California/west-only, or any place outside the current allowed geography, unless the role itself is explicitly Remote US.
 - Aggregator result does not resolve to an official open application page.
 - Fit is low, unknown, merely adjacent, or medium without a strategic-exception reason.
 - The posting is a low-quality staffing/consulting/vendor/recruiter/aggregator-proxy role.

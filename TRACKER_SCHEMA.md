@@ -54,7 +54,7 @@ Do not use proof-flavored submitted status variants. Keep status simple and put 
 
 ## Blockers Sheet
 
-Use `Blockers` for CAPTCHA, ATS, upload, account/login, anti-spam, manual/legal, missing-info, Chrome/profile, and other real recovery items.
+Use `Blockers` for CAPTCHA, ATS, upload, account/login, anti-spam, manual/legal, missing-info, Chrome/profile, and other real recovery items. Do not use blockers for ordinary email/security-code verification, account creation/reset, upload friction, or reasonable short assessments until the recovery budget is exhausted.
 
 Columns:
 
@@ -96,7 +96,7 @@ Allowed `Retry Eligible` values:
 
 ## CAPTCHA Parking
 
-Do not bypass CAPTCHA, hCaptcha, visual puzzles, anti-abuse pages, or visual security puzzles. Job-Gmail email/security codes are recoverable ATS verification steps, not CAPTCHA.
+Do not bypass CAPTCHA, hCaptcha, visual puzzles, anti-abuse pages, or visual security puzzles. Job-Gmail email/security codes are recoverable ATS verification steps, not CAPTCHA. Reasonable manual assessments are also recoverable when they can be answered truthfully from the resume, answer bank, JD, and careful role-specific judgment.
 
 For a high-fit role that already passed recency, sponsorship, quality, location, and duplicate gates:
 
@@ -158,12 +158,12 @@ A non-CAPTCHA technical blocker must show at least 2 serious attempts and 2 dist
 
 ## Recency Gate
 
-Autopilot applies to verified `0-15 day` roles by default. AI roles may use Yaswanth's exceptional live-post exception up to `50 days` only when the role is an excellent/strong match, official page is still accepting applications, location is in-bounds, and sponsorship answers are compatible.
+Autopilot applies to verified `0-15 day` roles by default. AI roles may use Yaswanth's exceptional live-post exception up to `70 days` only when the role is an excellent/strong match, official page is still accepting applications, location is in-bounds, and sponsorship answers are compatible.
 
 - `0-7 days`: highest priority.
 - `8-15 days`: apply only for strong resume/JD matches.
-- `16-50 days`: AI roles only, exceptional strong-fit live-post exception.
-- `Over 50 days`: skip.
+- `16-70 days`: AI roles only, exceptional strong-fit live-post exception.
+- `Over 70 days`: skip.
 - `Unknown`: skip unless a reliable dated source proves the role is within 15 days and the official application page is open.
 
 If no high/strong matches exist inside the recency gate, scrape deeper through official/company/ATS sources instead of applying stale, medium-adjacent, or weak roles to chase volume.
