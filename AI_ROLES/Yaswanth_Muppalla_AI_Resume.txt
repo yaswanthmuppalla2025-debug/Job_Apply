@@ -30,10 +30,10 @@ Designed Context Engine flows for chat/session memory, selected context, KB inje
 Implemented MCP/API runtime patterns with tool catalog APIs, native/template tools, scoped document search, execution logging, cache behavior, and access-aware tool selection.
 Combined source-ledger, citation, guardrail, caching, and semantic caching patterns to keep AI outputs grounded and traceable.
 TECHNICAL SKILLS
-AI/LLM Systems: RAG, embeddings, vector search, LangChain, MCP/FastMCP, OpenAI, Amazon Bedrock, prompt engineering, LLMOps, semantic caching, context orchestration
-Backend: Python, FastAPI, Pydantic, Java 17, Spring Boot, REST APIs, JWT, microservices, Java concurrency, ExecutorService, CompletableFuture, TypeScript, Angular
-Cloud & Data: AWS Lambda, ECS, S3, SQS, Step Functions, API Gateway, EventBridge, Docker, CI/CD, MongoDB, Redis, MemSQL, Kafka, Apache Flink, Airflow
-Retrieval & Storage: OpenSearch Vector DB, MongoDB, document chunking, source ledgers, searchable chunk publishing, Elasticsearch
+AI/LLM Systems: RAG, embeddings, vector search, LangChain/LangGraph, LlamaIndex/LlamaParse, MCP/FastMCP, OpenAI APIs, Amazon Bedrock, prompt orchestration, agent workflows/evaluation, LLMOps, semantic caching, context orchestration
+Backend: Python, FastAPI, Pydantic, Java 17, Spring Boot, REST APIs, JWT, microservices, Java concurrency, TypeScript/Angular
+Cloud & Data: AWS Lambda, ECS/S3/SQS, Step Functions, API Gateway/EventBridge, Docker, CI/CD, MongoDB, Redis, MemSQL, Kafka, Flink/Airflow
+Retrieval & Storage: OpenSearch Vector DB, MongoDB, hybrid search, metadata filtering/reranking, chunking, source ledgers, searchable publishing, Elasticsearch
 Observability: Datadog, CloudWatch, Kibana, X-Ray, ELK Stack, structured logging, SLA alerts, failure tracing
 EDUCATION
 State University of New York, New Paltz | Master of Science, Computer Science | CGPA: 3.6/4.0	May 2020

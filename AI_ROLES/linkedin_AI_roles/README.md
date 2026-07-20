@@ -58,10 +58,10 @@ Credential rule: use the user-provided live credential only inside live official
 
 Use LinkedIn to find and submit fresh, fitting AI roles while preserving the existing autopilot standards:
 
-- Apply only to verified 0-15 day roles.
+- Apply verified 0-15 day roles by default; allow 16-120 days only for the strongest AI matches under the root exceptional-fit rule and only while the official posting is live.
 - Prioritize 0-7 day roles first.
 - Use 8-15 day roles only for strong AI/backend fit.
-- Skip older, unknown-recency, closed, no-sponsorship, citizen-only, clearance-only, U.S.-person-only, poor-fit, duplicate, and suspicious roles.
+- Skip over-120-day, unknown-recency, closed, no-sponsorship, citizen-only, clearance-only, U.S.-person-only, poor-fit, duplicate, and suspicious roles.
 - Prefer official company or ATS pages for final submission when available.
 - Use LinkedIn Easy Apply only when the role passes the same preflight and the correct resume/profile answers can be reviewed before submit.
 
@@ -101,6 +101,8 @@ Use these keyword families. Rotate them across locations instead of running one 
 - `AI Products Engineer`
 - `Document AI Engineer`
 
+Keywords are discovery hints only. After opening a job, verify JD intent: apply when the work is mainly backend/API/platform/RAG/agent/data-pipeline/eval/serving/cloud integration. Do not apply only because the title contains AI/ML/LLM; skip mostly research, recommender science, distributed training, data-analysis, or PM/program roles unless they are clearly platform/tooling/serving-heavy.
+
 Use the AI resume by default. Use the SDE resume only when the role is clearly backend/platform-heavy and the SDE resume is the stronger truthful match.
 
 ## LinkedIn Filter Recipe
@@ -112,7 +114,7 @@ For each search:
 3. Set job type to full-time when available.
 4. Set workplace to remote, hybrid, or onsite based on the target location. For Remote USA, use remote-only where possible.
 5. Set Date posted to `Past week` first.
-6. After exhausting strong 0-7 day matches, use `Past month` only to manually verify roles still fall within the 0-15 day gate.
+6. After exhausting strong 0-7 day matches, use `Past month` to verify 8-15 day roles first and then the 16-30 day portion of the AI-only exceptional window. Older exceptional candidates must be found through official/company/ATS discovery and verified under the root rule.
 7. Use experience filters for mid-senior/senior/backend/platform roles when useful; do not over-filter if it hides strong matches.
 8. Use `Under 10 applicants` as an optional quality slice after the main search, not as a required gate.
 9. Use `Easy Apply` as a separate slice. Do not run only Easy Apply searches.
@@ -166,15 +168,15 @@ Secondary expansion queue:
 - Repeat `LLM Engineer`, `RAG Engineer`, `AI Platform Engineer`, `Backend AI Engineer`, and `Software Engineer AI` across Georgia, Texas, and Virginia first.
 - Use Atlanta, Austin, Dallas, and city-level filters when the state search is too noisy.
 - Use North Carolina, Tennessee, and Florida after the higher-priority Georgia/Texas/Virginia/Remote pass.
-- Use `Past month` only as a manual 8-15 day recovery pass. Do not queue roles blindly from `Past month`.
+- Use `Past month` only as a manual verification pass. Prefer 8-15 days; consider 16-30 days only for exceptional AI fits under the root rule. Do not queue roles blindly from `Past month`.
 - Add `f_AL=true` only for a separate Easy Apply slice after the main search has been reviewed.
 
 LinkedIn does not provide an exact `<15 days` filter. Treat LinkedIn recency as a clue, then verify:
 
 - `Past 24 hours` and `Past week`: normally eligible for recency preflight.
-- `Past month`: inspect the visible LinkedIn age and official posting date. Apply only if evidence shows 0-15 days.
+- `Past month`: inspect the visible LinkedIn age and official posting date. Prefer 0-15 days; 16-30 days may proceed only under the strongest-fit AI exception.
 - `2 weeks ago`: acceptable only when the official or visible age still fits the 0-15 day gate.
-- `3 weeks ago`, `1 month ago`, unknown age, or no reliable proof: skip as stale and continue.
+- `3 weeks ago` or `1 month ago`: AI only and only if the official posting is live and the root exceptional-fit evidence is satisfied. Unknown age or no reliable proof is skipped.
 
 ## Apply Path Decision
 
@@ -184,7 +186,8 @@ LinkedIn shows two main application paths.
 
 Use Easy Apply when:
 
-- The role passes AI fit, location, sponsorship, and 0-15 day recency preflight.
+- The role passes AI fit, location, sponsorship, and the root recency preflight: 0-15 days by default or 16-120 days only under the strongest-fit AI exception.
+- The JD intent has a credible backend-to-AI/platform plumbing match, not only AI keywords.
 - The popup allows all required answers to be completed truthfully from root docs, resume, JD, answer bank, or safe judgment.
 - The selected resume is verified as the correct current resume before submit.
 - No visual CAPTCHA/hCaptcha/reCAPTCHA/anti-abuse challenge, manual exercise, unusual legal/user-authored attestation, payment, or unsupported private fact appears.
@@ -197,6 +200,7 @@ Before clicking final submit:
 - Do not claim citizenship, clearance, green card, no sponsorship need, or unavailable credentials.
 - If the form asks for a cover letter or custom answer, tailor from `../../ANSWER_BANK.md`.
 - If there is a final review screen, use it. Easy Apply submissions cannot be edited from LinkedIn after submission.
+- Re-read the newest `AI`, `SDE`, and `Blockers` rows and stop if the job is submitted/already applied or separately claimed by another agent. A current eligible blocker retry may match its own row.
 
 Record proof with the simplified tracker status from `../../TRACKER_SCHEMA.md`:
 
@@ -261,7 +265,7 @@ Useful LinkedIn values:
 - `Source`: `LinkedIn`, `LinkedIn Easy Apply`, or `LinkedIn -> <ATS/company>`.
 - `ATS`: `LinkedIn Easy Apply` for direct LinkedIn applications; otherwise the external ATS/company platform.
 - `Recency Proof`: LinkedIn job URL or official posting URL proving recency.
-- `Fit`: `High`, `Strong`, or `Strategic Exception: <why>` only; do not submit blank, low, unknown, or merely adjacent fits.
+- `Fit`: `High`, `Strong`, `Strategic Exception: <3-requirement evidence>` for 0-15 days only, or `High - Exceptional 16-120 day AI match: <reason>`; do not submit blank, low, unknown, keyword-only, or merely adjacent fits.
 - `Sponsorship`: `Yes`, `No`, `Unknown`, or `N/A`; use `Yes` only after checking JD/form language.
 - Blocked LinkedIn outcomes go to `Blockers`, where `Retry Eligible` is `Yes`, `No`, `Expired`, or `Manual Review`.
 
@@ -277,6 +281,7 @@ LinkedIn saved jobs are a temporary queue, not the system of record.
 - Do not let saved jobs pile up as hidden state.
 - After each role, update `JOB_APPLICATION_TRACKER.xlsx`, then unsave/archive/close the completed tab when practical.
 - Keep one LinkedIn search tab, one active apply tab, and one Gmail/security-code tab if needed.
+- Up to 5 additional tabs may remain open only as tracked CAPTCHA handoffs; reconcile every `Parked Tab = Yes` row with its live exact-role tab at run start and end.
 - Every 10-20 attempts, close stale tabs and rotate search keywords or location.
 
 ## Anti-Abuse And Limits

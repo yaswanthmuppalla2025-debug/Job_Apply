@@ -178,17 +178,12 @@ Recovery:
 - Prefer official company/ATS URLs over aggregator iframes.
 - Slow down after repeated possible-spam or hCaptcha events and move to a different ATS/company cluster.
 
-## Current High-Value Retry Queue
+## Dynamic Retry Ranking
 
-Use this as priority guidance when reprocessing current blockers.
+Read the current `Blockers` sheet instead of maintaining company names here. A row is retryable only when the exact job is not already submitted, the official posting remains open and recency-eligible under `RECENCY_PREFLIGHT.md`, fit is still high/strong, `Retry Eligible = Yes` (or `Manual Review` after the required human action is known complete), fewer than 3 serious attempts have been exhausted, and a distinct recovery path remains.
 
-Retry only if the role still passes the 0-15 day recency gate in `RECENCY_PREFLIGHT.md` and `Retry Eligible` is not `Expired` in the tracker.
-
-1. Any high-fit `Blocked - ATS` or `Blocked - Other` row with blank/`1` attempt count and a live posting inside the 15-day gate: retry before chasing weak new roles.
-2. Lowe's Workday identity-field blocker: retry first using `PRIVATE_APPLICATION_FIELDS.md`.
-3. Cargill and JPMorgan account/code flows: retry with job email and the user-provided live credential, Gmail OTP, exact job URL return.
-4. Databricks Greenhouse roles: retry direct Greenhouse/embed URL, reselect country/phone hidden values, request/use fresh code, check Gmail.
-5. Accompany Health, Chipply, Harvey AI Platform, Citi, Reddit SDE Ads, Scribd, United Hire Staffing, and Vogo upload blockers: retry with file access, PDF -> DOCX -> `.txt` fallback when available.
-6. Instacart, Reddit ML, and Scale AI validation loops: required-widget sweep, reload/refill once, direct ATS path, Gmail proof check.
-7. CAPTCHA/anti-abuse rows: check Gmail first; if no proof, mark/keep `Blocked - CAPTCHA`, slow down, and switch ATS/company clusters.
-8. Perplexity exercise and legal/user-authored attestation rows: keep hard-stopped unless the real artifact or user-authored/legal review exists.
+1. Prioritize recoverable job-Gmail code, account, upload, required-widget, and validation rows for high-fit roles.
+2. Then retry other `Blocked - ATS` or `Blocked - Other` rows whose `Recovery Tried` and `Next Action` identify a new ATS-specific path from this matrix.
+3. Skip rows marked `No`, `Expired`, closed, stale, already submitted, explicit company cooldown, or exhausted without a new safe path.
+4. Do not spend agent retries on unresolved visual CAPTCHA/anti-abuse rows. Keep useful forms parked for Yaswanth, then retry only after the challenge is known resolved or a clean official route avoids it.
+5. Re-run duplicate, company-spread, recency, fit, sponsorship, and location preflight immediately before retry submission.

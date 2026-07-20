@@ -6,10 +6,49 @@ Rules:
 
 - Stay truthful to the resume and `APPLICATION_PLAN.md`.
 - Do not paste every technical detail into every answer.
-- For AI roles, lead with OmInsights and source-backed RAG/platform ownership.
-- For SDE roles, lead with American Express and Skechers backend/platform impact; use OmInsights as supporting platform/AI product ownership.
+- Treat OmInsights as a personal technical portfolio/learning project only. It is not an active employer, active company/product, secondary employment, outside business activity, advisory role, or work Yaswanth is committing to continue after joining an employer.
+- For AI roles, use OmInsights only as technical project evidence for source-backed RAG/platform work.
+- For SDE roles, lead with American Express and Skechers backend/platform impact; use OmInsights only as supporting technical project evidence.
 - Replace placeholders like `{{company}}`, `{{role}}`, `{{product_or_mission}}`, `{{jd_keywords}}`, `{{posted_range}}`, and `{{location}}` before submitting.
 - If a text box has a character limit, use the short answer first.
+
+## Compliance Boundary For OmInsights
+
+OmInsights is a personal technical portfolio/learning project. It is not an active employer, active company/product business, client-serving business, consulting business, advisory role, revenue activity, secondary employment, or outside work Yaswanth is committing to continue after joining an employer.
+
+Use this rule for compliance-style application fields:
+
+| Question Pattern | Agent Answer |
+|---|---|
+| Will you continue OmInsights after joining? | No. Do not say Yaswanth will continue it as outside work. |
+| Outside business activity / secondary employment / paid or unpaid work for another entity? | No, based on OmInsights being a personal learning/portfolio project, not employment or business activity. |
+| Advisory/founder role / business ownership / board role? | No, unless the form separately allows a portfolio-project explanation; do not represent OmInsights as an active company role. |
+| Conflict of interest / non-compete / current-employer restriction? | No, unless the form asks about a specific employer/client relationship not documented in the tracker. |
+| IP assignment / outside invention / pre-existing project disclosure? | If explanation is allowed, state it is a pre-existing personal technical portfolio project built for learning and skill demonstration, with no customers, users, revenue, or employer confidential information. |
+
+Safe wording for technical/application text boxes: `OmInsights is a personal technical portfolio project I built to demonstrate backend-to-AI platform engineering, RAG, source-backed answers, Context Engine orchestration, MCP/tool execution, and AWS-style deployment patterns. It is not an active company, employer, client-serving product, or secondary employment.`
+
+Only stop for manual review if the form asks for a legal certification that cannot be answered with the above facts or forces a materially false statement.
+
+## Reusable Legal And Private-Fact Defaults
+
+Use these answers when the official application form asks the same recurring facts. Do not stop for manual review unless the form asks for materially different details, evidence the answer is not true for that specific company, or a private value not listed here or in `PRIVATE_APPLICATION_FIELDS.md`.
+
+| Question Pattern | Agent Answer |
+|---|---|
+| Country of citizenship / nationality | India |
+| Any other citizenships? | No |
+| Relatives employed at this company? | No |
+| Is current/former employer a client of this company? | No |
+| Regulatory, licensing, investigation, or settlement history? | No |
+| Professional license investigated, revoked, suspended, cancelled, or disciplined? | No |
+| Surrendered a professional license? | No |
+| Board member, trustee, trust protector, executor, or personal representative? | No |
+| Discharged, separated by mutual agreement, or resigned after being given the option? | No |
+
+References remain manual unless Yaswanth provides a specific reusable name, LinkedIn URL, company email, and permission to use it. Do not invent coworker, recruiter, referral, or reference contacts.
+
+If an employer explicitly instructs applicants not to use AI assistance for written answers, fill only objective form fields and leave the applicant-authored response for Yaswanth. Do not submit generated prose under a no-AI or applicant-authored attestation.
 
 ## OmInsights Story
 
@@ -22,17 +61,17 @@ Use for:
 
 ### Short
 
-I founded and built OmInsights, a multi-service AI document intelligence platform with tenant-scoped RAG, source-backed answers, document ingestion, Context Engine orchestration, MCP tool execution, and AWS-backed deployment paths.
+I built OmInsights as a personal technical portfolio project: a multi-service AI document intelligence system with tenant-scoped RAG, source-backed answers, document ingestion, Context Engine orchestration, MCP tool execution, and AWS-backed deployment paths.
 
 ### Medium
 
-I founded and built OmInsights, an AI document intelligence platform that combines document upload, parsing, chunking, embeddings, retrieval, source citations, and LLM/context harness design for evidence-backed workflows. I designed the system across Angular UI, FastAPI Business Service, Context Engine orchestration, MCP tool execution, async file processing, MongoDB, OpenSearch, and AWS-backed deployment paths. The work gave me hands-on ownership of RAG quality, scoped retrieval, prompt assembly, tool selection, source ledgers, and user-facing trust contracts.
+I built OmInsights as a personal technical portfolio project for AI document intelligence. It combines document upload, parsing, chunking, embeddings, retrieval, source citations, and LLM/context harness design for evidence-backed workflows. I designed the system across Angular UI, FastAPI Business Service, Context Engine orchestration, MCP tool execution, async file processing, MongoDB, OpenSearch, and AWS-backed deployment paths. The work gave me hands-on ownership of RAG quality, scoped retrieval, prompt assembly, tool selection, source ledgers, and user-facing trust contracts.
 
 ### Long
 
-One project I am especially proud of is OmInsights, an AI document intelligence platform I founded and built end to end. The platform supports upload, parsing, normalization, chunking, embedding, retrieval, source citation, and LLM/context harness design for owned business documents. I designed the architecture across Angular UI, FastAPI Business Service, Context Engine orchestration, MCP tool execution, async file processing, MongoDB, OpenSearch, shared libraries, and AWS-backed deployment paths.
+One project I am especially proud of is OmInsights, a personal technical portfolio project for AI document intelligence that I built end to end. The system supports upload, parsing, normalization, chunking, embedding, retrieval, source citation, and LLM/context harness design for owned documents. I designed the architecture across Angular UI, FastAPI Business Service, Context Engine orchestration, MCP tool execution, async file processing, MongoDB, OpenSearch, shared libraries, and AWS-backed deployment paths.
 
-What made the work interesting was the focus on trustworthy AI, not just chatbot output. I built flows for session memory, selected-context persistence, knowledge-base injection, scoped retrieval, tool planning/execution, prompt assembly, LLM/context harness design, and post-turn persistence. For the legal vertical, I also worked on provider adapters, normalized court-record facts, source ledgers, timelines, source-backed summaries, and Business Service-owned display contracts. That experience maps well to roles that need strong backend engineering plus practical LLM/RAG product ownership.
+What made the work interesting was the focus on trustworthy AI, not just chatbot output. I built flows for session memory, selected-context persistence, knowledge-base injection, scoped retrieval, tool planning/execution, prompt assembly, LLM/context harness design, and post-turn persistence. For the legal vertical, I also worked on provider adapters, normalized court-record facts, source ledgers, timelines, source-backed summaries, and Business Service-owned display contracts. That experience maps well to roles that need strong backend engineering plus practical LLM/RAG platform project ownership.
 
 ## American Express Backend And Platform Story
 
@@ -110,7 +149,7 @@ I am currently based in Atlanta, GA. I am open to remote roles, hybrid roles, an
 
 ### Long
 
-I am based in Atlanta, GA and open to remote, hybrid, or onsite opportunities when the role, team, and location are a strong fit. Preferred locations include Atlanta, Austin/Dallas, North Carolina, Virginia, Tennessee, remote U.S. roles, and other suitable U.S. hubs based on the company and role. I am open to relocation for the right full-time opportunity, but I am not targeting Chicago-area or NYC/NY-only roles. If a form asks for a single location, use the best non-excluded option available in the posting.
+I am based in Atlanta, GA and open to remote, hybrid, or onsite opportunities when the role, team, and location are a strong fit. Preferred locations include Atlanta, Austin/Dallas, Virginia/DC, North Carolina, Tennessee, Florida, remote U.S. roles, and other suitable U.S. hubs based on the company and role. I am open to relocation for the right full-time opportunity, including hybrid roles in the location where I am applying, but I am not targeting Chicago-area or NYC/NY-only roles. If a form asks for a single location, use the best non-excluded option available in the posting.
 
 ## Salary Logic
 
@@ -138,13 +177,13 @@ I am interested in {{company}} because {{product_or_mission}} connects directly 
 
 ### Medium
 
-I am interested in {{company}} because the {{role}} role combines the areas where I have done my strongest work: {{jd_keywords}}. I am especially drawn to {{product_or_mission}} and the opportunity to build systems that are reliable, scalable, and useful to real users. My background across OmInsights, American Express, and Skechers gives me a mix of AI product ownership, backend platform engineering, data workflows, cloud APIs, and production reliability that I believe would transfer well to this team.
+I am interested in {{company}} because the {{role}} role combines the areas where I have done my strongest work: {{jd_keywords}}. I am especially drawn to {{product_or_mission}} and the opportunity to build systems that are reliable, scalable, and useful to real users. My background across American Express, Skechers, and the OmInsights technical portfolio project gives me a mix of backend platform engineering, AI systems project work, data workflows, cloud APIs, and production reliability that I believe would transfer well to this team.
 
 ### Long
 
-I am interested in {{company}} because the {{role}} role sits at the intersection of the work I have been doing and the kind of engineering problems I want to keep solving. From the job description, the areas that stand out to me are {{jd_keywords}}. Those map closely to my background building OmInsights, where I owned AI document intelligence, RAG workflows, source-backed answers, backend service boundaries, and cloud-backed platform architecture, as well as my backend platform work at American Express and API/cloud systems work at Skechers.
+I am interested in {{company}} because the {{role}} role sits at the intersection of the work I have been doing and the kind of engineering problems I want to keep solving. From the job description, the areas that stand out to me are {{jd_keywords}}. Those map closely to my backend platform work at American Express, API/cloud systems work at Skechers, and the OmInsights technical portfolio project, where I built AI document intelligence, RAG workflows, source-backed answers, backend service boundaries, and cloud-backed platform architecture.
 
-What I like about {{company}} is {{product_or_mission}}. I am motivated by roles where strong backend engineering, practical product judgment, and production reliability all matter. I would bring hands-on experience across Python, Java/Spring, FastAPI, AWS, data workflows, APIs, RAG/LLM systems, observability, and cross-service architecture, plus a founder-level habit of owning ambiguous problems until they become usable systems.
+What I like about {{company}} is {{product_or_mission}}. I am motivated by roles where strong backend engineering, practical product judgment, and production reliability all matter. I would bring hands-on experience across Python, Java/Spring, FastAPI, AWS, data workflows, APIs, RAG/LLM systems, observability, and cross-service architecture, plus a habit of owning ambiguous problems until they become usable systems.
 
 ## Quick Mapping
 
@@ -152,10 +191,10 @@ Use these defaults when choosing which answer to start from:
 
 | Question Type | AI Roles | SDE Roles |
 |---|---|---|
-| Proud project | OmInsights | American Express or Skechers; OmInsights if AI/platform angle matters |
-| AI/LLM/RAG experience | OmInsights | OmInsights as supporting answer |
-| Backend/platform experience | American Express plus OmInsights | American Express |
-| Cloud/API experience | Skechers plus OmInsights AWS | Skechers |
+| Proud project | OmInsights technical portfolio project | American Express or Skechers; OmInsights only if AI/platform angle matters |
+| AI/LLM/RAG experience | OmInsights technical portfolio project | OmInsights as supporting technical project answer |
+| Backend/platform experience | American Express plus OmInsights technical project | American Express |
+| Cloud/API experience | Skechers plus OmInsights technical project | Skechers |
 | Production reliability | Skechers or American Express | Skechers or American Express |
 | Sponsorship | H-1B section | H-1B section |
 | Relocation | Relocation section | Relocation section |

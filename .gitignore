@@ -8,3 +8,11 @@ reports/
 
 # Keep private identity values local only.
 PRIVATE_APPLICATION_FIELDS.md
+
+# Agent/runtime scratch belongs in an OS temporary directory. These ignores are
+# defense in depth for interrupted runs, not permission to create repo artifacts.
+/.codex_tmp/
+/tmp/
+/tracker_audit_*.json
+/*.staging.xlsx
+/*.xlsx.inspect.ndjson

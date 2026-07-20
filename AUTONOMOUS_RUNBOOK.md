@@ -17,21 +17,25 @@ Maximize truthful, high/strong-fit submissions without per-role approval. Push t
 
 ## Runtime Loop
 
+At run start, reconcile live CAPTCHA tabs with `Parked Tab`, then rank retryable rows dynamically from the current `Blockers` sheet. Never use a memorized company queue. Fresh high-fit roles and high-fit blockers with a distinct safe recovery path outrank weak new roles.
+
 For each role:
 
 1. Discover latest open roles from official company pages, ATS boards, LinkedIn, and reputable hiring portals.
-2. Run `RECENCY_PREFLIGHT.md` before filling anything.
-3. Skip early when the role is stale, closed, duplicate, low-quality, no-sponsorship, legally ineligible, outside priority location, poor fit, or only medium/adjacent without a strategic-exception reason.
+2. Run `RECENCY_PREFLIGHT.md` before filling anything, including canonical duplicate and company-spread checks.
+3. Skip early when the company is Capital One before `2027-01-07`, or when the role is stale, closed, duplicate, low-quality, no-sponsorship, legally ineligible, outside priority location, poor fit, or only medium/adjacent without a strategic-exception reason. Fit means JD intent maps to Yaswanth's backend-to-AI/platform plumbing profile, not just AI keywords.
 4. Choose the lane:
    - AI roles: `AI_ROLES/Yaswanth_Muppalla_AI_Resume.pdf`
    - SDE/backend roles: `SDE_ROLES/Yaswanth_Muppalla_SDE_Resume.pdf`
 5. Fill identity, contact, education, work authorization, sponsorship, location, EEO, and custom fields from `APPLICATION_PLAN.md`, `ANSWER_BANK.md`, the resume, JD, company context, and best truthful judgment.
-6. Use normal account creation, Gmail codes, and official ATS private identity fields when required.
-7. Submit when the role is high/strong fit and all required fields are truthfully complete.
-8. Capture proof from confirmation page, application ID, portal state, or Gmail receipt.
-9. Update `JOB_APPLICATION_TRACKER.xlsx` immediately using `TRACKER_SCHEMA.md`: submissions/already-applied outcomes go to `AI` or `SDE`, and real blockers go to `Blockers`.
-10. Do not log broad skip-noise. Stale, no-sponsorship, duplicate, staffing/vendor, aggregator-proxy, fit-mismatch, closed, and strategic skip decisions are still skipped early unless they are useful `Already Applied` proof or a real blocker/manual-review item.
-11. Close or finalize stale/completed tabs and continue to the next role.
+6. Treat OmInsights as a personal technical portfolio/learning project only. It is not an active company/product business, employer, consulting business, advisory role, revenue activity, secondary employment, or outside work Yaswanth is committing to continue after joining. For compliance fields, answer from the OmInsights compliance rule in `APPLICATION_PLAN.md` and `ANSWER_BANK.md`.
+7. Use normal account creation, Gmail codes, and official ATS private identity fields when required.
+8. Immediately before final submit, re-read the newest `AI`, `SDE`, and `Blockers` rows. Stop if the job was submitted/already applied or separately claimed by another agent; allow a current eligible blocker retry to match its own row.
+9. Submit when the role is high/strong fit and all required fields are truthfully complete.
+10. Capture proof from confirmation page, application ID, portal state, or Gmail receipt.
+11. Update `JOB_APPLICATION_TRACKER.xlsx` immediately using `TRACKER_SCHEMA.md`: submissions/already-applied outcomes go to `AI` or `SDE`, and real blockers go to `Blockers`.
+12. Do not log broad skip-noise. Stale, no-sponsorship, duplicate, staffing/vendor, aggregator-proxy, fit-mismatch, closed, and strategic skip decisions are still skipped early unless they are useful `Already Applied` proof or a real blocker/manual-review item.
+13. Close or finalize stale/completed tabs and continue to the next role.
 
 ## Recovery Loop
 
@@ -52,13 +56,14 @@ When normal friction appears, do not give up:
 - For high-fit roles that already pass freshness, sponsorship, quality, location, and duplicate gates, fill every truthful field possible and leave the CAPTCHA/anti-abuse tab open for Yaswanth.
 - Record the row in `Blockers` as `Blocked - CAPTCHA`, `Blocker Type = CAPTCHA Parked`, `Retry Eligible = Manual Review`, `Parked Tab = Yes`, and `Next Action = Yaswanth solve CAPTCHA, then submit/resume from same tab`.
 - Keep at most 5 parked CAPTCHA tabs open. If 5 are already parked, record the CAPTCHA without parking another tab and move on.
+- Every parked row must match a live exact-role tab. Reconcile `Parked Tab` at run start and end; set it to `No` when the tab is gone without deleting the blocker.
 - Never park low-quality, stale, no-sponsorship, duplicate, staffing/vendor, or poor-fit roles.
 
 ## Chrome Loop
 
 - Use only the `Job Apply - Yaswanth` Chrome profile.
 - Prefer one reusable application tab.
-- Keep at most 3-5 live tabs: active application, discovery/source, Gmail/security-code, and one temporary verification tab.
+- Keep at most 3 working tabs: active application, discovery/source, and Gmail/security-code. Up to 5 additional tabs may exist only as tracked CAPTCHA handoffs, for an absolute maximum of 8.
 - After every submitted, skipped, blocked, or already-applied outcome, update tracker first, then close/finalize unneeded tabs.
 - Every 10-20 attempts, run a hygiene cycle: close stale tabs, confirm the profile, save tracker state, and continue from the next eligible role.
 - If Chrome gets stuck, reduce tab pressure, reconnect/reopen `Job Apply - Yaswanth`, reopen the exact official job URL from the tracker, increment attempt count, and keep going.
@@ -73,6 +78,7 @@ After every role:
 - `Blocked - ATS` and non-CAPTCHA `Blocked - Other` rows have recovery fields filled in `Blockers`.
 - Gmail confirmation was checked when practical.
 - Tabs are clean enough for the next role.
+- `Parked Tab` values match the actual live CAPTCHA handoff tabs.
 
 Every 2-3 hours, or every 50 submitted applications:
 

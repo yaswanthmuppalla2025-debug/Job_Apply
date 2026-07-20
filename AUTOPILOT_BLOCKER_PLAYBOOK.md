@@ -17,6 +17,7 @@ The goal is Aggressive Autopilot with Hard Stop Only: recover and submit high/st
 - Put proof and exact blocker details in `Confirmation Proof`, `Recovery Tried`, `Next Action`, and `Notes`, not in custom status labels.
 - Real blockers must stay in the `Blockers` sheet after recovery fails so Yaswanth can review patterns and improve the system.
 - Blank helper fields, optional fields, N/A fields, unfamiliar wording, or unlisted ordinary questions are not blockers when the answer can be derived truthfully from the resume, JD, `ANSWER_BANK.md`, `APPLICATION_PLAN.md`, tracker notes, or common application meaning.
+- OmInsights is a personal technical portfolio/learning project only. It is not an active company/product business, employer, consulting business, advisory role, revenue activity, secondary employment, or outside work Yaswanth is committing to continue after joining. Outside-work, secondary-employment, business-ownership, advisory/founder, conflict, and IP questions should be answered from the OmInsights compliance rule in `APPLICATION_PLAN.md` and `ANSWER_BANK.md`, not guessed from the resume title or project name.
 
 ## Hard Stops
 
@@ -28,6 +29,7 @@ Mark the role, record the exact reason, close or finalize the tab, and continue 
 - Required manual exercise, take-home, video, portfolio artifact, recruiter contact, referral contact, or long external artifact.
 - Legal attestation or applicant-authored/no-AI requirement that cannot be completed truthfully by an agent.
 - Required material fact not available from the resume, JD, answer bank, plan, private-field file, or safe inference.
+- OmInsights compliance field that forces a materially false statement or has no truthful option matching the personal technical portfolio/learning-project facts.
 - Portal remains technically impossible after the required recovery budget.
 
 Do not bypass CAPTCHA, spam checks, visual security puzzles, paywalls, or platform anti-abuse systems. Email/security codes sent to the job Gmail are normal recovery steps, not CAPTCHA.
@@ -36,7 +38,7 @@ Do not bypass CAPTCHA, spam checks, visual security puzzles, paywalls, or platfo
 
 | Situation | Correct Outcome |
 |---|---|
-| Gmail receipt found | `Submitted`; put Gmail proof in `Confirmation Proof` and fill `Gmail Checked At` |
+| Gmail receipt found | `Submitted`; put Gmail proof in `Confirmation Proof` and concise proof detail in `Notes` when useful |
 | Success page, application ID, or clear final message shown | `Submitted`; put screen/app ID proof in `Confirmation Proof` |
 | Submit likely completed but proof is weak | `Submitted`; record proof gap in `Notes`; check Gmail once |
 | Visual CAPTCHA/hCaptcha/reCAPTCHA/anti-abuse challenge blocks form | `Blocked - CAPTCHA`; park high-fit filled forms for Yaswanth when useful |
@@ -64,7 +66,7 @@ Examples of distinct recovery paths: reload/refill, cleaned URL, direct ATS URL,
 
 Do not bypass CAPTCHA, hCaptcha, visual puzzles, anti-abuse pages, spam checks, or visual security puzzles.
 
-For high-fit roles that passed the 0-15 day recency gate, sponsorship check, quality gate, location priority, and duplicate check:
+For high-fit roles that passed the authoritative recency policy, sponsorship check, quality gate, location priority, and duplicate check:
 
 1. Fill every truthful field possible.
 2. Stop at the visual CAPTCHA/hCaptcha/reCAPTCHA/anti-abuse challenge.
@@ -144,6 +146,7 @@ Never store passwords, codes, or private email content in trackers, docs, screen
 
 - If optional, leave blank or use `N/A` only when accepted.
 - If required, do not invent exercise URLs, assessment results, portfolio artifacts, recruiter contacts, references, publications, or manual confirmations.
+- References are not reusable unless Yaswanth has provided the exact contact and permission to use it. A note such as `private` means leave the reference/contact item manual.
 - If the built-in assessment can be completed after submission, submit only if the current form does not require it first.
 - Otherwise use `Blocked - Other` with the exact requested artifact.
 
@@ -152,7 +155,10 @@ Never store passwords, codes, or private email content in trackers, docs, screen
 - Standard ATS privacy notices, EEO acknowledgements, and application-processing consent may be accepted when ordinary.
 - Do not submit generated prose under an explicit applicant-authored/no-AI attestation.
 - Do not click through unusual legal agreements solely to increase submissions.
-- Do not claim citizenship, clearance, green card, no-sponsorship status, certifications, licenses, references, or salary history not documented.
+- Do not claim clearance, green card, no-sponsorship status, certifications, licenses, references, or salary history not documented.
+- Reusable legal/private defaults now documented in `ANSWER_BANK.md` and `APPLICATION_PLAN.md` include India citizenship, no other citizenships, no relatives at the company, no current/former employer-client relationship, no regulatory/licensing investigation or settlement history, no professional-license discipline/surrender, no board/trustee/executor/personal-representative role, and no discharge/separation/resignation-after-option history. Use those defaults instead of blocking when the form asks the same fact.
+- For OmInsights, do not claim ongoing outside work, active business activity, customers/users/revenue, consulting, advisory service, or secondary employment. Answer `No` to those fields when the question is asking about active outside employment/business activity.
+- If a form asks for pre-existing projects, outside inventions, portfolio work, or IP disclosures and allows explanation, disclose OmInsights as a pre-existing personal technical portfolio/learning project with no customers, users, revenue, active product business, or employer confidential information.
 - Use `Blocked - Other` when a required legal/private fact cannot be completed truthfully.
 
 ### Private Identity Fields
@@ -163,20 +169,21 @@ Never store passwords, codes, or private email content in trackers, docs, screen
 - Never write private identity values into tracker rows, notes, learning entries, screenshots, scratch outputs, morning summaries, or GitHub.
 - If the site asks for full SSN, passport, bank/payment data, payment, or suspicious identity collection, do not complete it.
 
-### Duplicate / Already Applied / Strategic Cap
+### Duplicate / Already Applied / Company Spread
 
-- Before filling, scan `Company`, `Role`, and `Application URL` across the `AI`, `SDE`, and `Blockers` sheets in `JOB_APPLICATION_TRACKER.xlsx`, plus official job IDs when visible.
-- Same company + same normalized role title or same official job ID/application URL means skip or `Already Applied`.
-- Common role title at a different company is not a duplicate.
-- If the ATS says already applied, mark `Already Applied`.
-- If a company has an application cap, submit the strongest-fit roles first and skip lower-fit roles.
-- Do not attempt duplicate submissions.
+- Before filling, extract the official ATS/requisition/job ID when visible and scan it with `Company`, `Role`, and `Application URL` across `AI`, `SDE`, and `Blockers`.
+- Treat tracking parameters and terminal `/apply`, `/confirmation`, or `/thanks` variants as the same canonical role URL when they identify the same requisition. Do not treat a generic portal or confirmation URL as a job ID.
+- Exact job ID/canonical role URL already `Submitted`/`Already Applied`, portal-proven submission, or same-company/title role shown to be the same requisition means skip or `Already Applied`. An exact `Blockers` match means resume and update that row when eligible, not start another application.
+- If the same company/title has a different or unknown ID, compare team, location, and JD; a materially distinct requisition may proceed. A common title at another company is not a duplicate.
+- Re-read the newest workbook immediately before final submit. Stop if another agent submitted or separately claimed the exact/non-distinct role; a current eligible retry may match its own blocker row. Concurrent agents must use non-overlapping lane/source slices.
+- If a company has an explicit application cap, submit the strongest roles first and obey the cap. Otherwise, after 3 applications/attempts there in 30 days, do one focused job-Gmail signal check and apply again only for a materially different `High`/exceptional fit when no recruiter, assessment, interview, or hiring-team signal exists. Generic receipts, rejections, and silence are not positive signals; silence alone is not a permanent hard block.
 
 ## Chrome Recovery
 
 - Reuse one active application tab when possible.
-- Keep at most 3-5 live tabs: active application, discovery/source, Gmail/security code, and one temporary verification tab.
+- Keep at most 3 working tabs: active application, discovery/source, and Gmail/security code. Up to 5 additional tabs may remain open only as tracked CAPTCHA handoffs, for an absolute maximum of 8.
 - Close completed, stale, duplicate, expired, and research tabs after logging outcomes.
+- At run start and end, match every `Parked Tab = Yes` row to a live exact-role tab. Set it to `No` if the tab is gone while retaining the blocker row.
 - If Chrome control slows or times out, reduce tab pressure first.
 - If a tab is stale or form state is lost, reopen the official application URL from the tracker and increment attempt count.
 - If Chrome must restart, preserve tracker state first, close/reopen the `Job Apply - Yaswanth` profile, reconnect, and resume from the next actionable row.
@@ -195,7 +202,7 @@ Suggested searches:
 
 Handling:
 
-- Gmail confirmation found: keep `Submitted`, put Gmail proof in `Confirmation Proof`, and fill `Gmail Checked At`.
+- Gmail confirmation found: keep `Submitted`, put Gmail proof in `Confirmation Proof`, and add concise proof detail to `Notes` only when useful.
 - Screen confirmation only: keep `Submitted`, put screen proof in `Confirmation Proof`.
 - Weak proof but likely submitted: keep `Submitted`, record the uncertainty in `Notes`.
 - Rejection or recruiter follow-up appears: update tracker immediately.
