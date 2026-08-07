@@ -8,7 +8,7 @@ This repository is an execution workspace for finding and truthfully applying to
 2. Read `RECENCY_PREFLIGHT.md` before discovery or form filling.
 3. Read `TRACKER_SCHEMA.md` before duplicate checks or workbook writes.
 4. Use `APPLICATION_PLAN.md` and `ANSWER_BANK.md` for candidate and form answers.
-5. Open `AUTOPILOT_BLOCKER_PLAYBOOK.md`, `ATS_RETRY_MATRIX.md`, or `AUTONOMOUS_RUNBOOK.md` only when that depth is needed.
+5. Open `AUTOPILOT_BLOCKER_PLAYBOOK.md`, `ATS_RETRY_MATRIX.md`, or `AUTONOMOUS_RUNBOOK.md` only when that depth is needed. Search `LEARNING_LOOP.md` by ATS, company, or error phrase; never read it end to end at startup.
 
 Application batches ignore `INTERVIEW_PREP/`; that directory is for interview-specific work only.
 
@@ -29,8 +29,10 @@ Do not call an application submitted without confirmation evidence. Do not inven
 - AI lane: AI platform, applied AI, LLM/RAG, agent/tooling, evaluation, serving, observability, data/AI pipelines, and backend-to-AI product roles.
 - SDE lane: backend, platform, distributed systems, Java/Python services, cloud, data platform, and backend-heavy full-stack roles.
 - Apply only when the role passes the current recency, employer-quality, geography, sponsorship, company-spread, and fit rules in `RECENCY_PREFLIGHT.md`.
+- Deep discovery is encouraged: inspect and rank a broad official-role pool before filling forms. Once the official JD, location, and central-responsibility fit pass, do not repeatedly re-litigate the same gate unless new evidence appears.
 - Skip deep model-research/scientist roles, weak keyword matches, staffing/vendor proxies, and incompatible eligibility requirements.
 - Do not apply to Capital One before `2027-01-07`.
+- Do not apply to Cargill during current autopilot batches unless Yaswanth explicitly reopens the employer; repeated prior attempts/signals say Cargill will not sponsor H-1B transfer.
 
 ## Execution Behavior
 
@@ -38,6 +40,8 @@ Do not call an application submitted without confirmation evidence. Do not inven
 - Respect a user instruction to stop before submit literally. Fill the form and stop at the final submit control.
 - Reuse the `Job Apply - Yaswanth` Chrome profile and keep the tab set lean.
 - Use official ATS/company pages for submission even when discovery starts elsewhere.
+- Treat authentication as routine execution: use the existing session or securely saved browser credential, create/sign in/reset through the job Gmail, use the newest relevant code/link, return to the exact job URL, and try a clean second route before recording an account blocker. Never ask for approval during this ladder.
+- For an unfamiliar field, use this order: documented answer, resume/JD/company-derived factual answer, closest truthful option, then blank or `N/A` when allowed. Never invent a material candidate, legal, eligibility, compensation, or private fact merely to force submission.
 - Recover ordinary account, upload, verification-code, widget, and validation friction before recording a blocker.
 - Never bypass CAPTCHA or guess legal/private facts. Use the blocker workflow and continue to another role.
 - Use the correct lane resume and the `.txt` fallback only when upload/parsing is unreliable.
@@ -45,6 +49,8 @@ Do not call an application submitted without confirmation evidence. Do not inven
 ## Tracker Contract
 
 - `JOB_APPLICATION_TRACKER.xlsx` is the only durable application state.
+- At the start of each newly launched batch, capture the live lane-specific `Submitted` total as that launch's baseline before discovery or submission. A new user launch with its own target is a new batch unless Yaswanth explicitly says to continue an earlier campaign; never reuse an older baseline by default.
+- Report current-batch progress as the current lane-specific `Submitted` total minus that launch baseline. Keep current-batch, earlier-campaign, and lifetime totals explicitly separate.
 - Run the tracker-integrity gate before screening or writing.
 - Duplicate-check all lanes before filling and re-read the newest workbook immediately before final submit.
 - Use official job ID plus canonical requisition URL; same company/title can be a distinct role when the requisition, team, location, or JD is materially different.

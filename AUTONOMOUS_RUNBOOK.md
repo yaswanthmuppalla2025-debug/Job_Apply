@@ -13,23 +13,23 @@ This file owns the execution loop only. Do not duplicate policy here:
 
 ## Mission
 
-Maximize truthful, high/strong-fit submissions without per-role approval. Push through normal ATS friction, account creation, Gmail codes, upload fallbacks, form validation, and Chrome recovery after a role passes the fit gate. A hard-stopped role is one row outcome, not a stopped batch.
+Maximize truthful, high/strong-fit submissions without per-role approval. Spend enough discovery time to build a strong official-role pool, then push through normal ATS friction, account creation, Gmail codes, upload fallbacks, form validation, and Chrome recovery after a role passes the fit gate. A hard-stopped role is one row outcome, not a stopped batch.
 
 ## Runtime Loop
 
-At run start, reconcile live CAPTCHA tabs with `Parked Tab`, then rank retryable rows dynamically from the current `Blockers` sheet. Never use a memorized company queue. Fresh high-fit roles and high-fit blockers with a distinct safe recovery path outrank weak new roles.
+At run start, reconcile live CAPTCHA tabs with `Parked Tab`, then rank retryable rows dynamically from the current `Blockers` sheet. Never use a memorized company queue. Fresh high-fit roles and high-fit blockers with a distinct safe recovery path outrank weak new roles. Discover in broad official-source tranches and rank before filling; do not grab the first keyword match. Once the official JD, advertised location, and central-responsibility fit pass, do not rerun that judgment unless new evidence appears.
 
 For each role:
 
 1. Discover latest open roles from official company pages, ATS boards, LinkedIn, and reputable hiring portals.
 2. Run `RECENCY_PREFLIGHT.md` before filling anything, including canonical duplicate and company-spread checks.
-3. Skip early when the company is Capital One before `2027-01-07`, or when the role is stale, closed, duplicate, low-quality, no-sponsorship, legally ineligible, outside priority location, poor fit, or only medium/adjacent without a strategic-exception reason. Fit means JD intent maps to Yaswanth's backend-to-AI/platform plumbing profile, not just AI keywords.
+3. Skip early when the company is Capital One before `2027-01-07`, or when the role is stale, closed, duplicate, low-quality, no-sponsorship, legally ineligible, outside priority location, poor fit, medium/adjacent, or inflated beyond the seniority gate. Fit means JD intent maps to Yaswanth's backend-to-AI/platform plumbing profile, not just AI keywords.
 4. Choose the lane:
    - AI roles: `AI_ROLES/Yaswanth_Muppalla_AI_Resume.pdf`
    - SDE/backend roles: `SDE_ROLES/Yaswanth_Muppalla_SDE_Resume.pdf`
-5. Fill identity, contact, education, work authorization, sponsorship, location, EEO, and custom fields from `APPLICATION_PLAN.md`, `ANSWER_BANK.md`, the resume, JD, company context, and best truthful judgment.
+5. Fill identity, contact, education, work authorization, sponsorship, location, EEO, and custom fields from `APPLICATION_PLAN.md`, `ANSWER_BANK.md`, the resume, JD, company context, and best truthful judgment. For an unfamiliar field, use documented facts first, then factual inference, closest truthful option, and blank/`N/A` when allowed; never invent a material fact.
 6. Treat OmInsights as a personal technical portfolio/learning project only. It is not an active company/product business, employer, consulting business, advisory role, revenue activity, secondary employment, or outside work Yaswanth is committing to continue after joining. For compliance fields, answer from the OmInsights compliance rule in `APPLICATION_PLAN.md` and `ANSWER_BANK.md`.
-7. Use normal account creation, Gmail codes, and official ATS private identity fields when required.
+7. Use the existing authenticated session or securely saved browser credential first. Otherwise create/sign in, reset through job Gmail, use only the newest relevant code/link, return to the exact role URL, and try one clean direct-route reload before treating authentication as blocked. Do not ask for approval during this ladder.
 8. Immediately before final submit, re-read the newest `AI`, `SDE`, and `Blockers` rows. Stop if the job was submitted/already applied or separately claimed by another agent; allow a current eligible blocker retry to match its own row.
 9. Submit when the role is high/strong fit and all required fields are truthfully complete.
 10. Capture proof from confirmation page, application ID, portal state, or Gmail receipt.
@@ -74,17 +74,13 @@ When normal friction appears, do not give up:
 After every role:
 
 - `JOB_APPLICATION_TRACKER.xlsx` has current status.
-- Proof, skip reason, or blocker detail is recorded.
+- Proof or blocker detail is recorded for tracker-worthy outcomes; broad skip-noise remains unlogged.
 - `Blocked - ATS` and non-CAPTCHA `Blocked - Other` rows have recovery fields filled in `Blockers`.
 - Gmail confirmation was checked when practical.
 - Tabs are clean enough for the next role.
 - `Parked Tab` values match the actual live CAPTCHA handoff tabs.
 
-Every 2-3 hours, or every 50 submitted applications:
-
-- Add 5-6 high-value sentences to `LEARNING_LOOP.md` only if new reusable observations exist.
-- Focus on ATS-specific patterns, field mappings, upload/account/code recovery, Gmail confirmation behavior, source-mixing/CAPTCHA lessons, and tracker classification.
-- Do not add generic narration, motivation, copied policy, credentials, passwords, codes, private identity values, or private email content.
+At long-run checkpoints, add one concise observed-pattern -> successful-action lesson only when it is genuinely new. Search `LEARNING_LOOP.md` by ATS/company/error phrase instead of reading it end to end, and never add generic narration, copied policy, credentials, codes, private values, or private email content.
 
 ## Morning Summary
 

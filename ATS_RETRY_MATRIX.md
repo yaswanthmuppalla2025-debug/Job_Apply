@@ -8,12 +8,13 @@ Use this when a specific ATS behaves badly. The goal is to recover and submit wh
 2. Fill required fields from plan, answer bank, resume, JD, and safe judgment.
 3. Run the pre-submit required-widget sweep.
 4. Submit once.
-5. If no confirmation, read visible validation errors and inspect selected values.
-6. Try the ATS-specific recovery below.
-7. Try a second distinct recovery path before blocking, such as direct ATS URL, embedded URL, official company route, reload/refill, PDF -> DOCX, text resume fallback, account reset, Gmail code, or Chrome reconnect.
-8. For high-fit roles, use a third serious attempt when a safe path remains.
-9. Check Gmail before marking failed.
-10. Add a real `Blockers` row only after recovery fails, with `Attempt Count`, `Recovery Tried`, and `Next Action` filled.
+5. After any submit, email-code, or security-code attempt, inspect the current URL, title, visible body text, portal state, and Gmail proof before retrying the same widget. Confirmation/thanks/received proof wins over stale validation text.
+6. If no confirmation, read visible validation errors and inspect selected values.
+7. Try the ATS-specific recovery below.
+8. Try a second distinct recovery path before blocking, such as direct ATS URL, embedded URL, official company route, reload/refill, PDF -> DOCX, text resume fallback, or Chrome reconnect. For login walls, complete the full session/saved-credential -> sign-in/signup -> job-Gmail reset/code -> exact-job return -> clean-route ladder in `AUTOPILOT_BLOCKER_PLAYBOOK.md`.
+9. For high-fit roles, use a third serious attempt when a safe path remains.
+10. Check Gmail before marking failed.
+11. Add a real `Blockers` row only after recovery fails, with `Attempt Count`, `Recovery Tried`, and `Next Action` filled.
 
 ## Greenhouse
 
@@ -30,7 +31,9 @@ Recovery:
 - Use official `job-boards.greenhouse.io` or embedded `job_app` URL when company button fails.
 - Confirm resume file card or use manual resume entry.
 - Use exact EEO option text; avoid fuzzy dropdown matching.
+- After any submit or security-code attempt, first inspect the current URL, page title, and visible body text. If Greenhouse is on `/confirmation` and shows `Thank you for applying` or `Your application has been received`, stop retrying the code widget and record the role as screen-confirmed submitted.
 - For Greenhouse security codes, treat the Gmail-delivered code as recoverable ATS verification, not CAPTCHA. Retrieve the newest relevant code from job Gmail, clear all boxes, type one character per box, and if duplicate characters appear, press End then Backspace once in each box before verifying the joined code.
+- If the segmented code widget becomes polluted with doubled text, stale tail text, or disabled-submit state after two cleanup paths, reload/refill the same official role once instead of continuing to mutate the corrupted widget. Re-check for `/confirmation` before redoing the code step.
 - If final submit returns to the form, wait briefly, check Gmail, then reload/refill once before blocking.
 
 ## Ashby
@@ -79,14 +82,14 @@ Common issues:
 
 Recovery:
 
-- Create/sign in using the job email and the user-provided live credential.
+- Create/sign in using the job email and the credential securely saved in the dedicated profile or supplied at runtime.
 - Use Gmail OTP codes from the newest relevant Workday sender.
 - Use `PRIVATE_APPLICATION_FIELDS.md` for official Workday last-4 SSN, DOB, or month/day DOB fields; never record the private values.
 - Prefer `Apply Manually` if upload is unstable.
 - Complete source fields exactly, including hierarchical source choices when present.
 - Verify review page shows phone `+1`, contact method, sponsorship answers, and required profile sections before submit.
 - After account creation, navigate back to the exact job application URL, not only the careers home.
-- If an account exists but login fails, use password reset through the job Gmail when available, set the same live credential, then return to the exact job URL.
+- If an account exists but login fails, use password reset through the job Gmail when available, set the secure runtime credential, then return to the exact job URL.
 - If Workday drops into candidate home/profile, reopen the exact job URL after login and continue the active application.
 
 Known retry pattern:
@@ -118,7 +121,7 @@ Common issues:
 
 Recovery:
 
-- Create normal account using job email and the user-provided live credential.
+- Create a normal account using the job email and the credential securely saved in the dedicated profile or supplied at runtime.
 - Use Gmail verification and return to the same job URL.
 - Fill source/referral as `LinkedIn`, `Company careers page`, or `Not referred` when truthful.
 - Open every required accordion/profile section and verify completion state.
@@ -167,7 +170,7 @@ Recovery:
 
 - Toggle stale dropdowns to another option, then back to the intended option, blur, and continue.
 - Wait 10-15 seconds after final submit if the URL is changing or button is disabled.
-- Create/sign in using job email and the user-provided live credential and return to the exact role URL.
+- Create/sign in using the job email and secure saved/runtime credential, then return to the exact role URL.
 - If the page remains technically impossible after one clean reload/refill, mark `Blocked - ATS`.
 
 ## Source Mixing To Reduce CAPTCHA

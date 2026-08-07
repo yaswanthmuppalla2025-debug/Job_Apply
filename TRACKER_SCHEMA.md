@@ -35,7 +35,7 @@ Columns:
 | Date | Date the outcome was recorded. |
 | Company | Company name. |
 | Role | Role title. |
-| Location | Job location or remote eligibility when visible. |
+| Location | Actual advertised job location or remote eligibility. Never substitute applicant location or employer headquarters. |
 | Status | `Submitted` or `Already Applied` only. |
 | Posted Date | Official posting/repost date when available. |
 | Age Days | Days from posted date to check/application date when easy. |
@@ -43,7 +43,7 @@ Columns:
 | Application URL | Official company/ATS/LinkedIn role URL. Prefer the stable requisition URL over tracking, apply-step, confirmation, or thank-you variants. |
 | Source | Discovery or apply source, such as `Greenhouse`, `LinkedIn Easy Apply`, or `LinkedIn -> Workday`. |
 | ATS | Greenhouse, Ashby, Lever, Workday, Workable, Oracle/Taleo, LinkedIn Easy Apply, etc. |
-| Fit | Required for new `Submitted` rows: `High - JD intent: <backend-to-AI/platform reason>`, `Strong - JD intent: <reason>`, `Strategic Exception: <3-requirement evidence>`, or `High - Exceptional 16-120 day AI match: <reason>`. Keep it short; do not submit blank, low, unknown, keyword-only, or merely adjacent fits. A 16-120 day role cannot use `Strategic Exception`. |
+| Fit | Required for new `Submitted` rows: `High - JD intent: <central responsibility + evidence>`, `Strong - JD intent: <central responsibility + evidence>`, or `High - Exceptional 16-120 day AI match: <3-requirement evidence>`. Keep it short; do not submit blank, low, unknown, keyword-only, merely adjacent, or strategic-exception fits. |
 | Sponsorship | `Yes`, `No`, `Unknown`, or `N/A`; use `Yes` only after checking JD/form language. |
 | Confirmation Proof | Gmail receipt, success page, application ID, or clear portal proof. |
 | Notes | Concise non-private proof or duplicate detail. |
@@ -163,12 +163,25 @@ A non-CAPTCHA technical blocker must show at least 2 serious attempts and 2 dist
 
 ## Recency Gate
 
-Autopilot applies to verified `0-15 day` roles by default. AI roles may use Yaswanth's exceptional live-post exception through `120 days` only when the official page is accepting applications, location and sponsorship are compatible, at least 3 primary JD responsibilities are resume-backed including a core backend-to-AI/API/platform responsibility, and there is no hard must-have mismatch.
+Autopilot applies to verified `0-15 day` roles by default. SDE/backend roles may use the live strong-fit exception through `90 days`, and AI roles may use the exceptional live-post exception through `120 days`, only when the official page is accepting applications, location and sponsorship are compatible, at least 3 primary JD responsibilities are resume-backed including a core backend-to-AI/API/platform/distributed-systems/backend-service responsibility, and there is no hard must-have mismatch.
 
 - `0-7 days`: highest priority.
 - `8-15 days`: apply only for strong resume/JD matches.
-- `16-120 days`: AI roles only, strongest-fit live-post exception; record the exceptional evidence in `Fit`.
+- `16-90 days`: SDE/backend roles require a genuine strong-fit live-post match; AI roles require an exceptional backend-to-AI/platform live-post match. Record the evidence in `Fit`.
+- `91-120 days`: AI roles only, strongest-fit live-post exception; record the exceptional evidence in `Fit`.
 - `Over 120 days`: skip.
 - `Unknown`: skip unless a reliable dated source proves the role is within 15 days and the official application page is open.
 
 If no high/strong matches exist inside the recency gate, scrape deeper through official/company/ATS sources instead of applying stale, medium-adjacent, or weak roles to chase volume.
+
+## Summary And Goal Counter
+
+- Summary metrics must be formulas derived from the current `AI`, `SDE`, and `Blockers` rows. Do not hand-maintain submission totals, active blocker totals, manual-review totals, or parked-tab counts.
+- Any temporary batch goal is measured from a live lane-specific workbook baseline captured before work begins, never from a hard-coded Markdown total. The workbook remains authoritative as submissions change.
+- A new user launch with its own filters and target creates a new batch baseline unless the user explicitly says to continue the prior campaign. Never carry an earlier baseline into a new launch merely because both targets are `100`.
+- Label the Summary rows as current-batch baseline, current-batch submitted, and current-batch remaining. The baseline note must identify the launch date and target so the counter cannot be mistaken for lifetime or earlier-campaign progress.
+- Current-batch submitted is `current lane Submitted total - current launch baseline`. `Already Applied`, blockers, exclusions, and unconfirmed attempts do not reduce the remaining target.
+- Checkpoints and final reports must state current-batch progress separately from earlier-campaign and lifetime totals.
+- If a baseline was missed or reused incorrectly, reconstruct it only from the proof-backed rows attributable to the current launch, record a concise targeted-correction note, and reverify formulas and exact row counts.
+- `CAPTCHA tabs currently open` counts only blocker rows whose `Parked Tab` value is exactly `Yes`; it must also reconcile with live Chrome tabs.
+- Historical run-day metrics may be retained only when clearly labeled historical and must not be used as the current-goal counter.

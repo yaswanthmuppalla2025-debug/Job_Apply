@@ -145,11 +145,11 @@ I am based in Atlanta, GA and open to remote, hybrid, or onsite roles in preferr
 
 ### Medium
 
-I am currently based in Atlanta, GA. I am open to remote roles, hybrid roles, and relocation for strong opportunities in preferred U.S. locations, including Atlanta, Austin/Dallas, North Carolina, Virginia, Tennessee, and other suitable U.S. hubs. I am not targeting Chicago-area or NYC/NY-only roles.
+I am currently based in Atlanta, GA. I am open to remote roles and hybrid or onsite opportunities in Atlanta, Austin/Dallas/Texas, North Carolina, Virginia, and Tennessee when the role is a strong fit.
 
 ### Long
 
-I am based in Atlanta, GA and open to remote, hybrid, or onsite opportunities when the role, team, and location are a strong fit. Preferred locations include Atlanta, Austin/Dallas, Virginia/DC, North Carolina, Tennessee, Florida, remote U.S. roles, and other suitable U.S. hubs based on the company and role. I am open to relocation for the right full-time opportunity, including hybrid roles in the location where I am applying, but I am not targeting Chicago-area or NYC/NY-only roles. If a form asks for a single location, use the best non-excluded option available in the posting.
+I am based in Atlanta, GA and open to remote, hybrid, or onsite opportunities when the role, team, and location are a strong fit. Preferred locations are Atlanta/Georgia, Austin/Dallas/Texas, North Carolina, Virginia, Tennessee, and nationwide Remote US. I am open to relocation for the right full-time opportunity in those locations. If a form asks for a single location, use the actual location of the role being applied to.
 
 ## Salary Logic
 

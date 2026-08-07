@@ -11,7 +11,7 @@
 - `ANSWER_BANK.md` contains reusable short, medium, and long answers for recurring custom application questions.
 - `PRIVATE_APPLICATION_FIELDS.md` contains application-only private identity values for official ATS fields; never copy those values into trackers, notes, screenshots, or learning-loop entries.
 - `AUTONOMOUS_RUNBOOK.md` contains the compact days/overnight execution loop, Chrome loop, checkpoints, and summary format.
-- `AUTOPILOT_BLOCKER_PLAYBOOK.md` is the single blocker and recovery source for ATS validation, upload, account/login, Gmail confirmation, manual/legal blockers, duplicate/cap handling, and morning-review rules.
+- `AUTOPILOT_BLOCKER_PLAYBOOK.md` is the single blocker and recovery source for ATS validation, upload, account/login, Gmail confirmation, manual/legal blockers, duplicate/cap handling, and blocker-review rules.
 - `ATS_RETRY_MATRIX.md` contains Greenhouse, Ashby, Lever, Workday, Oracle/Taleo, SmartRecruiters/iCIMS/native, Workable, Indeed, and Phenom/SuccessFactors recovery patterns.
 - `RECENCY_PREFLIGHT.md` contains the authoritative recency, fit, source, location, duplicate, and company-spread preflight.
 - `TRACKER_SCHEMA.md` is the source of truth for the master workbook columns, status labels, blocker logging, and CAPTCHA parking.
@@ -62,17 +62,18 @@ Fit calibration: prioritize backend-to-AI, RAG/LLM, agentic workflow, AI product
 
 Mode: `Aggressive Autopilot`.
 
-Goal: maximize truthful submissions for high/strong-fit roles that match Yaswanth's AI/SDE profile and are compatible with H-1B transfer. Codex should not pause for ordinary uncertainty, missing wording, optional fields, account creation, Gmail codes, upload friction, or normal ATS issues once a role passes the fit gate. Codex should use the resume, JD, company context, tracker, `ANSWER_BANK.md`, and judgment to keep moving.
+Goal: maximize truthful submissions for high/strong-fit roles that match Yaswanth's AI/SDE profile and are compatible with H-1B transfer. Codex should not pause for ordinary uncertainty, missing wording, optional fields, account creation, Gmail codes, upload friction, or normal ATS issues once a role passes the fit gate. Codex should use the resume, JD, company context, tracker, `ANSWER_BANK.md`, and judgment to keep moving. Deep discovery is allowed to take time; repeated re-analysis of a role that already passed the official JD, location, and central-responsibility gate is not.
 
 Preflight source of truth: use `RECENCY_PREFLIGHT.md` for recency, employer/source quality, location priority, and duplicate checks before filling any form.
 
 Hard-stop-only rule: do not stop the run. Mark a role skipped or blocked, record the exact reason, and continue unless the entire Chrome/profile/workspace is unavailable. Individual roles hard-stop only for:
 
 - Company is Capital One before `2027-01-07`; skip all Capital One AI/SDE/LinkedIn/Workday roles because current Power Day feedback says sponsorship support is unavailable at the eligible hire level until the 6-month reattempt window.
+- Company is Cargill during current autopilot batches unless Yaswanth explicitly reopens the employer; repeated prior applications/signals say Cargill will not sponsor H-1B transfer.
 - CAPTCHA, hCaptcha, reCAPTCHA, visual challenge, or anti-abuse page that cannot be completed by AI.
 - Role says no visa sponsorship, no immigration support, no H-1B transfer, no current/future sponsorship, citizen/GC-only, U.S.-person-only, clearance-only, or incompatible legal eligibility.
 - Role is an obvious low-quality staffing/consulting/vendor/recruiter/aggregator-proxy posting instead of a direct employer application.
-- Payment/request-for-money, scam-like behavior, or a form requiring credentials or private facts not provided in `PRIVATE_APPLICATION_FIELDS.md`.
+- Payment/request-for-money, scam-like behavior, a request to disclose an existing personal/email/bank credential, or a form requiring private facts not provided in `PRIVATE_APPLICATION_FIELDS.md`.
 - Required manual assessment, exercise URL, video, portfolio artifact, recruiter contact, reference, or legal attestation that cannot be truthfully completed from the plan/resume.
 - Portal remains technically impossible after the recovery ladder in `AUTOPILOT_BLOCKER_PLAYBOOK.md`.
 
@@ -105,17 +106,17 @@ Use `AUTOPILOT_BLOCKER_PLAYBOOK.md` as the single recovery source, and use `ATS_
 
 - Strong-fit target: prioritize verified high/strong-fit submissions over raw submission count.
 - Interview target: optimize the pipeline for at least 10 interview opportunities in the next 30 days.
-- Do not spend time on obvious poor fits, no-sponsorship roles, citizen/GC-only roles, expired roles, clearance-only roles, or roles older than 15 days unless they qualify for the strongest-fit AI-only 16-120 day live-post exception in `RECENCY_PREFLIGHT.md`.
-- Submission-volume pressure never overrides fit or recency: exhaust strong 0-15 day matches first, then use 16-120 days only for the strongest qualifying AI matches, and summarize the shortage when neither pool has qualified roles.
+- Do not spend time on obvious poor fits, no-sponsorship roles, citizen/GC-only roles, expired roles, clearance-only roles, or roles older than 15 days unless they qualify for the live strong-fit SDE/backend exception through 90 days or the strongest-fit AI exception through 120 days in `RECENCY_PREFLIGHT.md`.
+- Submission-volume pressure never overrides fit, level, or recency: exhaust strong 0-15 day matches first, then use 16-90 days for qualifying strong SDE/backend or exceptional AI matches and 91-120 days only for the strongest qualifying AI matches. Medium, strategic-exception, and inflated-seniority roles remain skips.
 - Quality targets never override the employer/source gate; skip random staffing, consulting, vendor, recruiter, W2-only, client-confidential, and aggregator-proxy roles even when they are easy submissions.
 - For strong-fit roles in target locations, push through normal ATS friction aggressively: direct company page, direct ATS URL, account creation, email verification, manual resume entry, reload/refill, and sensible form retries.
-- After 3 applications/attempts at one company within 30 days, use the soft company-spread rule in `RECENCY_PREFLIGHT.md`; rotate employers when there is no positive signal and the next role is not a materially different `High`/exceptional fit. Silence alone is not a hard block.
+- After 3 applications/attempts at one company within 30 days, use the saturated-company rule in `RECENCY_PREFLIGHT.md`; rotate employers when there is no positive signal. Same-company roles should proceed only when materially different, `High`/exceptional, and stronger than available fresh-company alternatives. After 5+ recent submissions with silence/no positive signal, skip by default unless Yaswanth explicitly requested that employer or the role is a rare exact-fit target. Silence alone is not a permanent hard block, but it should strongly lower priority.
 
 ## Search And Preflight Rules
 
 Use `RECENCY_PREFLIGHT.md` as the single source of truth for freshness, source quality, location priority, and duplicate prevention. Search broadly across company career pages, ATS boards, LinkedIn, Indeed, Wellfound, Y Combinator jobs, Built In, and reputable company-backed hiring sites, but submit through the official company/ATS page whenever available.
 
-If no high/strong resume matches exist inside the preflight gate, scrape deeper across official/company/ATS sources first, then report the shortage instead of applying stale, duplicate, medium-adjacent, low-quality, or off-location roles to chase volume. Mix sources and ATS platforms during long runs to reduce CAPTCHA/possible-spam pressure.
+If no high/strong resume matches exist inside the preflight gate, scrape deeper across official/company/ATS sources first, rank a broad pool by central-responsibility fit, freshness, employer spread, and application viability, then report the shortage instead of applying stale, duplicate, medium-adjacent, low-quality, or off-location roles to chase volume. Mix sources and ATS platforms during long runs to reduce CAPTCHA/possible-spam pressure.
 
 ## Dedicated Chrome Profile
 
@@ -125,7 +126,7 @@ Profile lock:
 
 - Chrome profile directory: `Profile 4`
 - Application email: `yaswanthmuppalla2025@gmail.com`
-- Job-application account credential: user-provided live credential, used only inside live official account flows.
+- Job-application account credential: use the credential saved in the dedicated Chrome profile or another secure runtime credential source, only inside live official account flows.
 - Private identity fields: use `PRIVATE_APPLICATION_FIELDS.md` only when official ATS forms require last-4 SSN, DOB, or month/day DOB.
 - Codex Chrome Extension is installed and enabled in this profile.
 - LinkedIn, Indeed, and Gmail were observed under this profile.
@@ -135,9 +136,7 @@ Codex selection rule:
 - Do not use the default Chrome extension instance blindly. First list available Chrome browser instances and select the extension instance whose metadata has `profileName: Job Apply - Yaswanth`.
 - If `Job Apply - Yaswanth` is not available through the Codex Chrome Extension, first reconnect/reopen Chrome and reselect the profile. If it remains unavailable, continue discovery-only review in the browser and note official links in the morning summary instead of switching to a personal/dev profile or creating queue files.
 - Do not use personal/dev browsing sessions for applications unless Yaswanth explicitly says to.
-- Safe AI command wording from Yaswanth: `Use the Job Apply - Yaswanth Chrome profile and start the AI job batch.`
-- Safe SDE command wording from Yaswanth: `Use the Job Apply - Yaswanth Chrome profile and start the SDE job batch.`
-- Overnight autopilot command wording from Yaswanth: `Use the Job Apply - Yaswanth Chrome profile and run the overnight autopilot batch for matching roles.`
+- Use the single canonical launcher in `START_HERE_AUTOPILOT.md`, replacing `[AI/SDE/both]` with the intended lane. Do not add narrower instructions that disable official ATS links, tracker/Gmail use, account recovery, or batch continuation.
 
 ## Chrome Operating Rules
 
@@ -166,24 +165,23 @@ Codex selection rule:
 
 ## Learning Cadence
 
-- Every 2-3 hours of applying, or every 50 submitted applications, add 5-6 high-value sentences to `LEARNING_LOOP.md` only if the run produced reusable observations.
-- Write learnings as observed pattern -> recovery/action. Example: `Greenhouse code boxes duplicated characters; clear boxes, type one character per box, then verify the joined code before submit.`
-- Prioritize ATS-specific behavior, company-specific field mappings, upload/account/code recovery, Gmail confirmation proof, CAPTCHA/source-mixing lessons, and tracker classification improvements.
-- Do not add generic status updates, motivation, credentials, passwords, one-off frustration, or policy restatements already covered by the plan/runbook/playbook.
+- At long-run checkpoints, add one concise observed pattern -> successful recovery/action only when it is new and reusable.
+- Search `LEARNING_LOOP.md` by ATS, company, or error phrase when friction appears; do not read the archive end to end at startup.
+- Do not add generic status updates, required sentence quotas, copied policy, credentials, codes, private values, private email content, or one-off frustration.
 
 ## Application-Time Decisions
 
 - Salary fields: decide at application time from the posted range, role seniority, location, and market context.
 - Location fields: decide at application time using the preferred and excluded locations below.
 - Role-specific long answers: draft directly from the JD, company context, and resume.
-- Recency/open-status behavior: apply only after confirming the role is open, within the verified 0-15 day gate by default or within the strongest-fit AI-only 16-120 day live-post exception, and reachable through an official company/ATS application page when available. Skip anything older than 120 days.
+- Recency/open-status behavior: apply only after confirming the role is open, within the verified 0-15 day gate by default, within the strong-fit SDE/backend 16-90 day live-post exception, or within the strongest-fit AI 16-120 day exception, and reachable through an official company/ATS application page when available. Skip SDE/backend roles older than 90 days and AI roles older than 120 days.
 - Duplicate behavior: use the official job ID and canonical role URL when available, check all three tracker sheets before filling, and re-read the newest workbook immediately before final submit. Concurrent agents must work non-overlapping lane/source slices; stop when the job is submitted/already applied or separately claimed, but allow an eligible retry to match its own blocker row.
 - Submit behavior: when Yaswanth starts an autopilot batch, that command is explicit approval to submit matching applications without per-application review.
-- Account creation behavior: during an approved autopilot run, create normal ATS/job-board/company-career accounts when required using the job email and user-provided live credential. Do not pause for ordinary account creation.
-- Credential hygiene: the live credential is allowed for job-application account creation in this workspace. Do not write it into trackers, learning-loop notes, screenshots, summaries, scratch outputs, or browser-visible notes. Use it only to complete account/login flows.
+- Account creation behavior: during an approved autopilot run, create normal ATS/job-board/company-career accounts when required using the job email and the securely saved or runtime credential. Do not pause for ordinary account creation.
+- Credential hygiene: use credentials only inside the dedicated Chrome profile and official account flows. Do not write or echo them in trackers, Markdown, learning notes, screenshots, summaries, scratch outputs, browser-visible notes, shell commands, or Git.
 - Private identity hygiene: values in `PRIVATE_APPLICATION_FIELDS.md` are allowed only for official ATS identity fields. Do not write those values into trackers, learning-loop notes, screenshots, summaries, scratch outputs, or browser-visible notes.
 - Do not ask Yaswanth for approval during an approved autopilot run. Decide ordinary fields from `APPLICATION_PLAN.md`, `ANSWER_BANK.md`, the JD, posted salary range, location, and available form options.
-- Judgment fallback: if a normal application field is not explicitly listed here, use best truthful judgment from the resume, JD, company context, tracker notes, and common application meaning. Do not turn ordinary missing wording, optional fields, or N/A-style fields into blockers.
+- Judgment fallback: if a normal application field is not explicitly listed here, use this order: documented answer -> factual resume/JD/company inference -> closest truthful option -> blank or `N/A` when allowed. A required non-material preference may use a conservative candidate-aligned default. Do not invent material candidate history, legal/eligibility, compensation, demographic, confidential-employer, or private facts merely to force submission.
 - N/A behavior: if a field is optional, irrelevant, or not applicable, use `N/A`, `Not applicable`, the closest truthful dropdown option, or leave it blank when the form allows blank values.
 - Closest-option behavior: if a form option does not exactly match the default answer, choose the closest truthful option and continue.
 - Blocker behavior: use `AUTOPILOT_BLOCKER_PLAYBOOK.md`; recover aggressively when safe, mark the role clearly only after recovery attempts, and continue the run instead of stopping.
@@ -191,11 +189,12 @@ Codex selection rule:
 - Blocked-row proof behavior: every `Blocked - ATS` and non-CAPTCHA `Blocked - Other` row must fill `Attempt Count`, `Recovery Tried`, `Next Action`, and exact non-private blocker notes in `Blockers`.
 - Hard blockers: mark and move on only for visual CAPTCHA/anti-abuse challenge, duplicate/already-applied state, payment/request-for-money, missing required information that cannot be truthfully derived from the resume/JD/defaults/private-field file, no-sponsorship/ineligible role, or a form that remains technically impossible after the recovery ladder. Use the simplified tracker statuses in `TRACKER_SCHEMA.md`.
 - Account creation is not a hard blocker when the form accepts normal email/password signup and the application email is usable.
-- Account/login recovery behavior: create the normal ATS/company account, try existing login once if the account exists, use password reset through the job Gmail when available, retrieve Gmail codes/links, complete required profile sections, and return to the exact job application URL before blocking.
+- Account/login recovery behavior: use the existing session or saved credential first; otherwise create the normal ATS/company account, try sign-in, use password reset through the job Gmail, retrieve the newest relevant code/link, complete required profile sections, return to the exact job application URL, and retry once through a clean official/direct route before blocking. Never ask for approval during this ladder. A failed login is one role outcome, not a stopped batch.
 - Last-4 SSN, DOB, and month/day DOB are not blockers when requested by a normal official ATS form; use `PRIVATE_APPLICATION_FIELDS.md`.
 - Do not bypass CAPTCHA, anti-abuse pages, visual security puzzles, or legal eligibility requirements. Treat those as hard blockers or manual review.
 - CAPTCHA parking behavior: for high-fit roles that pass all gates, fill every truthful field possible, leave the CAPTCHA/anti-abuse tab open for Yaswanth, record `Blocked - CAPTCHA` with `Blocker Type = CAPTCHA Parked`, `Retry Eligible = Manual Review`, `Parked Tab = Yes`, and continue in another tab. Keep at most 5 parked CAPTCHA tabs and never park stale/no-sponsorship/low-quality roles.
 - Capital One company cooldown: before `2027-01-07`, skip every Capital One role immediately and do not retry older Capital One Workday lessons. The current reason is company-level sponsorship support unavailable at the eligible hire level after Power Day, not resume fit.
+- Cargill company cooldown: skip every Cargill role during current autopilot batches unless Yaswanth explicitly reopens the employer. The current reason is repeated prior applications/signals that Cargill will not sponsor H-1B transfer, not resume fit.
 - Sponsorship hard skip: strictly skip any role whose JD or application says the employer does not sponsor visas, does not provide immigration support, cannot sponsor or transfer H-1B, does not sponsor now or in the future, requires no current/future sponsorship, or otherwise rejects visa-related work authorization support.
 - Compliance hard skip: strictly skip any role that clearly requires U.S. citizenship, permanent residency/green card, U.S.-person status, export-control eligibility that H-1B does not satisfy, active security clearance, or government/clearance eligibility not compatible with H-1B transfer.
 - If sponsorship is not mentioned or is ambiguous, apply and answer sponsorship questions truthfully from the defaults below.
@@ -237,7 +236,7 @@ Codex follows this rule: use the defaults below. If a field depends on the job, 
 
 | Question | Default Answer                                                     |
 |---|--------------------------------------------------------------------|
-| Preferred work location | Georgia/Atlanta; Dallas/Austin/Texas; Virginia/DC; North Carolina; Tennessee; Florida; Remote US only |
+| Preferred work location | Georgia/Atlanta; Dallas/Austin/Texas; North Carolina; Virginia; Tennessee; Remote US |
 | Open to remote roles? | Yes                                                                |
 | Open to hybrid roles? | Yes                                                                |
 | Open to onsite roles? | Yes                                                                |
@@ -250,11 +249,10 @@ Location search priority for agents:
 
 1. Georgia / Atlanta
 2. Dallas / Austin / Texas
-3. Virginia / DC
-4. North Carolina
+3. North Carolina
+4. Virginia
 5. Tennessee
-6. Florida
-7. Remote US
+6. Remote US
 
 ### Availability And Compensation
 

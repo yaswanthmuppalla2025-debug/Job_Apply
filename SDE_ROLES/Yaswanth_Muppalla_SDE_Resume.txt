@@ -1,41 +1,43 @@
 Yaswanth Muppalla
 Atlanta, GA | +1 845-663-4330 | yaswanthmuppalla2025@gmail.com | LinkedIn | GitHub
-Senior Software Engineer | Java/Python Backend | APIs & Distributed Systems | AWS | AI-Enabled Platforms
+Senior Software Engineer | Java/Python Backend | Distributed Systems & APIs | AWS/GCP | AI Platforms
 PROFESSIONAL EXPERIENCE
 Senior Software Engineer | American Express	Apr 2023 - Present
-Impact: Built Java/Python backend platform services and internal APIs processing 10M+ financial records, improved reporting efficiency by 35%, achieved 99% data accuracy, and reduced rerun/debug cycles by 3x.
-Built Java/Python backend services and internal APIs over SQL and MemSQL to consolidate 10M+ financial records across reporting and reconciliation workflows.
-Designed JSON-configurable service components for ingestion, validation, transformation, and reconciliation, reducing repeated backend code changes.
-Implemented Apache Flink parallel processing and batch/stream patterns for high-volume financial workloads with 99% data accuracy.
-Automated Apache Airflow orchestration with restartable jobs, dependency controls, failure handling, and runbooks, cutting rerun/debug cycles by 3x.
-Improved backend reliability with validation, logging, SLA checks, lineage, auditability, and production triage controls across financial workflows.
-Built internal Python AI copilots over pipeline metadata, run states, quality checks, and runbooks to assist support triage and root-cause analysis.
+Impact: Built a cross-cloud GCP-to-AWS data and API platform processing 10M+ financial records, improving reporting efficiency by 35%, achieving 99% data accuracy, and reducing rerun/debug cycles by 3x.
+Built JSON-configurable GCP ingestion pipelines for FIS files, translating BCA/CCA reporting and reconciliation rules into reusable processing components and AI-ready data contracts for governed retrieval, reporting, and downstream copilot APIs.
+Implemented Kafka-backed ingestion, Apache Flink processing, and Airflow orchestration for validation, joins, deduplication, enrichment, dependency controls, reruns, and failure recovery across reporting and AI workloads with audit-ready execution.
+Published governed outputs to BigQuery curated tables with quality checks, lineage, and audit controls for consumption by APIs, reporting applications, and downstream AI copilots through stable service contracts and traceable access patterns.
+Exposed curated data through AWS API Gateway and Lambda services for analytical reads and low-latency reporting, with API contracts, retries, SLA monitoring, and tracing for reporting and copilot consumers.
+Designed an IRIS-backed AI ingestion and semantic retrieval layer with document extraction, chunking, metadata enrichment, scoped search, and batch publishing for grounded copilot retrieval with source-level traceability and retrieval quality controls.
+Developed AI copilot services with agent/context orchestration, source-ledger tracking, controlled prompt assembly, citations, guardrails, evaluation traces, and audit-friendly response logs for production support and response-quality diagnostics.
 Software Engineer | Skechers	Oct 2020 - Mar 2023
-Impact: Delivered 15+ Python APIs, maintained 99.9% uptime, reduced infrastructure costs by 22%, migrated 35M+ records, and cut incident resolution time by 40%.
-Developed 15+ production REST APIs with Python and Pydantic on AWS Lambda and Step Functions for loyalty/campaign workflows, maintaining 99.9% uptime.
-Applied layered service architecture across serverless applications, separating validation, orchestration, data access, retry handling, and integrations.
-Migrated 35M+ production records from SFMC to MongoDB, improving query performance by 50% through optimized indexing and caching strategies.
-Architected a loyalty rewards platform using SessionM APIs to process daily transactions under 500ms latency, contributing to a 20% increase in customer retention.
-Implemented real-time monitoring with CloudWatch, Datadog, alerts, and API failure tracing, reducing incident resolution time by 40% and maintaining SLA compliance.
-Integrated AWS Step Functions workflows to coordinate async processing, retries, and downstream service calls across loyalty and marketing data operations.
+Impact: Delivered 15+ Python APIs and event-driven services, maintained 99.9% uptime, reduced infrastructure costs by 22%, migrated 35M+ records, and cut incident resolution time by 40%.
+Developed 15+ Python/Pydantic REST APIs on AWS Lambda and API Gateway for loyalty and campaign workflows, sustaining 99.9% uptime.
+Orchestrated event-driven processing with Step Functions, retries, timeout handling, and downstream service calls, isolating failures across distributed loyalty operations.
+Applied layered service architecture across validation, orchestration, data access, retry handling, and downstream integrations.
+Migrated 35M+ SFMC records to MongoDB and improved query performance by 50% through indexing and caching.
+Integrated SessionM, SFMC, MongoDB, and AWS services for loyalty workflows with sub-500ms transactions.
+Improved production resilience with CloudWatch/Datadog alerts, API failure tracing, retries, and SLA-focused incident response.
 Full-Stack Developer | SOCH Inc. - Richmond, VA	Jan 2020 - Sep 2020
-Developed a Spring Boot-based ticketing system that streamlined issue intake, tracking, and resolution workflows for government clients.
-Built Spring REST microservices with API controllers, validation, exception handling, and service-layer separation to improve scalability.
-Used Java concurrency patterns with ExecutorService/CompletableFuture for async ticket notifications, background jobs, and thread-safe workflow updates.
-Built full-stack workflow features across backend services and issue management screens to improve usability for operational teams.
-FOUNDER-LED TECHNICAL PROJECTS
-OmInsights - Founder-Led Backend Platform Build	Jan 2024 - Present
-Built an Angular/FastAPI backend platform with REST APIs, async file processing, MongoDB workspace modeling, auth-aware flows, and AWS/Docker deployment paths.
-Designed typed REST contracts, service boundaries, repository/service layers, and background workers across UI and Business Service workflows.
-Implemented document ingestion/search services for upload, parsing, normalization, chunking, source tracking, OpenSearch, and MongoDB-backed retrieval.
-Added AI-enabled RAG/copilot workflows with scoped retrieval, citations, LLM orchestration, and production-safe answer grounding.
+Built a Spring Boot ticketing platform with REST microservices, validation, exception handling, and service-layer boundaries for government workflows.
+Designed Spring REST services with API controllers, request validation, exception handling, and service-layer separation for maintainable government workflows.
+Used Java ExecutorService/CompletableFuture for asynchronous ticket updates, notifications, and background job execution.
+Managed concurrency with thread-safe collections, synchronization, timeouts, and full-stack operational workflow screens.
+FOUNDER-LED 0-TO-1 TECHNICAL PROJECT
+OmInsights - Founder-Led Backend & AI Platform Build	Jan 2024 - Present
+Impact: Built a six-component backend and AI platform with tenant-scoped APIs, async processing, CDK-managed AWS infrastructure, ECS/Fargate services, and controlled agent workflows with evaluation and traceability across tenant-aware AI responses.
+Architected FastAPI services with auth/tenant isolation, typed REST contracts, repository/service boundaries, MongoDB/OpenSearch persistence, and background workers for AI-enabled application workflows and policy-aware orchestration.
+Provisioned AWS environments with CDK and CI/CD, deploying containerized Context Engine/MCP services to ECS/Fargate with S3/SQS, secrets/config, autoscaling, and observability for backend and agent services across repeatable environments.
+Implemented asynchronous document processing through S3, SQS router/worker Lambdas, DLQs, idempotency keys, and MongoDB/OpenSearch publishing with retry-aware error classification, reliable reprocessing, and retrieval indexing.
+Built MCP/API runtime patterns and a shared LLM gateway for model routing, tool execution, retries/fallbacks, usage logging, and execution traces for production agent workflows, model/provider behavior, and operational diagnostics.
+Engineered context orchestration and retrieval with session state, selected documents, source ledgers, LLM-as-a-judge evaluations, guardrails, and citations for grounded, policy-aware responses under tenant-scoped context controls.
 TECHNICAL SKILLS
-Languages & Frameworks: Java 17, Python, Spring Boot, FastAPI, Pydantic, SQL, Scala, JavaScript/TypeScript
-Backend & APIs: REST APIs, microservices, internal APIs, async workers, Java concurrency, service contracts, API integrations
-Cloud & DevOps: AWS Lambda, Step Functions, ECS Fargate, S3, EC2, Docker, CloudFormation, Serverless, Jenkins CI/CD
-Data & Streaming: Apache Flink, Kafka, Airflow, MemSQL, MongoDB, OpenSearch/Elasticsearch, batch/stream processing, indexing
-Observability: Datadog, CloudWatch, Kibana, X-Ray, ELK Stack, data quality checks, alerting
-AI-Enabled Systems: internal copilots, RAG, LLM integrations, vector search, scoped retrieval, citations, production support workflows
+Languages & Frameworks: Java 17, Python, Scala, SQL, Spring Boot, FastAPI, Pydantic, TypeScript/Angular
+Backend & Distributed Systems: REST APIs, microservices, event-driven architecture, service contracts, Java concurrency, async workers, caching, retries, idempotency
+Cloud & DevOps: AWS, GCP, Lambda, API Gateway, ECS/Fargate, Step Functions, S3/SQS, Docker, AWS CDK/CloudFormation, CI/CD
+Data & Streaming: Kafka, Flink, Airflow, BigQuery, MemSQL, MongoDB, OpenSearch/Elasticsearch, batch/stream processing
+Observability: Datadog, CloudWatch, Kibana, X-Ray, ELK Stack, structured logging, SLA alerts, failure tracing
+AI Platform Systems: agent/context orchestration, MCP/FastMCP, LLM gateways, RAG/vector search, LLM-as-a-judge evaluations, guardrails, citations
 EDUCATION
 State University of New York, New Paltz | Master of Science, Computer Science | CGPA: 3.6/4.0	May 2020
 JNTUK | Bachelor of Technology | CGPA: 8.5/10	2018

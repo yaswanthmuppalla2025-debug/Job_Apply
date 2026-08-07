@@ -16,7 +16,7 @@ The goal is Aggressive Autopilot with Hard Stop Only: recover and submit high/st
 - Use `TRACKER_SCHEMA.md` as the only source of truth for status labels.
 - Put proof and exact blocker details in `Confirmation Proof`, `Recovery Tried`, `Next Action`, and `Notes`, not in custom status labels.
 - Real blockers must stay in the `Blockers` sheet after recovery fails so Yaswanth can review patterns and improve the system.
-- Blank helper fields, optional fields, N/A fields, unfamiliar wording, or unlisted ordinary questions are not blockers when the answer can be derived truthfully from the resume, JD, `ANSWER_BANK.md`, `APPLICATION_PLAN.md`, tracker notes, or common application meaning.
+- Blank helper fields, optional fields, N/A fields, unfamiliar wording, or unlisted ordinary questions are not blockers. Use documented answers first, then factual resume/JD/company inference, the closest truthful option, and blank/`N/A` when allowed. Never invent a material candidate, legal, eligibility, compensation, demographic, confidential-employer, or private fact.
 - OmInsights is a personal technical portfolio/learning project only. It is not an active company/product business, employer, consulting business, advisory role, revenue activity, secondary employment, or outside work Yaswanth is committing to continue after joining. Outside-work, secondary-employment, business-ownership, advisory/founder, conflict, and IP questions should be answered from the OmInsights compliance rule in `APPLICATION_PLAN.md` and `ANSWER_BANK.md`, not guessed from the resume title or project name.
 
 ## Hard Stops
@@ -123,13 +123,15 @@ Use this ordered protocol:
 
 1. Use only the `Job Apply - Yaswanth` Chrome profile.
 2. If a logged-in session exists, continue the form.
-3. If normal account creation is required, create the account with the job email and user-provided live credential.
-4. If the site says an account exists, try normal sign-in once with the job email and live credential.
-5. If sign-in fails and password reset is available through job Gmail, reset with the same live credential.
-6. Retrieve only the newest relevant Gmail code or link for the active application.
-7. After account creation, sign-in, or reset, return to the exact official job application URL, not just the careers homepage.
-8. If the portal requires profile setup before the job form, complete only required profile sections from resume/defaults and return to the job.
-9. If CAPTCHA, visual anti-abuse prompt, OTP outside Gmail, inaccessible reset, or another non-AI challenge blocks the account, use `Blocked - CAPTCHA` or `Blocked - Other`.
+3. Try the credential securely saved in the dedicated browser profile or supplied at runtime; never ask for approval merely to authenticate.
+4. If normal account creation is required, create the account with the job email and secure live credential. If the email is already registered, switch immediately to sign-in rather than retrying signup.
+5. If sign-in fails, use password reset through job Gmail, open only the newest relevant reset link/code, and set the secure runtime credential.
+6. After account creation, sign-in, or reset, return to the exact official job application URL, not just the careers homepage or candidate home.
+7. If the portal requires profile setup before the job form, complete only required profile sections from resume/defaults and return to the exact job.
+8. If the portal loops, try one clean second route: reopen the canonical job URL in the same profile, use the direct ATS/company route, and sign in again. Do not repeat one failed click more than twice.
+9. Record an account blocker only after the session/saved-login, sign-in or signup, job-Gmail reset, exact-job return, and clean-route recovery paths are exhausted. CAPTCHA, visual anti-abuse, OTP outside accessible job Gmail, account lock, or inaccessible reset may hard-stop the role.
+
+A failed sign-in is never enough by itself to mark a role blocked. Authentication recovery requires no per-role approval, and an unresolved account is one blocker row, not a stopped batch.
 
 Never store passwords, codes, or private email content in trackers, docs, screenshots, scratch outputs, summaries, or learning notes.
 
@@ -137,8 +139,10 @@ Never store passwords, codes, or private email content in trackers, docs, screen
 
 - Greenhouse or ATS email/security codes sent to the job Gmail are recoverable verification steps, not CAPTCHA.
 - Search `yaswanthmuppalla2025@gmail.com` only for the active company, ATS, or domain.
-- Use only the newest relevant code for the active job flow, and never store the code in trackers, notes, screenshots, or learning entries.
+- Before fetching another code or retrying code boxes, inspect the current URL, page title, visible body text, portal state, and Gmail for confirmation proof. A confirmation/thanks page, application ID, received message, or matching Gmail receipt means `Submitted`; stop touching the widget.
+- Use only the newest relevant code for the active job flow, and never store the code in trackers, notes, screenshots, summaries, or learning entries.
 - For Greenhouse segmented code boxes, clear all boxes, enter one character per box, verify the joined code matches the email, then submit.
+- If segmented boxes duplicate characters or retain stale tail text, try at most two distinct cleanup paths, then reload/refill the exact official role or request one fresh code when supported.
 - If the code expires, request one fresh code when supported.
 - If the code is missing or still fails after one fresh-code attempt, use `Blocked - ATS` and record the email-code issue.
 
@@ -176,7 +180,7 @@ Never store passwords, codes, or private email content in trackers, docs, screen
 - Exact job ID/canonical role URL already `Submitted`/`Already Applied`, portal-proven submission, or same-company/title role shown to be the same requisition means skip or `Already Applied`. An exact `Blockers` match means resume and update that row when eligible, not start another application.
 - If the same company/title has a different or unknown ID, compare team, location, and JD; a materially distinct requisition may proceed. A common title at another company is not a duplicate.
 - Re-read the newest workbook immediately before final submit. Stop if another agent submitted or separately claimed the exact/non-distinct role; a current eligible retry may match its own blocker row. Concurrent agents must use non-overlapping lane/source slices.
-- If a company has an explicit application cap, submit the strongest roles first and obey the cap. Otherwise, after 3 applications/attempts there in 30 days, do one focused job-Gmail signal check and apply again only for a materially different `High`/exceptional fit when no recruiter, assessment, interview, or hiring-team signal exists. Generic receipts, rejections, and silence are not positive signals; silence alone is not a permanent hard block.
+- If a company has an explicit application cap, submit the strongest roles first and obey the cap. Otherwise, after 3 applications/attempts there in 30 days, do one focused job-Gmail signal check. Generic receipts, rejections, and silence are not positive signals. Without recruiter, assessment, interview, or hiring-team signal, treat the company as saturated for this batch and rotate to fresh qualified employers. Apply there again only for a materially different `High`/exceptional fit that is stronger than the available fresh-company alternatives; after 5+ silent recent submissions, skip by default unless Yaswanth explicitly requested the employer or the role is a rare exact-fit target. Silence alone is not a permanent hard block, but it should strongly lower priority.
 
 ## Chrome Recovery
 
