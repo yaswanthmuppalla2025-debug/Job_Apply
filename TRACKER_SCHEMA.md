@@ -1,187 +1,104 @@
 # Tracker Schema
 
-Use `JOB_APPLICATION_TRACKER.xlsx` as the single source of truth for application tracking.
+`JOB_APPLICATION_TRACKER.xlsx` is the durable source of application outcomes. It has exactly four active sheets: `Summary`, `AI`, `SDE`, and `Blockers`.
 
-The workbook has exactly four active sheets:
+## Deterministic Integrity Gate
 
-- `Summary`
-- `AI`
-- `SDE`
-- `Blockers`
+Run this once at batch start and again only after a workbook read/write, header, formula, or duplicate-lookup failure:
 
-The tracker helps Codex move faster, not create new blockers. Keep `AI` and `SDE` lean for readable submission history. Put recovery detail in `Blockers` only when it helps future retries or Yaswanth review.
+1. The workbook opens and the four required sheets are readable.
+2. `AI`, `SDE`, and `Blockers` contain the required identity, status, URL, and proof/recovery headers listed below.
+3. Exact official job ID and canonical-URL lookup works across all three outcome sheets.
+4. A new row can be written using the existing table/format without overwriting headers, formulas, or historical rows.
+5. Required Summary counters contain no formula errors. Optional metadata blanks and legacy blank `Fit` values do not fail the gate.
 
-## Core Principle
+If the gate fails, do not overwrite, bulk-normalize, or invent a restored snapshot. Continue discovery in agent context or OS temporary storage, repair only the affected structure from direct evidence, and pause final submission until duplicate lookup plus safe durable writing are restored. Re-run the gate, then continue the batch without asking for workflow approval.
 
-- Before any duplicate check or write, run a tracker-integrity gate: verify that `AI`, `SDE`, and `Blockers` have the expected headers, plausible status totals, and no implausible concentration of one canonical `Company` + `Role` + `Application URL` row. If the workbook fails this gate, pause all tracker-based screening and writes; restore a validated snapshot and reconcile only proof-backed later records before resuming.
-- Treat historical rows as read-only history when they contain legacy blank `Fit` values, optional metadata gaps, or the retired blocker status `Resolved`. Do not bulk-normalize, delete, or backfill them by inference. New rows and rows edited for another valid reason must follow the current schema; targeted repairs require direct confirmation, portal, official-role, or browser-history evidence.
-- New rows go at the top under the header.
-- Update the tracker after every submitted, already-applied, or blocked outcome.
-- Do not log broad skip-noise in the workbook. Stale, no-sponsorship, closed, low-quality staffing/vendor, poor-fit, and roles outside the allowed recency policy are still skipped, but they are not daily-readable rows unless they become `Already Applied` or a real blocker/manual-review item.
-- Before filling and again immediately before final submit, duplicate-check the official job ID when available plus `Company`, `Role`, and `Application URL` across `AI`, `SDE`, and `Blockers`. An exact job ID/canonical URL already `Submitted`/`Already Applied`, or portal-proven prior submission, is a hard duplicate. An exact `Blockers` match routes to that existing row rather than a new attempt; a retry may match its own row. Same-company/title rows with different or unknown IDs require a quick team/location/JD comparison.
-- After 3 applications/attempts at one company within 30 days, apply the soft company-spread rule in `RECENCY_PREFLIGHT.md`; this is not a new status or blocker row unless an explicit company cap or user cooldown exists.
-- Leave optional metadata blank when it is not derivable quickly. Blank helper fields are not blockers, but `Fit` is not a helper field for new `Submitted` rows.
-- Do not create separate report, queue, cache, CSV, or JSONL files for routine runs. `JOB_APPLICATION_TRACKER.xlsx` is the durable state.
-- Never store passwords, email codes, full SSN, DOB values, private identity values, passport, bank/payment details, or private email content in tracker cells.
+Historical rows are read-only unless direct portal, confirmation, official-role, or browser evidence supports a targeted repair.
 
-## AI And SDE Sheets
+## Exact Duplicate Identity
 
-Use `AI` for AI-first roles and LinkedIn-sourced AI roles. Use `SDE` for backend/SDE roles.
+- Before filling and immediately before final submit, compare official job ID plus canonical requisition URL across `AI`, `SDE`, and `Blockers`.
+- Remove tracking parameters and terminal apply/confirmation/thanks variants only when they still identify the same requisition. A generic careers, candidate-home, or confirmation URL is not a job ID.
+- Exact ID/canonical URL already `Submitted` or `Already Applied`, or portal-proven prior submission, is a hard duplicate.
+- An exact `Blockers` match belongs to that existing attempt; update it when retry-eligible rather than opening a second application.
+- Same company/title with different or unknown IDs gets one quick team/location/JD comparison. Materially distinct requisitions may proceed.
+- Concurrent agents use non-overlapping source/lane slices. Re-read the newest tracker before final submit; if another owner recorded the exact role, skip that requisition and continue the batch.
 
-Columns:
+## AI And SDE Outcome Sheets
 
-| Column | Fill Rule |
+Use `AI` for AI-lane outcomes and `SDE` for SDE-lane outcomes. Allowed statuses are only `Submitted` and `Already Applied`.
+
+Required columns:
+
+| Column | Rule |
 |---|---|
-| Date | Date the outcome was recorded. |
-| Company | Company name. |
-| Role | Role title. |
-| Location | Actual advertised job location or remote eligibility. Never substitute applicant location or employer headquarters. |
-| Status | `Submitted` or `Already Applied` only. |
-| Posted Date | Official posting/repost date when available. |
-| Age Days | Days from posted date to check/application date when easy. |
-| Recency Proof | Official or reliable dated proof URL. |
-| Application URL | Official company/ATS/LinkedIn role URL. Prefer the stable requisition URL over tracking, apply-step, confirmation, or thank-you variants. |
-| Source | Discovery or apply source, such as `Greenhouse`, `LinkedIn Easy Apply`, or `LinkedIn -> Workday`. |
-| ATS | Greenhouse, Ashby, Lever, Workday, Workable, Oracle/Taleo, LinkedIn Easy Apply, etc. |
-| Fit | Required for new `Submitted` rows: `High - JD intent: <central responsibility + evidence>`, `Strong - JD intent: <central responsibility + evidence>`, or `High - Exceptional 16-120 day AI match: <3-requirement evidence>`. Keep it short; do not submit blank, low, unknown, keyword-only, merely adjacent, or strategic-exception fits. |
-| Sponsorship | `Yes`, `No`, `Unknown`, or `N/A`; use `Yes` only after checking JD/form language. |
-| Confirmation Proof | Gmail receipt, success page, application ID, or clear portal proof. |
-| Notes | Concise non-private proof or duplicate detail. |
+| Date | Outcome date. |
+| Company | Direct employer name. |
+| Role | Exact role title. |
+| Location | Advertised role location/remote eligibility. |
+| Status | `Submitted` or `Already Applied`. |
+| Application URL | Canonical official company/ATS requisition URL. |
+| Fit | New submissions: `High - <central JD responsibility + evidence>` or `Strong - <central JD responsibility + evidence>`. |
+| Confirmation Proof | Success page, application ID, exact portal state, or requisition-matched Gmail receipt. |
+| Notes | Concise non-private proof or duplicate detail when useful. |
 
-Allowed statuses:
+Optional existing metadata—`Posted Date`, `Age Days`, `Recency Proof`, `Source`, `ATS`, and `Sponsorship`—may remain blank when not quickly available and not required by the active gate.
 
-- `Submitted`
-- `Already Applied`
-
-Do not use proof-flavored submitted status variants. Keep status simple and put proof in `Confirmation Proof` or `Notes`.
+Do not call a role `Submitted` without proof. Do not create proof-flavored status variants.
 
 ## Blockers Sheet
 
-Use `Blockers` for CAPTCHA, ATS, upload, account/login, anti-spam, manual/legal, missing-info, Chrome/profile, company-level hard blocks, and other real recovery items. Do not use blockers for ordinary email/security-code verification, account creation/reset, upload friction, or reasonable short assessments until the recovery budget is exhausted.
+Use `Blockers` only for real unresolved outcomes after bounded recovery or a genuine immediate hard boundary. Do not create blockers for ordinary account creation, job-Gmail codes, upload/widget friction, or short questionnaires before the recovery budget is used.
 
-Columns:
+Required columns:
 
-| Column | Fill Rule |
+| Column | Rule |
 |---|---|
-| Date | Date the blocker was recorded. |
-| Lane | `AI`, `SDE`, or `All` for company-level blocks that apply across lanes. |
-| Company | Company name. |
-| Role | Role title. |
-| Location | Job location or remote eligibility when visible. |
-| Status | One of the approved blocker statuses below. |
-| Blocker Type | Short exact type, such as `CAPTCHA Parked`, `Upload`, `Account/Login`, `Anti-spam`, `Manual/Legal`, or `Chrome/Profile`. |
-| Posted Date | Official posting/repost date when available. |
-| Age Days | Days from posted date to check/application date when easy. |
-| Application URL | Official company/ATS/LinkedIn application URL. |
-| Source | Discovery or apply source. |
-| ATS | ATS/platform name when known. |
-| Fit | Short fit signal. |
-| Attempt Count | Meaningful attempts on the same role. |
-| Recovery Tried | Concrete recovery actions tried, not vague text. |
-| Next Action | Exact next action if retry or human review is worthwhile. |
+| Date | Outcome date. |
+| Lane | `AI`, `SDE`, or `All` for a company-wide hard block. |
+| Company | Employer name. |
+| Role | Exact role title. |
+| Status | `Blocked - CAPTCHA`, `Blocked - ATS`, or `Blocked - Other`. |
+| Blocker Type | Exact type: `CAPTCHA Parked`, `Proof Pending`, `Upload`, `Account/Login`, `Validation`, `Manual/Legal`, `Missing Material Fact`, `Chrome/Profile`, etc. |
+| Application URL | Canonical official requisition URL. |
 | Retry Eligible | `Yes`, `No`, `Expired`, or `Manual Review`. |
-| Parked Tab | `Yes` only when a useful CAPTCHA/anti-abuse tab is intentionally open for Yaswanth; otherwise `No` or blank. |
-| Learning | `Yes` only for reusable ATS/company learning. |
-| Notes | Exact non-private blocker evidence. |
+| Parked Tab | `Yes` only when a useful exact-role handoff tab is currently live; otherwise `No` or blank. |
+| Notes | Exact non-private evidence. |
 
-Company-level blocker rows are allowed when a company should be skipped across all roles for a time-bound reason. Example: `Lane = All`, `Company = Capital One`, `Role = All Capital One roles`, `Blocker Type = Company Sponsorship Cooldown`, `Retry Eligible = No`, and `Next Action = Do not apply until 2027-01-07`.
+For recoverable technical blockers also fill `Attempt Count`, `Recovery Tried`, and `Next Action`. Existing optional columns such as location, source, ATS, fit, posted date, age, and learning may be used when helpful.
 
-Allowed blocker statuses:
+### Proof Pending
 
-- `Blocked - CAPTCHA`
-- `Blocked - ATS`
-- `Blocked - Other`
+When submit may have completed but confirmation is weak:
 
-Allowed `Retry Eligible` values:
+- Do not write `Submitted` or resubmit immediately.
+- Write/update `Blockers` as `Blocked - ATS`, `Blocker Type = Proof Pending`, `Retry Eligible = Yes`, with the exact ID/URL and the next portal/Gmail reconciliation action.
+- Reconcile the exact portal and Gmail once. Convert to `Submitted` only when proof appears; otherwise retain a truthful blocker or retry through one clearly safe path.
 
-- `Yes`
-- `No`
-- `Expired`
-- `Manual Review`
+This is the durable representation for an unconfirmed attempt and prevents accidental duplicate submission.
 
-## CAPTCHA Parking
+### Parked Tab Field
 
-Do not bypass CAPTCHA, hCaptcha, visual puzzles, anti-abuse pages, or visual security puzzles. Job-Gmail email/security codes are recoverable ATS verification steps, not CAPTCHA. Reasonable manual assessments are also recoverable when they can be answered truthfully from the resume, answer bank, JD, and careful role-specific judgment.
+Parking procedure belongs to `AUTOPILOT_BLOCKER_PLAYBOOK.md`. The tracker rule is simple: every `Parked Tab = Yes` row must match one live exact-role tab by requisition ID or canonical URL. Set it to `No` when the tab is gone or resolved; retain the historical blocker evidence.
 
-For a high-fit role that already passed recency, sponsorship, quality, location, and duplicate gates:
+## Minimum Outcome Rows
 
-- Fill every truthful field possible.
-- Stop at the visual CAPTCHA/hCaptcha/reCAPTCHA/anti-abuse challenge.
-- Leave the tab open for Yaswanth.
-- Add a `Blockers` row:
-  - `Status`: `Blocked - CAPTCHA`
-  - `Blocker Type`: `CAPTCHA Parked`
-  - `Retry Eligible`: `Manual Review`
-  - `Parked Tab`: `Yes`
-  - `Next Action`: `Yaswanth solve CAPTCHA, then submit/resume from same tab`
-  - `Notes`: `Form filled; CAPTCHA parked for human review`
-- Continue applying in another tab.
+- Submitted: date, company, role, status, canonical URL, fit, and confirmation proof.
+- Already applied: date, company, role, status, canonical URL when available, and proof note.
+- Blocker: date, lane, company, role, status, blocker type, canonical URL, retry eligibility, and evidence; add recovery fields for technical blockers.
 
-Keep at most 5 parked CAPTCHA tabs open. Each `Parked Tab = Yes` row must match a currently open tab for that exact role. Reconcile these rows with live tabs at run start and end; when the tab no longer exists, set `Parked Tab` to `No` while retaining the blocker row. If 5 are already parked, record the next CAPTCHA as `Blocked - CAPTCHA` with `Parked Tab` blank and move on.
+Write the next safe row using the workbook's existing table pattern. Do not force a top-row insertion when it risks formulas or formatting. Update immediately after every submitted, already-applied, blocker, or proof-pending outcome.
 
-Never park low-quality, stale, no-sponsorship, duplicate, staffing/vendor, or poor-fit roles.
+Do not log routine stale, closed, outside-filter, no-sponsorship, duplicate-without-useful-proof, staffing/vendor, or fit-mismatch skip noise.
 
-## Minimum Row Standard
+## Batch Counter
 
-For a submitted row, fill at least:
+- Capture live lane-specific `Submitted` totals before each new launch. A new target/filter launch is a new baseline unless the user explicitly continues a prior campaign.
+- Current-batch submitted = current lane `Submitted` total minus that launch baseline.
+- `Already Applied`, blockers, proof-pending, exclusions, and unconfirmed attempts do not reduce the remaining target.
+- Summary formulas, not Markdown snapshots, own totals. Report current-batch, earlier-campaign, and lifetime counts separately.
 
-- `Date`
-- `Company`
-- `Role`
-- `Status`
-- `Application URL`
-- `Confirmation Proof` or concise proof in `Notes`
+## Privacy And Repository State
 
-For an already-applied row, fill at least:
-
-- `Date`
-- `Company`
-- `Role`
-- `Status`
-- `Application URL` when available
-- `Notes` with duplicate/prior-submission proof
-
-For a blocker row, fill at least:
-
-- `Date`
-- `Lane`
-- `Company`
-- `Role`
-- `Status`
-- `Blocker Type`
-- `Application URL`
-- `Retry Eligible`
-- `Notes`
-
-For `Blocked - ATS` and non-CAPTCHA `Blocked - Other`, also fill:
-
-- `Attempt Count`
-- `Recovery Tried`
-- `Next Action`
-
-A non-CAPTCHA technical blocker must show at least 2 serious attempts and 2 distinct recovery paths unless a true hard boundary appeared immediately.
-
-## Recency Gate
-
-Autopilot applies to verified `0-15 day` roles by default. SDE/backend roles may use the live strong-fit exception through `90 days`, and AI roles may use the exceptional live-post exception through `120 days`, only when the official page is accepting applications, location and sponsorship are compatible, at least 3 primary JD responsibilities are resume-backed including a core backend-to-AI/API/platform/distributed-systems/backend-service responsibility, and there is no hard must-have mismatch.
-
-- `0-7 days`: highest priority.
-- `8-15 days`: apply only for strong resume/JD matches.
-- `16-90 days`: SDE/backend roles require a genuine strong-fit live-post match; AI roles require an exceptional backend-to-AI/platform live-post match. Record the evidence in `Fit`.
-- `91-120 days`: AI roles only, strongest-fit live-post exception; record the exceptional evidence in `Fit`.
-- `Over 120 days`: skip.
-- `Unknown`: skip unless a reliable dated source proves the role is within 15 days and the official application page is open.
-
-If no high/strong matches exist inside the recency gate, scrape deeper through official/company/ATS sources instead of applying stale, medium-adjacent, or weak roles to chase volume.
-
-## Summary And Goal Counter
-
-- Summary metrics must be formulas derived from the current `AI`, `SDE`, and `Blockers` rows. Do not hand-maintain submission totals, active blocker totals, manual-review totals, or parked-tab counts.
-- Any temporary batch goal is measured from a live lane-specific workbook baseline captured before work begins, never from a hard-coded Markdown total. The workbook remains authoritative as submissions change.
-- A new user launch with its own filters and target creates a new batch baseline unless the user explicitly says to continue the prior campaign. Never carry an earlier baseline into a new launch merely because both targets are `100`.
-- Label the Summary rows as current-batch baseline, current-batch submitted, and current-batch remaining. The baseline note must identify the launch date and target so the counter cannot be mistaken for lifetime or earlier-campaign progress.
-- Current-batch submitted is `current lane Submitted total - current launch baseline`. `Already Applied`, blockers, exclusions, and unconfirmed attempts do not reduce the remaining target.
-- Checkpoints and final reports must state current-batch progress separately from earlier-campaign and lifetime totals.
-- If a baseline was missed or reused incorrectly, reconstruct it only from the proof-backed rows attributable to the current launch, record a concise targeted-correction note, and reverify formulas and exact row counts.
-- `CAPTCHA tabs currently open` counts only blocker rows whose `Parked Tab` value is exactly `Yes`; it must also reconcile with live Chrome tabs.
-- Historical run-day metrics may be retained only when clearly labeled historical and must not be used as the current-goal counter.
+Never store passwords, codes, full SSN, DOB, passport, bank/payment information, private identity values, or private email content in the workbook. A small current-run queue may exist only in agent context or OS temporary storage without private data. Do not create routine repository queue, report, audit, cache, backup, CSV, JSON, or JSONL artifacts.

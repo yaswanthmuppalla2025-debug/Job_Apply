@@ -2,12 +2,12 @@ Yaswanth Muppalla
 Atlanta, GA | +1 845-663-4330 | yaswanthmuppalla2025@gmail.com | LinkedIn | GitHub
 AI Platform Engineer | Senior Software Engineer | Backend & Agent Systems | AWS/GCP
 PROFESSIONAL EXPERIENCE
-American Express | Senior Software AI Engineer	Apr 2023 - Present
-Impact: Delivered AWS-based Java/Python APIs and IRIS AI platform services plus Kafka/Flink/Airflow pipelines on GCP, improving reporting efficiency by 35%, achieving 99% data accuracy, reducing rerun/debug cycles by 3x, and accelerating applied AI delivery for credit-oversight copilots.
-Partnered with BCA/CCA data pipeline teams and built JSON-configurable Apache Flink pipelines on GCP for ingestion, transformation, joins, validation, and downstream publishing, translating workflow knowledge into AI-ready pipeline patterns for credit oversight use cases.
-Built Airflow workflow automation and API-facing publishing with dependency controls, rerun handling, SLA monitoring, data-quality checks, and failure alerting, creating reliable signals for downstream AI platform and copilot services.
+American Express | Senior Software Engineer | AI Engineer	Apr 2023 - Present
+Impact: Delivered AWS-based Java/Python APIs and IRIS AI platform services plus Kafka/Flink/Airflow pipelines for digital banking, improving reporting efficiency by 35%, achieving 99% data accuracy, reducing rerun/debug cycles by 3x, and accelerating applied AI delivery for credit-oversight copilots.
+Partnered with BCA/CCA data pipeline teams and built JSON-configurable Apache Flink pipelines on-premises for ingestion, transformation, joins, validation, and downstream publishing, later migrating them to GCP for digital-banking and credit-oversight use cases.
+Built Airflow workflow automation with dependency controls, rerun handling, SLA monitoring, data-quality checks, and failure alerting; published governed outputs to BigQuery and exposed controlled analytical paths through AWS API Gateway, Lambda, and ECS for reporting applications and digital-banking products, with stable data contracts, retries, and access controls.
 Designed an IRIS-backed RAG ingestion platform with document extraction, deduplication, upsert handling, segmentation, chunking, metadata enrichment, and batch publishing for semantic retrieval.
-Developed a reusable agent platform harness combining IRIS semantic search, scoped retrieval, prompt assembly, source-ledger tracking, and grounded response generation for credit oversight users.
+Developed a reusable MCP runtime harness combining IRIS semantic search, scoped retrieval, tool execution, prompt assembly, source-ledger tracking, and grounded response generation for credit-oversight users.
 Partnered with cross-functional product, data, and AI teams to engineer an agent context harness managing session state, selected documents, retrieved evidence, policy context, user intent, and controlled LLM input assembly.
 Strengthened operational excellence, observability, and governance across the agent runtime through retrieval logs, execution traces, citation mapping, guardrails, cache behavior, and audit-friendly response tracking.
 Skechers | Software Engineer	Oct 2020 - Mar 2023

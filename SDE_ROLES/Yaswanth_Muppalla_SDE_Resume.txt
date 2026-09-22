@@ -3,13 +3,13 @@ Atlanta, GA | +1 845-663-4330 | yaswanthmuppalla2025@gmail.com | LinkedIn | GitH
 Senior Software Engineer | Java/Python Backend | Distributed Systems & APIs | AWS/GCP | AI Platforms
 PROFESSIONAL EXPERIENCE
 Senior Software Engineer | American Express	Apr 2023 - Present
-Impact: Built a cross-cloud GCP-to-AWS data and API platform processing 10M+ financial records, improving reporting efficiency by 35%, achieving 99% data accuracy, and reducing rerun/debug cycles by 3x.
-Built JSON-configurable GCP ingestion pipelines for FIS files, translating BCA/CCA reporting and reconciliation rules into reusable processing components and AI-ready data contracts for governed retrieval, reporting, and downstream copilot APIs.
-Implemented Kafka-backed ingestion, Apache Flink processing, and Airflow orchestration for validation, joins, deduplication, enrichment, dependency controls, reruns, and failure recovery across reporting and AI workloads with audit-ready execution.
-Published governed outputs to BigQuery curated tables with quality checks, lineage, and audit controls for consumption by APIs, reporting applications, and downstream AI copilots through stable service contracts and traceable access patterns.
-Exposed curated data through AWS API Gateway and Lambda services for analytical reads and low-latency reporting, with API contracts, retries, SLA monitoring, and tracing for reporting and copilot consumers.
-Designed an IRIS-backed AI ingestion and semantic retrieval layer with document extraction, chunking, metadata enrichment, scoped search, and batch publishing for grounded copilot retrieval with source-level traceability and retrieval quality controls.
-Developed AI copilot services with agent/context orchestration, source-ledger tracking, controlled prompt assembly, citations, guardrails, evaluation traces, and audit-friendly response logs for production support and response-quality diagnostics.
+Impact: Built a cross-cloud data and API platform processing 10M+ financial records, improving reporting efficiency by 35%, achieving 99% data accuracy, and reducing rerun/debug cycles by 3x.
+Engineered JSON-configurable Java/Scala components and Kafka/Flink pipelines for batch and streaming ingestion, joins, deduplication, validation, enrichment, and governed publishing; migrated the platform from on-premises to GCP.
+Automated Airflow workflows with dependency controls, idempotent reruns, SLA monitoring, data-quality gates, and failure recovery across high-volume reporting workloads.
+Published governed outputs to BigQuery and exposed analytical services through AWS API Gateway, Lambda, and ECS using stable contracts, retries, access controls, and tracing.
+Improved platform reliability and auditability through reconciliation checks, lineage, structured logging, failure diagnostics, and production support across cross-cloud workflows.
+Extended the data foundation with an IRIS-backed RAG ingestion layer for extraction, chunking, metadata enrichment, scoped retrieval, citations, and grounded responses.
+Built MCP/API and agent-context services for controlled tool execution, session state, prompt assembly, guardrails, execution traces, and audit-ready source tracking.
 Software Engineer | Skechers	Oct 2020 - Mar 2023
 Impact: Delivered 15+ Python APIs and event-driven services, maintained 99.9% uptime, reduced infrastructure costs by 22%, migrated 35M+ records, and cut incident resolution time by 40%.
 Developed 15+ Python/Pydantic REST APIs on AWS Lambda and API Gateway for loyalty and campaign workflows, sustaining 99.9% uptime.
@@ -24,13 +24,13 @@ Designed Spring REST services with API controllers, request validation, exceptio
 Used Java ExecutorService/CompletableFuture for asynchronous ticket updates, notifications, and background job execution.
 Managed concurrency with thread-safe collections, synchronization, timeouts, and full-stack operational workflow screens.
 FOUNDER-LED 0-TO-1 TECHNICAL PROJECT
-OmInsights - Founder-Led Backend & AI Platform Build	Jan 2024 - Present
-Impact: Built a six-component backend and AI platform with tenant-scoped APIs, async processing, CDK-managed AWS infrastructure, ECS/Fargate services, and controlled agent workflows with evaluation and traceability across tenant-aware AI responses.
-Architected FastAPI services with auth/tenant isolation, typed REST contracts, repository/service boundaries, MongoDB/OpenSearch persistence, and background workers for AI-enabled application workflows and policy-aware orchestration.
-Provisioned AWS environments with CDK and CI/CD, deploying containerized Context Engine/MCP services to ECS/Fargate with S3/SQS, secrets/config, autoscaling, and observability for backend and agent services across repeatable environments.
-Implemented asynchronous document processing through S3, SQS router/worker Lambdas, DLQs, idempotency keys, and MongoDB/OpenSearch publishing with retry-aware error classification, reliable reprocessing, and retrieval indexing.
-Built MCP/API runtime patterns and a shared LLM gateway for model routing, tool execution, retries/fallbacks, usage logging, and execution traces for production agent workflows, model/provider behavior, and operational diagnostics.
-Engineered context orchestration and retrieval with session state, selected documents, source ledgers, LLM-as-a-judge evaluations, guardrails, and citations for grounded, policy-aware responses under tenant-scoped context controls.
+OmInsights - Founder-Led Applied AI Platform Build	Jan 2024 - Present
+Impact: Built a 6-component AI platform with tenant-scoped APIs, agent/context orchestration, MCP tool execution, async file processing, and source-backed intelligence with tenant isolation, citations, and traceability.
+Architected Angular UI, FastAPI Business Service, Context Engine, MCP Server, File Processing worker, and AWS deployment paths with CI/CD, environment promotion, secrets/config handling, and tenant-aware operations.
+Built an AI evaluation layer with groundedness, relevance, citation, and policy checks, LLM-as-a-judge scoring, and regression tracking.
+Designed Context Engine flows for chat/session memory, selected context, KB injection, prompt assembly, and LLM/context harness design for multi-turn agent orchestration, policy-aware grounding, and session continuity.
+Implemented MCP/API runtime patterns and a shared LLM gateway across platform layers, centralizing model/provider routing, request policies, retries/fallbacks, tool access, usage logging, and execution traces.
+Created single-founder execution playbooks across each platform layer for architecture decisions, implementation, deployment, testing, observability, and recovery, standardizing repeatable delivery and accelerating execution.
 TECHNICAL SKILLS
 Languages & Frameworks: Java 17, Python, Scala, SQL, Spring Boot, FastAPI, Pydantic, TypeScript/Angular
 Backend & Distributed Systems: REST APIs, microservices, event-driven architecture, service contracts, Java concurrency, async workers, caching, retries, idempotency
