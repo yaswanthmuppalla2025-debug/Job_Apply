@@ -1,194 +1,111 @@
 # ATS Retry Matrix
 
-Use this when a specific ATS behaves badly. The goal is to recover and submit when truthful, not to mark blockers too early.
+Open only the section matching the current platform after using the generic algorithm in `AUTOPILOT_BLOCKER_PLAYBOOK.md`. This file contains reusable ATS mechanics—not batch policy, candidate legal answers, hard-coded company retries, or reporting rules.
 
-## Universal Sequence
-
-1. Verify official open role and sponsorship compatibility.
-2. Fill required fields from plan, answer bank, resume, JD, and safe judgment.
-3. Run the pre-submit required-widget sweep.
-4. Submit once.
-5. If no confirmation, read visible validation errors and inspect selected values.
-6. Try the ATS-specific recovery below.
-7. Try a second distinct recovery path before blocking, such as direct ATS URL, embedded URL, official company route, reload/refill, PDF -> DOCX, text resume fallback, account reset, Gmail code, or Chrome reconnect.
-8. For high-fit roles, use a third serious attempt when a safe path remains.
-9. Check Gmail before marking failed.
-10. Add a real `Blockers` row only after recovery fails, with `Attempt Count`, `Recovery Tried`, and `Next Action` filled.
+For every ATS, verify the official requisition is still open, inspect committed values rather than typed text, check proof before resubmitting, and stay within the shared recovery budget.
 
 ## Greenhouse
 
-Common issues:
+Common failures: segmented email-code boxes duplicate characters; upload lacks a file card; EEO labels differ; submit returns to the form; invisible reCAPTCHA/anti-abuse appears.
 
-- Email/security code boxes duplicate characters.
-- Generic submit or processing error may actually be waiting for an email-code verification step.
-- Resume upload looks complete but no file card appears.
-- EEO dropdown labels differ by company.
-- Invisible reCAPTCHA leaves the form on the same page.
-
-Recovery:
-
-- Use official `job-boards.greenhouse.io` or embedded `job_app` URL when company button fails.
-- Confirm resume file card or use manual resume entry.
-- Use exact EEO option text; avoid fuzzy dropdown matching.
-- For Greenhouse security codes, treat the Gmail-delivered code as recoverable ATS verification, not CAPTCHA. Retrieve the newest relevant code from job Gmail, clear all boxes, type one character per box, and if duplicate characters appear, press End then Backspace once in each box before verifying the joined code.
-- If final submit returns to the form, wait briefly, check Gmail, then reload/refill once before blocking.
+- Prefer the official `job-boards.greenhouse.io` or company-embedded application URL.
+- Confirm the resume attachment card, not merely the filename field.
+- Select exact EEO option text and verify the underlying control.
+- After submit/code entry, inspect URL and body first. `/confirmation`, `Thank you for applying`, or `application received` is proof even if stale code text remains.
+- Use only the newest job-Gmail code. Clear every segment, enter one character per box, and verify the joined value.
+- If the code widget remains corrupted after two cleanup methods, reload/refill the exact role once rather than mutating the same boxes repeatedly.
+- A visible CAPTCHA/anti-abuse challenge is a user-only boundary.
 
 ## Ashby
 
-Common issues:
+Common failures: radio text looks selected while the input is unchecked; coordinate clicks miss submit; form resets; possible-spam page appears.
 
-- Visible radio text looks selected while the underlying input is not checked.
-- Submit button below viewport ignores coordinate clicks.
-- Possible-spam page appears after a completed form.
-- Fields reset after submit.
-
-Recovery:
-
-- Select underlying radio/checkbox inputs and verify checked state.
-- Use the real submit button locator so the page scrolls to the control.
-- If possible-spam appears after submit, check Gmail before marking blocked.
-- If fields reset, refill once, verify hidden selected values, and resubmit only once.
-- If Ashby flags possible spam again, mark `Blocked - CAPTCHA`.
-- Do not mark a normal Ashby validation/reset issue as blocked until a second path was tried, such as official Ashby URL, cleaned URL, reload/refill, or hidden-value selection.
+- Select the underlying radio/checkbox and verify checked state.
+- Use the real visible/accessibility submit control so the page scrolls to it.
+- If fields reset, refill once and verify hidden selected values before one safe resubmit.
+- On possible-spam, check URL, page text, portal state, and Gmail. If the anti-abuse state persists, use the CAPTCHA outcome.
 
 ## Lever
 
-Common issues:
+Common failures: location is typed but not selected; submit remains on `/apply`; hCaptcha appears.
 
-- Location typeahead text is typed but no selected-location value exists.
-- hCaptcha or visual challenge appears before or after final submit.
-- Submit remains on `/apply` with no visible errors.
-
-Recovery:
-
-- Choose the visible location suggestion and verify selected value.
-- Confirm resume upload/manual text and required custom questions.
-- If hCaptcha image/visual challenge appears, mark `Blocked - CAPTCHA`.
-- If a token exists but no confirmation appears, click submit once more, check Gmail, then block with exact page state.
-- If no visual challenge appears, retry through cleaned/direct Lever URL and reselect location/resume/custom fields before blocking.
+- Choose the visible location suggestion and verify a committed location token/value.
+- Confirm resume attachment/manual text and required custom questions.
+- If no challenge appears and proof is absent, retry once through the cleaned/direct Lever URL and reselect required controls.
+- A visible hCaptcha or visual challenge is a user-only boundary.
 
 ## Workday
 
-Common issues:
+Common failures: account flow interrupts the role; candidate home replaces the application; upload/parser resets profile; source/phone/date/review widgets look filled but remain invalid.
 
-- Account creation/sign-in interrupts application.
-- Resume upload or My Experience resets automation.
-- Last-4 SSN, DOB, or month/day DOB identity fields appear.
-- Source, phone, and review-page hidden widgets stay invalid.
-- The tenant returns to profile pages instead of the job form.
-
-Recovery:
-
-- Create/sign in using the job email and the user-provided live credential.
-- Use Gmail OTP codes from the newest relevant Workday sender.
-- Use `PRIVATE_APPLICATION_FIELDS.md` for official Workday last-4 SSN, DOB, or month/day DOB fields; never record the private values.
-- Prefer `Apply Manually` if upload is unstable.
-- Complete source fields exactly, including hierarchical source choices when present.
-- Verify review page shows phone `+1`, contact method, sponsorship answers, and required profile sections before submit.
-- After account creation, navigate back to the exact job application URL, not only the careers home.
-- If an account exists but login fails, use password reset through the job Gmail when available, set the same live credential, then return to the exact job URL.
-- If Workday drops into candidate home/profile, reopen the exact job URL after login and continue the active application.
-
-Known retry pattern:
-
-- Lowe's Workday `Sr AI Engineer - Physical AI`: retry now that private identity fields are available. Complete last-4 SSN and DOB/month-day fields from `PRIVATE_APPLICATION_FIELDS.md`, then continue sponsorship and review.
+- Complete the authentication ladder, then return to the exact requisition URL—not the careers home.
+- Prefer `Apply Manually` when resume parsing is unstable; use the visible upload control and verify the attachment.
+- Complete hierarchical source controls exactly. For LinkedIn discovery, choose the visible social-media hierarchy offered by that tenant and verify the selected pill; typed search text is not committed.
+- Verify phone includes `United States (+1)`, location/source tokens are selected, segmented dates render fully, and Review shows every required answer.
+- Resume parsing may create a false current `Founder` role from OmInsights; delete it and keep OmInsights only as a portfolio project/website.
+- Use `Bachelor of Technology`; when unavailable, `Bachelor of Engineering` is the closest truthful degree. Leave an undocumented field of study blank/`No Response`.
+- External-applicant `Employee ID (if applicable)` stays blank. Clear parser-filled text, blur/save, and verify Review shows `No Response`.
+- Use `PRIVATE_APPLICATION_FIELDS.md` for exact private/identity/legal selections without copying values elsewhere. Documented applicant facts may be entered autonomously; do not wait for Yaswanth merely because Workday calls them applicant information.
 
 ## Oracle / Taleo
 
-Common issues:
+Common failures: verification boxes ignore normal fill; question order and radio IDs change.
 
-- Six-code boxes ignore normal fill.
-- Question order changes by role.
-- Dynamic radio ids break fixed-index selection.
+- Clear boxes and type the newest full code into the first box when auto-advance supports it.
+- Request at most one fresh code after expiry and use only the newest email.
+- Map yes/no controls by nearby question text, visible label, role, and `aria-pressed`; never rely on fixed index or dynamic ID.
 
-Recovery:
+## SmartRecruiters / iCIMS / Company-Native
 
-- Clear code boxes with Backspace/Delete and type the full newest code into the first box if auto-advance works.
-- Map yes/no fields by nearby question text and `aria-pressed`, not by index.
-- Find radios by visible label or stable values rather than dynamic ids.
-- If code expires, request one fresh code and use only the newest email.
+Common failures: account loop; required source/referral; disabled submit until profile sections are reviewed.
 
-## SmartRecruiters / iCIMS / Company Native
-
-Common issues:
-
-- Account wall, login loop, or profile import step.
-- Required source/referral fields.
-- Disabled submit until every accordion section is reviewed.
-
-Recovery:
-
-- Create normal account using job email and the user-provided live credential.
-- Use Gmail verification and return to the same job URL.
-- Fill source/referral as `LinkedIn`, `Company careers page`, or `Not referred` when truthful.
-- Open every required accordion/profile section and verify completion state.
-- If optional resume parsing is poor, manually correct only required fields and continue.
-- If login/account loops, use the account protocol from `AUTOPILOT_BLOCKER_PLAYBOOK.md` before blocking.
+- Complete the shared authentication ladder and return to the same role URL.
+- Use the truthful source—`LinkedIn`, `Company careers page`, or `Not referred`; never invent a referral.
+- Open every required accordion/profile section and verify its completed state.
+- Correct required parser fields manually instead of polishing optional profile fields.
 
 ## Workable
 
-Common issues:
+Common failures: upload timeout; inverted sponsorship wording; optional upload blocks progress.
 
-- Resume upload times out.
-- Sponsorship wording is inverted, such as `without requiring sponsorship`.
-- Optional upload can be bypassed with enough profile data.
+- Try PDF, then DOCX. If upload is optional, use complete profile/manual information instead.
+- For wording such as `authorized without requiring sponsorship`, inspect the exact question and radio value; do not fuzzy-match `Yes`/`No` from keywords.
+- If required upload has no visible/manual fallback after the shared budget, record exact controls tried.
 
-Recovery:
+## Indeed And Aggregator Forms
 
-- Try PDF then DOCX.
-- If upload is optional, submit with full profile/summary/LinkedIn/cover letter when allowed.
-- For inverted sponsorship questions, inspect exact radio value; do not fuzzy-match `NO` from question text.
-- If required upload has no file/manual fallback, mark `Blocked - Other` with controls tried in `Recovery Tried` and `Notes`.
+Common failures: expired reCAPTCHA; qualification word check; official ATS route hidden.
 
-## Indeed / Aggregator Forms
-
-Common issues:
-
-- Final review submit disabled by expired reCAPTCHA.
-- Employer word-check questions block final submit.
-- Aggregator flow hides the official ATS link.
-
-Recovery:
-
-- Prefer official company/ATS link when available.
-- If using Indeed, complete final review and qualification questions exactly.
-- Leave optional job-alert/calls/text boxes unchecked unless required.
-- If reCAPTCHA expires or visual challenge appears, mark `Blocked - CAPTCHA`.
+- Prefer the official company/ATS route whenever available.
+- Complete qualification/review questions exactly and leave optional marketing alerts/calls/text unchecked unless the profile default says otherwise.
+- An expired or visible reCAPTCHA/visual challenge is a user-only boundary.
 
 ## Phenom / SuccessFactors
 
-Common issues:
+Common failures: stale required error after selection; controlled registration text does not commit; account flow interrupts; attachment remains `Uploading...`.
 
-- Dropdowns show a value while a stale required error remains.
-- Final submit temporarily disables before navigating.
-- Account creation or sign-in interrupts application.
+- Toggle a stale dropdown to another option and back, blur, then verify the intended committed value.
+- Enter controlled username/password fields sequentially when bulk fill displays but does not commit text.
+- Complete authentication and return to the exact requisition.
+- If upload remains `Uploading...`, reload the exact application once and verify the matching attachment card before refilling.
+- After submit, inspect active processing/navigation and confirmation proof before clicking again.
 
-Recovery:
+## Google Careers
 
-- Toggle stale dropdowns to another option, then back to the intended option, blur, and continue.
-- Wait 10-15 seconds after final submit if the URL is changing or button is disabled.
-- Create/sign in using job email and the user-provided live credential and return to the exact role URL.
-- If the page remains technically impossible after one clean reload/refill, mark `Blocked - ATS`.
+Common failure: uploading another lane resume with profile auto-fill enabled overwrites accurate saved employment, education, or location.
 
-## Source Mixing To Reduce CAPTCHA
+- When the saved applicant profile is accurate, disable `Fill out your application with your resume information` before uploading the selected lane resume.
+- If parsing already overwrote the profile, exit without saving the bad changes, restore the accurate profile, upload with auto-fill disabled, and verify the visible filename plus affected sections.
 
-- Avoid long consecutive runs on the same ATS or company.
-- Mix Ashby, Greenhouse, Lever, Workday, SmartRecruiters, native portals, LinkedIn-discovered official links, and Indeed-discovered official links.
-- Keep one active apply tab and low tab count.
-- Prefer official company/ATS URLs over aggregator iframes.
-- Slow down after repeated possible-spam or hCaptcha events and move to a different ATS/company cluster.
+## LinkedIn Easy Apply
 
-## Current High-Value Retry Queue
+Common failures: hidden required steps, stale saved answers, upload mismatch, or final anti-abuse challenge.
 
-Use this as priority guidance when reprocessing current blockers.
+- Verify the exact requisition and company before using Easy Apply; prefer the official employer route when available.
+- Re-read saved sponsorship, location, phone, and resume answers; old LinkedIn defaults do not override current batch facts.
+- Verify the attached filename and every review-page required control.
+- A visible anti-abuse/CAPTCHA challenge follows the user-only handoff rule.
 
-Retry only if the role still passes the 0-15 day recency gate in `RECENCY_PREFLIGHT.md` and `Retry Eligible` is not `Expired` in the tracker.
+## Rotation After Anti-Abuse
 
-1. Any high-fit `Blocked - ATS` or `Blocked - Other` row with blank/`1` attempt count and a live posting inside the 15-day gate: retry before chasing weak new roles.
-2. Lowe's Workday identity-field blocker: retry first using `PRIVATE_APPLICATION_FIELDS.md`.
-3. Cargill and JPMorgan account/code flows: retry with job email and the user-provided live credential, Gmail OTP, exact job URL return.
-4. Databricks Greenhouse roles: retry direct Greenhouse/embed URL, reselect country/phone hidden values, request/use fresh code, check Gmail.
-5. Accompany Health, Chipply, Harvey AI Platform, Citi, Reddit SDE Ads, Scribd, United Hire Staffing, and Vogo upload blockers: retry with file access, PDF -> DOCX -> `.txt` fallback when available.
-6. Instacart, Reddit ML, and Scale AI validation loops: required-widget sweep, reload/refill once, direct ATS path, Gmail proof check.
-7. CAPTCHA/anti-abuse rows: check Gmail first; if no proof, mark/keep `Blocked - CAPTCHA`, slow down, and switch ATS/company clusters.
-8. Perplexity exercise and legal/user-authored attestation rows: keep hard-stopped unless the real artifact or user-authored/legal review exists.
+After repeated possible-spam or visual-challenge events, immediately rotate to another ATS/company/source cluster. Do not insert artificial human-like delays, evade anti-abuse systems, or let one platform halt discovery and applications elsewhere.

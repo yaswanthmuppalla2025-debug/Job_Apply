@@ -1,15 +1,15 @@
 Yaswanth Muppalla
 Atlanta, GA | +1 845-663-4330 | yaswanthmuppalla2025@gmail.com | LinkedIn | GitHub
-AI Platform Engineer | Senior Software Engineer | Backend Systems | AWS | Data Engineering
+AI Platform Engineer | Senior Software Engineer | Backend & Agent Systems | AWS/GCP
 PROFESSIONAL EXPERIENCE
-American Express | Senior Software AI Engineer	Apr 2023 - Present
-Impact: Built Java/Flink, Airflow, and IRIS-backed RAG systems for credit oversight workflows, improving reporting efficiency by 35%, achieving 99% data accuracy, reducing rerun/debug cycles by 3x, and accelerating AI copilot support.
-Partnered with BCA/CCA data pipeline teams and built JSON-configurable Apache Flink pipelines for ingestion, transformation, joins, validation, and downstream publishing, translating workflow knowledge into AI-ready pipeline patterns for credit oversight use cases.
-Automated Airflow DAG orchestration for credit data processing with dependency management, rerun handling, SLA monitoring, data-quality checks, and failure alerting, creating reliable operational signals for downstream AI copilot and RAG workflows.
-Designed an IRIS-backed RAG ingestion pipeline with document extraction, deduplication, upsert handling, segmentation, chunking, metadata enrichment, and batch publishing for semantic retrieval.
-Developed a RAG agent harness that combined IRIS semantic search, scoped retrieval, prompt assembly, source-ledger tracking, and grounded response generation for credit oversight users.
-Built a context harness for chatbot-style interactions, managing session context, selected documents, retrieved chunks, policy context, user query intent, and controlled LLM input assembly.
-Added observability and control layers across the AI workflow, including retrieval logs, execution traces, citation mapping, guardrails, cache behavior, and audit-friendly response tracking.
+American Express | Senior Software Engineer | AI Engineer	Apr 2023 - Present
+Impact: Delivered AWS-based Java/Python APIs and IRIS AI platform services plus Kafka/Flink/Airflow pipelines for digital banking, improving reporting efficiency by 35%, achieving 99% data accuracy, reducing rerun/debug cycles by 3x, and accelerating applied AI delivery for credit-oversight copilots.
+Partnered with BCA/CCA data pipeline teams and built JSON-configurable Apache Flink pipelines on-premises for ingestion, transformation, joins, validation, and downstream publishing, later migrating them to GCP for digital-banking and credit-oversight use cases.
+Built Airflow workflow automation with dependency controls, rerun handling, SLA monitoring, data-quality checks, and failure alerting; published governed outputs to BigQuery and exposed controlled analytical paths through AWS API Gateway, Lambda, and ECS for reporting applications and digital-banking products, with stable data contracts, retries, and access controls.
+Designed an IRIS-backed RAG ingestion platform with document extraction, deduplication, upsert handling, segmentation, chunking, metadata enrichment, and batch publishing for semantic retrieval.
+Developed a reusable MCP runtime harness combining IRIS semantic search, scoped retrieval, tool execution, prompt assembly, source-ledger tracking, and grounded response generation for credit-oversight users.
+Partnered with cross-functional product, data, and AI teams to engineer an agent context harness managing session state, selected documents, retrieved evidence, policy context, user intent, and controlled LLM input assembly.
+Strengthened operational excellence, observability, and governance across the agent runtime through retrieval logs, execution traces, citation mapping, guardrails, cache behavior, and audit-friendly response tracking.
 Skechers | Software Engineer	Oct 2020 - Mar 2023
 Impact: Delivered 15+ Python APIs and event-driven services, maintained 99.9% uptime, reduced costs by 22%, migrated 35M+ records, and cut incident resolution time by 40%.
 Developed 15+ Python/Pydantic REST APIs on microservices-style, event-driven AWS Lambda/Step Functions, sustaining 99.9% uptime and cutting costs 22%.
@@ -21,19 +21,19 @@ SOCH Inc. | Full-Stack Developer - Richmond, VA	Jan 2020 - Sep 2020
 Built a Spring Boot ticketing system with REST microservices and full-stack workflow screens for government clients.
 Used Java ExecutorService/CompletableFuture for async ticket updates, notifications, and background job handling.
 Managed concurrency with synchronized services, thread-safe collections, timeouts, and Spring Boot exception handling.
-FOUNDER-LED TECHNICAL PROJECTS
-OmInsights - Founder-Led AI Platform Build	Jan 2024 - Present
-Impact: Built a 6-component AI platform with tenant-scoped RAG, Context Engine orchestration, MCP tool execution, async file processing, and source-backed answers over owned documents.
-Architected Angular UI, FastAPI Business Service, Context Engine, MCP Server, File Processing worker, and AWS-backed deployment paths with CI/CD and tenant-aware AWS operations.
-Built document intelligence pipelines for upload, parse, normalize, chunk, embed, persist, retrieve, and cite flows for grounded RAG responses with source ledgers and retrieval quality controls.
-Designed Context Engine flows for chat/session memory, selected context, KB injection, prompt assembly, and LLM/context harness design for multi-turn RAG orchestration and scoped answer grounding.
-Implemented MCP/API runtime patterns with tool catalog APIs, native/template tools, scoped document search, execution logging, cache behavior, and access-aware tool selection.
-Combined source-ledger, citation, guardrail, caching, and semantic caching patterns to keep AI outputs grounded and traceable.
+FOUNDER-LED 0-TO-1 TECHNICAL PROJECT
+OmInsights - Founder-Led Applied AI Platform Build	Jan 2024 - Present
+Impact: Built a 6-component AI platform with tenant-scoped APIs, agent/context orchestration, MCP tool execution, async file processing, and source-backed intelligence with tenant isolation, citations, and traceability.
+Architected Angular UI, FastAPI Business Service, Context Engine, MCP Server, File Processing worker, and AWS deployment paths with CI/CD, environment promotion, secrets/config handling, and tenant-aware operations.
+Built an AI evaluation layer with groundedness, relevance, citation, and policy checks, LLM-as-a-judge scoring, and regression tracking.
+Designed Context Engine flows for chat/session memory, selected context, KB injection, prompt assembly, and LLM/context harness design for multi-turn agent orchestration, policy-aware grounding, and session continuity.
+Implemented MCP/API runtime patterns and a shared LLM gateway across platform layers, centralizing model/provider routing, request policies, retries/fallbacks, tool access, usage logging, and execution traces.
+Created single-founder execution playbooks across each platform layer for architecture decisions, implementation, deployment, testing, observability, and recovery, standardizing repeatable delivery and accelerating execution.
 TECHNICAL SKILLS
-AI/LLM Systems: RAG, embeddings, vector search, LangChain, MCP/FastMCP, OpenAI, Amazon Bedrock, prompt engineering, LLMOps, semantic caching, context orchestration
-Backend: Python, FastAPI, Pydantic, Java 17, Spring Boot, REST APIs, JWT, microservices, Java concurrency, ExecutorService, CompletableFuture, TypeScript, Angular
-Cloud & Data: AWS Lambda, ECS, S3, SQS, Step Functions, API Gateway, EventBridge, Docker, CI/CD, MongoDB, Redis, MemSQL, Kafka, Apache Flink, Airflow
-Retrieval & Storage: OpenSearch Vector DB, MongoDB, document chunking, source ledgers, searchable chunk publishing, Elasticsearch
+AI Platform & Agent Systems: RAG, embeddings, vector search, LangChain/LangGraph, LlamaIndex/LlamaParse, MCP/FastMCP, OpenAI APIs, Amazon Bedrock, LLM gateways, LLM-as-a-judge evaluation, guardrails, LLMOps, semantic caching, context orchestration
+Backend: Java 17, Python, Scala, FastAPI, Pydantic, Spring Boot, REST APIs, JWT, microservices, Java concurrency, TypeScript/Angular
+Cloud & Data: AWS, GCP, Lambda, ECS/S3/SQS, Step Functions, API Gateway/EventBridge, Docker, CI/CD, MongoDB, Redis, MemSQL, Kafka, Flink/Airflow
+Retrieval & Storage: OpenSearch Vector DB, MongoDB, hybrid search, metadata filtering/reranking, chunking, source ledgers, searchable publishing, Elasticsearch
 Observability: Datadog, CloudWatch, Kibana, X-Ray, ELK Stack, structured logging, SLA alerts, failure tracing
 EDUCATION
 State University of New York, New Paltz | Master of Science, Computer Science | CGPA: 3.6/4.0	May 2020

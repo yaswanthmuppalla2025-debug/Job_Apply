@@ -1,163 +1,108 @@
 # Answer Bank
 
-Use this file to speed up Greenhouse, Lever, Ashby, Workday, and company custom questions. Pick the shortest answer that fits the field, then tailor it with the company, role, product, mission, and JD keywords.
+Use this file only for reusable application prose. Candidate facts belong in `APPLICATION_PLAN.md`, private/legal values in `PRIVATE_APPLICATION_FIELDS.md`, and ATS mechanics in `ATS_RETRY_MATRIX.md` or `LEARNING_LOOP.md`.
 
-Rules:
+## Rules
 
-- Stay truthful to the resume and `APPLICATION_PLAN.md`.
-- Do not paste every technical detail into every answer.
-- For AI roles, lead with OmInsights and source-backed RAG/platform ownership.
-- For SDE roles, lead with American Express and Skechers backend/platform impact; use OmInsights as supporting platform/AI product ownership.
-- Replace placeholders like `{{company}}`, `{{role}}`, `{{product_or_mission}}`, `{{jd_keywords}}`, `{{posted_range}}`, and `{{location}}` before submitting.
-- If a text box has a character limit, use the short answer first.
+- Pick the shortest answer that satisfies the field, then tailor it with the exact company, role, product/mission, and two or three JD responsibilities.
+- Replace every placeholder before submission. Do not paste every technology or metric into every response.
+- The newest Yaswanth-confirmed answer may be reused only for materially identical meaning, options, employer/time context, and facts.
+- AI resume when AI-enabled systems are central; SDE resume when general backend/platform systems are central and AI is peripheral. Verify the visible filename.
+- OmInsights is technical portfolio evidence only, never employment, an active business, consulting/advisory work, revenue activity, or ongoing outside work.
+- Do not generate prose when the employer explicitly requires an applicant-authored/no-AI response.
 
-## OmInsights Story
+## Quick Story Selection
 
-Use for:
+| Question | AI Role | SDE Role |
+|---|---|---|
+| Proud/complex project | OmInsights | American Express or Skechers; OmInsights only when AI/platform work matters |
+| AI/LLM/RAG experience | OmInsights | OmInsights as supporting evidence |
+| Backend/platform scale | American Express plus OmInsights when relevant | American Express |
+| Cloud/API/reliability | Skechers plus OmInsights when relevant | Skechers |
+| Work authorization | H-1B wording below | H-1B wording below |
+| Location | Location wording below | Location wording below |
+| Salary | Compensation wording below | Compensation wording below |
+| Why company | Tailored template below | Tailored template below |
 
-- "Tell us about a project you are proud of"
-- "Describe your AI/LLM experience"
-- "Describe a complex system you built"
-- AI Platform, LLM, RAG, backend AI, document intelligence, or product-engineering roles
+## OmInsights AI Platform Story
 
 ### Short
 
-I founded and built OmInsights, a multi-service AI document intelligence platform with tenant-scoped RAG, source-backed answers, document ingestion, Context Engine orchestration, MCP tool execution, and AWS-backed deployment paths.
+I built OmInsights as a personal technical portfolio project: a multi-service AI document-intelligence system with tenant-scoped RAG, source-backed answers, document ingestion, Context Engine orchestration, MCP tool execution, and AWS-backed deployment paths.
 
-### Medium
+### Standard
 
-I founded and built OmInsights, an AI document intelligence platform that combines document upload, parsing, chunking, embeddings, retrieval, source citations, and LLM/context harness design for evidence-backed workflows. I designed the system across Angular UI, FastAPI Business Service, Context Engine orchestration, MCP tool execution, async file processing, MongoDB, OpenSearch, and AWS-backed deployment paths. The work gave me hands-on ownership of RAG quality, scoped retrieval, prompt assembly, tool selection, source ledgers, and user-facing trust contracts.
+I built OmInsights end to end as a personal technical portfolio project for trustworthy AI document intelligence. It combines upload, parsing, chunking, embeddings, scoped retrieval, citations, prompt/context assembly, session memory, and MCP-based tool execution. I designed the system across an Angular UI, FastAPI services, a Context Engine, asynchronous processing, MongoDB, OpenSearch, shared libraries, and AWS-backed deployment paths. The project gave me hands-on experience turning RAG and agent workflows into observable, source-backed product behavior rather than an ungrounded chatbot.
 
-### Long
+### Compliance-safe Description
 
-One project I am especially proud of is OmInsights, an AI document intelligence platform I founded and built end to end. The platform supports upload, parsing, normalization, chunking, embedding, retrieval, source citation, and LLM/context harness design for owned business documents. I designed the architecture across Angular UI, FastAPI Business Service, Context Engine orchestration, MCP tool execution, async file processing, MongoDB, OpenSearch, shared libraries, and AWS-backed deployment paths.
-
-What made the work interesting was the focus on trustworthy AI, not just chatbot output. I built flows for session memory, selected-context persistence, knowledge-base injection, scoped retrieval, tool planning/execution, prompt assembly, LLM/context harness design, and post-turn persistence. For the legal vertical, I also worked on provider adapters, normalized court-record facts, source ledgers, timelines, source-backed summaries, and Business Service-owned display contracts. That experience maps well to roles that need strong backend engineering plus practical LLM/RAG product ownership.
+OmInsights is a pre-existing personal technical portfolio project built for learning and skill demonstration. It has no customers or revenue and is not an employer, active company, client-serving product, consulting/advisory role, or secondary employment.
 
 ## American Express Backend And Platform Story
 
-Use for:
-
-- "Describe backend experience"
-- "Tell us about a scalable system"
-- "Describe Java/Spring, data platform, or financial-services experience"
-- SDE/backend/platform/data engineering roles
-
 ### Short
 
-At American Express, I built backend data platform components for high-volume financial data workflows, consolidating 10M+ records, improving reporting efficiency by 35%, achieving 99% data accuracy, and reducing rerun/debug cycles by 3x.
+At American Express, I built backend data-platform components for high-volume financial workflows, consolidating 10M+ records, improving reporting efficiency by 35%, achieving 99% data accuracy, and reducing rerun/debug cycles by 3x.
 
-### Medium
+### Standard
 
-At American Express, I worked on backend data platform systems for financial analytics and reporting workflows. I built Java/Spring and JSON-configurable components for ingestion, validation, and transformation, implemented Apache Flink modules for high-volume processing, and automated Airflow workflows with modular operators and data-quality checks. The platform consolidated 10M+ records, improved reporting efficiency by 35%, achieved 99% data accuracy, and reduced rerun/debug cycles by 3x.
-
-### Long
-
-At American Express, I worked as a Senior Software Engineer building backend data platform capabilities for financial analytics and reporting. My work focused on consolidating large financial datasets, improving pipeline reliability, and making production workflows more repeatable. I built Java/Spring and JSON-configurable components for ingestion, validation, and transformation, implemented Apache Flink jobs for high-volume processing, and automated Airflow workflows with modular operators, shell orchestration, restart patterns, and data-quality checks.
-
-The impact was measurable: the platform consolidated 10M+ records, improved reporting efficiency by 35%, achieved 99% data accuracy, and reduced rerun/debug cycles by 3x. I also worked across backend services, data workflows, and observability signals so downstream analytics and reporting teams had more reliable execution. For SDE roles, this is the strongest example of my backend platform, data processing, and production ownership experience.
+At American Express, I built backend data-platform capabilities for financial analytics and reporting. I developed Java/Spring and JSON-configurable ingestion, validation, and transformation components, implemented Apache Flink modules for high-volume processing, and automated Airflow workflows with modular operators, restart handling, monitoring, and data-quality checks. The platform consolidated 10M+ records, improved reporting efficiency by 35%, achieved 99% data accuracy, and reduced rerun/debug cycles by 3x.
 
 ## Skechers Cloud And API Story
-
-Use for:
-
-- "Describe cloud/API experience"
-- "Tell us about AWS/serverless experience"
-- "Describe production operations or reliability"
-- Backend, Python, platform, cloud, and serverless roles
 
 ### Short
 
 At Skechers, I built 15+ Python/Pydantic REST APIs on AWS Lambda and Step Functions, supported 99.9% uptime, reduced infrastructure costs by 22%, migrated 35M+ records, improved query performance by 50%, and reduced incident resolution time by 40%.
 
-### Medium
+### Standard
 
-At Skechers, I built production backend services and cloud workflows for customer-facing loyalty and marketing systems. I developed 15+ Python/Pydantic REST APIs integrated with AWS Lambda and Step Functions, migrated 35M+ records from SFMC into MongoDB, optimized indexes and caching to improve query performance by 50%, and used CloudWatch and Datadog to reduce incident resolution time by 40%. The work combined API design, serverless orchestration, data migration, reliability, and cost optimization.
-
-### Long
-
-At Skechers, I worked on production backend systems that supported loyalty, marketing, and customer-facing workflows. I built 15+ Python/Pydantic REST APIs integrated with AWS Lambda and Step Functions, applying a layered service architecture across request validation, orchestration, data access, and external integrations. I also migrated 35M+ records from SFMC into MongoDB and improved query performance by 50% through indexing, caching, and data-access optimization.
-
-The cloud and operations side was equally important. I supported workflows using AWS Step Functions, SessionM APIs, CloudWatch, and Datadog, helping maintain 99.9% uptime, reduce infrastructure costs by 22%, support sub-500ms transaction paths, and reduce incident resolution time by 40%. This is the best example to use when a role emphasizes Python APIs, AWS/serverless architecture, production reliability, async workflows, or cloud cost/performance improvements.
+At Skechers, I built production backend services and cloud workflows for customer-facing loyalty and marketing systems. I developed 15+ Python/Pydantic REST APIs integrated with AWS Lambda and Step Functions, migrated 35M+ records from SFMC into MongoDB, improved query performance by 50% through indexing and caching, and used CloudWatch and Datadog to reduce incident resolution time by 40%. The work combined API design, serverless orchestration, data migration, reliability, and cost optimization.
 
 ## H-1B Sponsorship Wording
-
-Use for work authorization and sponsorship questions. Follow `APPLICATION_PLAN.md` for yes/no fields.
 
 ### Short
 
 I am authorized to work in the United States and will require H-1B transfer sponsorship.
 
-### Medium
+### Standard
 
-I am currently authorized to work in the United States and would require employer sponsorship for an H-1B transfer now or in the future. I can provide proof of identity and employment authorization as required during the hiring process.
+I am currently authorized to work in the United States and would require employer sponsorship for an H-1B transfer now or in the future. I can provide the standard identity and employment-authorization documentation during the hiring process.
 
-### Long
-
-I am authorized to work in the United States and would require employer sponsorship for an H-1B transfer now or in the future. I am comfortable completing the standard employment verification process and providing documentation required for identity and work authorization after hire. If the role says the employer does not sponsor visas, does not provide immigration support, cannot sponsor or transfer H-1B, requires no current/future sponsorship, or is restricted to U.S. citizens, permanent residents, security-clearance holders, or U.S. persons only, strictly skip the role.
-
-## Relocation And Work Location Wording
-
-Use for location, relocation, remote, hybrid, onsite, and travel questions.
+## Location Wording
 
 ### Short
 
-I am based in Atlanta, GA and open to remote, hybrid, or onsite roles in preferred U.S. locations.
+I am based in Atlanta, GA and open to the remote, hybrid, or onsite arrangement advertised for this role when it falls within my active location preferences.
 
-### Medium
+### Standard
 
-I am currently based in Atlanta, GA. I am open to remote roles, hybrid roles, and relocation for strong opportunities in preferred U.S. locations, including Atlanta, Austin/Dallas, North Carolina, Virginia, Tennessee, and other suitable U.S. hubs. I am not targeting Chicago-area or NYC/NY-only roles.
+I am based in Atlanta, GA. I am open to nationwide Remote US opportunities and to hybrid or onsite roles in locations allowed by my current search. I am also open to relocation for the right qualifying full-time role. The application should always use the requisition's actual advertised location.
 
-### Long
-
-I am based in Atlanta, GA and open to remote, hybrid, or onsite opportunities when the role, team, and location are a strong fit. Preferred locations include Atlanta, Austin/Dallas, North Carolina, Virginia, Tennessee, remote U.S. roles, and other suitable U.S. hubs based on the company and role. I am open to relocation for the right full-time opportunity, but I am not targeting Chicago-area or NYC/NY-only roles. If a form asks for a single location, use the best non-excluded option available in the posting.
-
-## Salary Logic
-
-Use for desired base salary, total compensation, hourly rate, and expectations. Do not choose a low number just to submit.
+## Compensation Wording
 
 ### Short
 
-Open to discussing compensation based on role level, scope, location, and the posted range.
+Open to discussing compensation based on the role level, scope, location, and posted range.
 
-### Medium
+### Standard
 
-My compensation expectations are flexible based on role level, scope, location, and the posted range. For senior backend, platform, and AI engineering roles, I would target a market-aligned package and am open to discussing the full compensation structure.
+My expectations are flexible within a market-aligned range based on the role's level, scope, location, and full compensation structure. When the employer publishes a range, I would target a reasonable value within that range.
 
-### Long
-
-My compensation expectations depend on the role level, engineering scope, location, remote/hybrid expectations, and the posted compensation range. For senior backend, platform, data platform, or AI engineering roles, I would target a market-aligned package that reflects the responsibility of the role and the impact expected. If the form provides a posted range, choose a reasonable value within that range based on seniority and location. If no range is posted and a number is required, use market context for similar U.S. senior backend/platform/AI roles rather than selecting an artificially low value just to submit.
+For required numeric fields, use the deterministic desired-base rule in `APPLICATION_PLAN.md`. Never invent salary history or an employer's undisclosed range.
 
 ## Why This Company
 
-Use this as a template. Always tailor with concrete details from the JD and company.
+### Short Template
 
-### Short
+I am interested in {{company}} because {{product_or_mission}} connects directly with my experience in {{two_relevant_jd_responsibilities}} and my interest in building reliable, user-impactful systems.
 
-I am interested in {{company}} because {{product_or_mission}} connects directly with my experience in {{jd_keywords}} and my interest in building reliable, user-impactful engineering systems.
+### Standard Template
 
-### Medium
+I am interested in the {{role}} opportunity at {{company}} because the work around {{two_or_three_jd_responsibilities}} maps closely to my strongest experience. At American Express, I built reliable backend and data-platform workflows; at Skechers, I delivered production cloud APIs and data migrations; and through OmInsights, I built a source-backed RAG and agent-tooling portfolio system. I am especially drawn to {{specific_product_mission_or_team_problem}} and the opportunity to build systems that are scalable, observable, and useful to real users.
 
-I am interested in {{company}} because the {{role}} role combines the areas where I have done my strongest work: {{jd_keywords}}. I am especially drawn to {{product_or_mission}} and the opportunity to build systems that are reliable, scalable, and useful to real users. My background across OmInsights, American Express, and Skechers gives me a mix of AI product ownership, backend platform engineering, data workflows, cloud APIs, and production reliability that I believe would transfer well to this team.
+## Other Short Responses
 
-### Long
-
-I am interested in {{company}} because the {{role}} role sits at the intersection of the work I have been doing and the kind of engineering problems I want to keep solving. From the job description, the areas that stand out to me are {{jd_keywords}}. Those map closely to my background building OmInsights, where I owned AI document intelligence, RAG workflows, source-backed answers, backend service boundaries, and cloud-backed platform architecture, as well as my backend platform work at American Express and API/cloud systems work at Skechers.
-
-What I like about {{company}} is {{product_or_mission}}. I am motivated by roles where strong backend engineering, practical product judgment, and production reliability all matter. I would bring hands-on experience across Python, Java/Spring, FastAPI, AWS, data workflows, APIs, RAG/LLM systems, observability, and cross-service architecture, plus a founder-level habit of owning ambiguous problems until they become usable systems.
-
-## Quick Mapping
-
-Use these defaults when choosing which answer to start from:
-
-| Question Type | AI Roles | SDE Roles |
-|---|---|---|
-| Proud project | OmInsights | American Express or Skechers; OmInsights if AI/platform angle matters |
-| AI/LLM/RAG experience | OmInsights | OmInsights as supporting answer |
-| Backend/platform experience | American Express plus OmInsights | American Express |
-| Cloud/API experience | Skechers plus OmInsights AWS | Skechers |
-| Production reliability | Skechers or American Express | Skechers or American Express |
-| Sponsorship | H-1B section | H-1B section |
-| Relocation | Relocation section | Relocation section |
-| Salary | Salary section | Salary section |
-| Why company | Why This Company template | Why This Company template |
+- **Why this role?** Connect two central JD responsibilities to the most relevant American Express, Skechers, or OmInsights evidence in three to five sentences.
+- **Cover letter required?** Write a concise tailored letter using the standard Why Company structure; do not repeat the full resume.
+- **Open-source contribution?** Describe OmInsights as a public technical portfolio project only and use visible repository evidence for any numeric field.
+- **Backend plus AI positioning:** I build reliable backend and data-platform foundations, then extend them into grounded AI systems with scoped retrieval, controlled context, tool execution, evaluation, and observability.

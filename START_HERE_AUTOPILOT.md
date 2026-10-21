@@ -1,101 +1,76 @@
 # Start Here Autopilot
 
-Read this first for any AI or SDE application batch.
+This is the execution command center for AI, SDE, or combined application batches. Stable boundaries remain in `AGENTS.md`.
 
-## Command Center
+## Canonical Launcher
 
-1. Use the `Job Apply - Yaswanth` Chrome profile.
-2. Run in `Aggressive Autopilot / Hard Stop Only` mode.
-3. Enforce the recency gate before filling: prioritize roles posted 0-7 days ago, use 8-15 day roles only for strong resume matches, and use the <=70 day exception only for exceptional AI matches that are officially live, in-bounds, and sponsorship-compatible.
-4. Apply strong-fit-first: submit only high/strong AI or SDE/backend matches; treat medium/adjacent roles as skips unless they are a documented strategic exception.
-5. Submission targets are not quotas: if strong matches are scarce, keep searching deeper official/company/ATS sources instead of lowering the fit bar.
-6. Before filling any form, do the simple duplicate check in `JOB_APPLICATION_TRACKER.xlsx`: scan `Company`, `Role`, and `Application URL` across `AI`, `SDE`, and `Blockers`. If the same company has the same normalized role title already submitted/attempted, or the same official URL/job id is already present, skip as duplicate/already applied. A common role title at a different company is only a warning, not a blocker.
-7. Location priority: Georgia/Atlanta, Dallas/Austin/Texas, Virginia/DC, North Carolina, Tennessee, Florida, and Remote US only. Do not apply to SF/Bay Area/California/west-only roles unless the specific role is truly Remote US with no west-coast presence requirement.
-8. Strictly skip no-sponsorship, no-H-1B-transfer, citizen/GC-only, U.S.-person-only, clearance-only, stale, closed, over-70-day, unknown-recency without proof, duplicate, staffing/vendor/aggregator-proxy, and obvious poor-fit roles. Roles older than 15 days still need the exceptional AI-fit live-post exception.
-9. Use `RECENCY_PREFLIGHT.md` for fast posting-age checks and `TRACKER_SCHEMA.md` for tracker updates.
-10. Use the AI resume for AI roles and the SDE resume for SDE/backend roles. Record outcomes in `JOB_APPLICATION_TRACKER.xlsx`.
-11. Fill from `APPLICATION_PLAN.md`, `ANSWER_BANK.md`, the resume, JD, company context, and best truthful judgment.
-12. Submit high/strong-fit applications without per-role approval.
-13. Recover normal friction before blocking: required-widget sweep, direct ATS URL, embedded form, PDF -> DOCX -> text fallback, account creation, Gmail code, reasonable assessment/questionnaire completion, reload/refill, Chrome reconnect.
-14. No first-attempt technical blockers: except visual CAPTCHA/anti-abuse/legal/private-fact/hard-eligibility boundaries, a blocked role requires at least 2 serious attempts and at least 2 distinct recovery paths.
-15. Account/login, email-code, and normal assessment/questionnaire walls are recoverable: create account, try existing login, use password reset through the job Gmail when available, retrieve the newest relevant Gmail code/link, complete truthful short assessment steps, then return to the exact job URL before blocking.
-16. Confirm from screen, application ID, portal state, or Gmail; update `JOB_APPLICATION_TRACKER.xlsx` after every outcome.
-17. Put submissions/already-applied rows in `AI` or `SDE`; put CAPTCHA, ATS, upload, account/login, anti-spam, manual/legal, missing-info, and Chrome/profile blockers in `Blockers`.
-18. Do not create report, queue, cache, CSV, or JSONL artifacts for routine runs; the master workbook is the only durable state.
-19. Close/finalize stale tabs and continue to the next role.
+`Use the job-application-autopilot skill and the Job Apply - Yaswanth Chrome profile. Apply the current BATCH FILTERS, then continuously discover, rank, apply, verify, record, recover, and repeat for official High/Strong-fit roles. Begin applying as soon as the first eligible role passes preflight; maintain a rolling pool of roughly 3-5 eligible roles and replenish it continuously. Newly discovered qualifying roles inherit batch authorization. Do not stop on a shortlist, progress update, source change, tracker checkpoint, or individual blocker. Use the correct lane resume, complete ordinary fields with truthful best judgment, recover routine ATS/auth/upload friction, preserve only genuine user-only handoffs, and update JOB_APPLICATION_TRACKER.xlsx immediately after each outcome. End only at a documented full-batch end condition.`
 
-## Current Retry Priority
+Launcher rules:
 
-Only retry these if the role still passes the default 0-15 day recency gate, or qualifies for the <=70 day strong AI live-post exception, and `Retry Eligible` is not `Expired`.
+- The current `BATCH FILTERS` override same-named defaults in `RECENCY_PREFLIGHT.md`; never copy an old dated snapshot, salary, location, or campaign baseline into a new launch.
+- Batch authorization removes workflow and per-role approval gates. Obtain only a platform-required action-time confirmation or a genuine user-only fact at the point it is needed.
+- A progress message is non-blocking commentary. Continue in the same run immediately after sending it.
 
-1. Any high-fit `Blocked - ATS` or `Blocked - Other` row with blank/`1` attempt count and a live posting inside the 15-day gate. Retry it before chasing weak new roles.
-2. Lowe's Workday identity-field blocker using `PRIVATE_APPLICATION_FIELDS.md`.
-3. Cargill and JPMorgan account/code flows.
-4. Databricks direct Greenhouse/embed retries with country/phone hidden-value sweep.
-5. Upload blockers: Accompany Health, Chipply, Harvey AI Platform, Citi, Reddit SDE Ads, Scribd, Vogo. Do not retry staffing/vendor upload rows unless Yaswanth explicitly asks.
-6. Greenhouse validation loops: Instacart, Reddit ML, Scale AI.
-7. CAPTCHA rows only for true visual CAPTCHA/hCaptcha/reCAPTCHA/anti-abuse blockers after Gmail proof check and source-mixing slowdown. Greenhouse/job-Gmail security-code gates are recoverable ATS steps, not CAPTCHA.
-8. Manual assessment rows are not automatic blockers. First inspect the task: short screening questionnaires, work-style preference forms, truthful written prompts, and normal assessment forms should be completed from the resume, answer bank, JD, and careful judgment. Block only long take-home projects, coding tests, video/audio recordings, legally sensitive attestations, or prompts requiring facts only Yaswanth can provide.
+## Batch Setup
 
-## Pre-Submit Checklist
+1. Parse the active filters and write down only the effective lane, role focus, location, recency, seniority, sources, employer priorities/exclusions, target, and salary rule.
+2. Capture the live lane-specific `Submitted` total as this launch's baseline. A new target/filter launch is a new batch unless Yaswanth explicitly says to continue an earlier one.
+3. Run the deterministic tracker gate in `TRACKER_SCHEMA.md` once. Re-run it only after a workbook I/O, header, formula, or duplicate-lookup failure.
+4. Reconcile any tracker-marked parked tabs quickly. Do not work every old blocker at startup; retry only rows with a currently available distinct next action.
+5. If multiple agents are used, assign non-overlapping lane/source slices before discovery. Tag current-run queue items with canonical ID/URL plus owner; one role has one owner until recorded or released.
 
-Before final submit, verify:
+## Rolling Execution Loop
 
-- Role is official, open, verified 0-15 days old by default or <=70 days old under the exceptional AI-fit live-post exception, fit-aligned, and sponsorship-compatible.
-- Fit is `High`/`Strong` for the selected lane. `Medium` is allowed only as `Strategic Exception` when the role has target geography/company quality and at least 2-3 resume-backed core requirements.
-- Posting date is verified from an official company/ATS source or reliable dated search result before spending time on the form: 0-7 days preferred, 8-15 days strong fit only, 16-70 days only for exceptional AI matches with official live proof, >70 days skipped.
-- Employer is a direct product/platform/enterprise employer or a clearly high-quality direct company role; skip obvious staffing, consulting, vendor, recruiter, W2-only, client-confidential, or aggregator-proxy postings.
-- Location matches the priority order: Georgia/Atlanta, Dallas/Austin/Texas, Virginia/DC, North Carolina, Tennessee, Florida, or Remote US only.
-- `JOB_APPLICATION_TRACKER.xlsx` has been scanned for a simple duplicate check before filling.
-- Correct lane resume is uploaded, parsed, or pasted through the lane `.txt` fallback.
-- Official ATS identity fields such as last-4 SSN, DOB, or month/day DOB are filled from `PRIVATE_APPLICATION_FIELDS.md` when required.
-- Phone includes United States / `+1` when a country selector exists.
-- Location typeahead has an actual selected option.
-- Work authorization is truthful: authorized Yes, sponsorship/H-1B transfer Yes.
-- Required EEO/self-ID fields use exact visible option text.
-- Required radios, checkboxes, custom pills, acknowledgements, and hidden selectors are active.
-- Any required custom answer is tailored from `ANSWER_BANK.md`, resume, JD, and company context.
-- Submit button is the real locator/control, not only a coordinate click.
+Repeat continuously:
 
-## Two-Hour Learning Checkpoint
+1. Discover exact official open roles from company pages, ATS boards/APIs, LinkedIn, and reputable sources. Aggregators are discovery leads, not submission proof.
+2. Run the single quick gate in `RECENCY_PREFLIGHT.md`. Start applying immediately when the first role passes; do not wait for an arbitrary broad shortlist.
+3. Maintain approximately 3-5 eligible roles in the current working pool. Apply in rank order and replenish when fewer than 3 remain.
+4. Duplicate-check the official job ID and canonical requisition URL across `AI`, `SDE`, and `Blockers` before filling.
+5. Select exactly one lane and upload its canonical resume. AI-system work central -> AI resume; general backend/platform work central and AI peripheral -> SDE resume.
+6. Fill from `APPLICATION_PLAN.md`, the relevant `ANSWER_BANK.md` section, the resume, JD, and live form. Use the truthful answer ladder in `AGENTS.md`; a required non-material preference may use a conservative candidate-aligned default.
+7. Recover ordinary account, code, upload, parser, widget, and validation friction through `AUTOPILOT_BLOCKER_PLAYBOOK.md`; open the matching `ATS_RETRY_MATRIX.md` section only when useful.
+8. Immediately before final submit, re-read the newest tracker and confirm no exact duplicate or concurrent submission appeared.
+9. Obtain any platform-required action-time confirmation only when the exact action is ready, then submit without asking for another workflow approval.
+10. Verify proof from the success page, application ID, portal state, or exact Gmail receipt. Record the outcome immediately using `TRACKER_SCHEMA.md`.
+11. Close/finalize completed or useless tabs, preserve only valid tracker-matched handoffs, and move directly to the next eligible role.
 
-Every 2-3 hours of applying, or every 50 submitted applications, add 5-6 high-value sentences to `LEARNING_LOOP.md` only if the run produced new reusable observations.
+## Fast Pre-Submit Check
 
-Good learning:
+Verify only what can change the outcome:
 
-- Specific ATS behavior plus the successful recovery.
-- Company-specific field mapping that prevented validation errors.
-- Upload, account, code, or confirmation pattern that recurs.
-- CAPTCHA/anti-abuse pattern that changes source-mixing strategy.
-- Tracker classification lesson that avoids false submitted or false blocked rows.
+- Exact official requisition is open and still passes active batch filters.
+- High/Strong central-responsibility fit, sponsorship/eligibility, salary, and advertised location passed once; re-evaluate only if new page evidence changed them.
+- Exact ID/canonical URL is not submitted, already applied, blocked by another active owner, or duplicated across lanes.
+- Visible attached filename matches the selected lane; required controls show committed values rather than typed-but-unselected text.
+- All answers are truthful; no material candidate/job/proof fact was invented.
+- Confirmation proof and tracker destination are ready.
 
-Bad learning:
+## Recovery And Handoffs
 
-- Generic narration.
-- Motivation or status updates.
-- One-off frustration.
-- Credentials, passwords, codes, or private email content.
-- Policies already written in `APPLICATION_PLAN.md`, `AUTONOMOUS_RUNBOOK.md`, or `AUTOPILOT_BLOCKER_PLAYBOOK.md`.
+- Use at most two distinct safe recovery paths or about ten minutes on one ordinary form, whichever comes first. A third attempt is reserved for an unusually strong fit with a genuinely new path.
+- Do not repeat the same failed click, selector, upload, or code entry more than twice.
+- Account creation, saved-credential login, password reset, job-Gmail codes, uploads, manual text entry, short questionnaires, standard notices, documented EEO choices, dropdowns, and typeaheads are recovery work.
+- Park only after a narrow user-only boundary defined in `AGENTS.md` remains. Preserve the useful exact tab, write one precise `Next Action`, and continue in another working tab.
+- A blocker belongs to that requisition, not to the batch. Record it and continue immediately.
 
-Private-field rule: never copy values from `PRIVATE_APPLICATION_FIELDS.md` into trackers, blocker reasons, learning-loop entries, screenshots, scratch files, or summaries.
+## Browser And State
 
-## Tracker Rules
+- Use only the Chrome instance whose profile name is `Job Apply - Yaswanth`.
+- Keep at most three working tabs: application, discovery, and Gmail/security code. Up to five extra tabs may exist only as valid tracker-matched parked handoffs.
+- A small rolling queue may live in agent context or OS temporary storage during the active run. It is not submission proof and must not contain private data.
+- If Chrome is temporarily unavailable, keep discovering official roles and periodically retry the dedicated profile. Never switch to a personal/dev profile.
+- If tracker writes are temporarily unsafe, continue discovery but pause final submission until exact duplicate protection and durable recording are restored.
 
-`JOB_APPLICATION_TRACKER.xlsx` is the only active tracker. Use the lean `AI` and `SDE` sheets for `Submitted` and `Already Applied` rows. Use `Blockers` for CAPTCHA, ATS, upload, account/login, anti-spam, manual/legal, missing-info, Chrome/profile, and other real recovery items.
+## Full-Batch End Conditions
 
-Use these fields only when they add signal:
+End only when one of these is true:
 
-- `Attempt Count`: increment for retries on the same role.
-- `Recovery Tried`: concise list such as `reload/refill; direct Greenhouse; Gmail code; text resume`.
-- `Next Action`: the next concrete action if the role is worth retrying.
-- `Learning`: `Yes` only when the row reveals a reusable ATS/company pattern for `LEARNING_LOOP.md`.
+- Target proof-confirmed submission count is reached.
+- The execution host/turn runtime expires; an arbitrary checkpoint or progress message is not runtime expiry.
+- The measurable source-exhaustion rule in `RECENCY_PREFLIGHT.md` is met.
+- Tracker-dependent submission cannot be restored safely after focused recovery.
+- The required Chrome profile remains unavailable after focused recovery and no useful discovery work remains.
 
-For `Blocked - ATS` and non-CAPTCHA `Blocked - Other`, these fields are not optional. A non-CAPTCHA technical blocker must show the serious attempts, distinct recovery paths, and the next action or a clear reason no truthful AI-safe retry remains.
-
-Do not log broad skip-noise. Stale, no-sponsorship, duplicate, staffing/vendor/aggregator-proxy, outside-location, or fit-mismatch roles are skipped and the run continues; only record `Already Applied` when duplicate proof is useful.
-
-## CAPTCHA Parking
-
-For high-fit roles that already pass freshness, sponsorship, quality, location, and duplicate gates, CAPTCHA should not discard the opportunity. Fill every truthful field possible, leave the CAPTCHA/anti-abuse tab open for Yaswanth, record the row in `Blockers` as `Blocked - CAPTCHA` with `Blocker Type = CAPTCHA Parked`, `Retry Eligible = Manual Review`, `Parked Tab = Yes`, and continue applying in another tab.
-
-Keep at most 5 parked CAPTCHA tabs open. Never park low-quality, stale, no-sponsorship, duplicate, staffing/vendor, or poor-fit roles.
+At the end, report current-batch submitted count separately from lifetime totals, plus `Already Applied`, blockers, proof-pending roles, unconfirmed outcomes, and parked handoffs. Never count a prepared form as submitted.

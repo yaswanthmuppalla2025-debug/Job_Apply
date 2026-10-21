@@ -1,93 +1,51 @@
 # Autonomous Runbook
 
-Use this for days-long or overnight AI/SDE application runs after reading `START_HERE_AUTOPILOT.md`.
+Use this compact loop for long AI/SDE application runs after `START_HERE_AUTOPILOT.md`. Do not duplicate policy here.
 
-This file owns the execution loop only. Do not duplicate policy here:
+Owners:
 
-- Freshness, quality, location, and duplicate gates: `RECENCY_PREFLIGHT.md`
-- Master tracker columns, statuses, and CAPTCHA parking: `TRACKER_SCHEMA.md`
-- Blocker recovery and hard stops: `AUTOPILOT_BLOCKER_PLAYBOOK.md`
-- ATS-specific fixes: `ATS_RETRY_MATRIX.md`
-- Reusable answers: `ANSWER_BANK.md`
-- Observed lessons: `LEARNING_LOOP.md`
+- Role filters: `RECENCY_PREFLIGHT.md`
+- Tracker, duplicate identity, proof, and statuses: `TRACKER_SCHEMA.md`
+- Candidate facts and prose: `APPLICATION_PLAN.md` and `ANSWER_BANK.md`
+- Generic recovery/handoffs: `AUTOPILOT_BLOCKER_PLAYBOOK.md`
+- ATS mechanics: matching section of `ATS_RETRY_MATRIX.md`
 
-## Mission
+## Rolling Loop
 
-Maximize truthful, high/strong-fit submissions without per-role approval. Push through normal ATS friction, account creation, Gmail codes, upload fallbacks, form validation, and Chrome recovery after a role passes the fit gate. A hard-stopped role is one row outcome, not a stopped batch.
+1. Validate effective batch filters, live baseline, tracker gate, Chrome profile, and assigned source slice.
+2. Discover until the first exact official role passes preflight; begin applying immediately.
+3. Maintain roughly 3-5 eligible roles. Apply in rank order while replenishing below three; never wait for a large shortlist.
+4. Run fit/filter review once, duplicate-check, choose one lane resume, fill truthfully, and recover within the shared budget.
+5. Re-read exact duplicate state immediately before submit, obtain only any required action-time confirmation, submit, verify proof, and record the outcome.
+6. Finalize the tab and select the next role. A blocker, checkpoint, progress message, or empty source never pauses the loop.
 
-## Runtime Loop
+Fresh eligible roles normally outrank old blockers. Retry a blocker only when it remains open/eligible and `Next Action` names a distinct path currently available. Do not work every parked/manual row at startup.
 
-For each role:
+## Working State
 
-1. Discover latest open roles from official company pages, ATS boards, LinkedIn, and reputable hiring portals.
-2. Run `RECENCY_PREFLIGHT.md` before filling anything.
-3. Skip early when the role is stale, closed, duplicate, low-quality, no-sponsorship, legally ineligible, outside priority location, poor fit, or only medium/adjacent without a strategic-exception reason.
-4. Choose the lane:
-   - AI roles: `AI_ROLES/Yaswanth_Muppalla_AI_Resume.pdf`
-   - SDE/backend roles: `SDE_ROLES/Yaswanth_Muppalla_SDE_Resume.pdf`
-5. Fill identity, contact, education, work authorization, sponsorship, location, EEO, and custom fields from `APPLICATION_PLAN.md`, `ANSWER_BANK.md`, the resume, JD, company context, and best truthful judgment.
-6. Use normal account creation, Gmail codes, and official ATS private identity fields when required.
-7. Submit when the role is high/strong fit and all required fields are truthfully complete.
-8. Capture proof from confirmation page, application ID, portal state, or Gmail receipt.
-9. Update `JOB_APPLICATION_TRACKER.xlsx` immediately using `TRACKER_SCHEMA.md`: submissions/already-applied outcomes go to `AI` or `SDE`, and real blockers go to `Blockers`.
-10. Do not log broad skip-noise. Stale, no-sponsorship, duplicate, staffing/vendor, aggregator-proxy, fit-mismatch, closed, and strategic skip decisions are still skipped early unless they are useful `Already Applied` proof or a real blocker/manual-review item.
-11. Close or finalize stale/completed tabs and continue to the next role.
+- Use only `Job Apply - Yaswanth`.
+- Keep at most three working tabs: application, discovery, and Gmail/security code. Additional tabs are allowed only for valid tracker-matched parked handoffs, up to five.
+- A small rolling queue may live in agent context or OS temporary storage without private data. Delete temporary state at run end.
+- After each tracker-worthy outcome, write it immediately. Do not log routine skip noise.
+- Every 10-20 attempts, close stale/completed tabs, confirm the Chrome profile, verify tracker writes, and continue immediately.
+- If Chrome fails, reduce tab pressure, reconnect the dedicated profile, reopen the exact official URL, and continue discovery while recovery is underway.
+- If tracker writes fail, continue discovery but pause final submission until duplicate lookup and durable outcome writing are safe.
 
-## Recovery Loop
+## Non-Blocking Checkpoints
 
-When normal friction appears, do not give up:
+A checkpoint is maintenance, not a review request. Verify tracker state, proof/blocker evidence, parked-tab matching, tab hygiene, and the next selected role; then continue.
 
-1. Diagnose the exact blocker from visible validation, page state, account state, upload state, or browser behavior.
-2. Use `AUTOPILOT_BLOCKER_PLAYBOOK.md` for blocker-type recovery.
-3. Use `ATS_RETRY_MATRIX.md` for ATS-specific behavior.
-4. Try a distinct recovery path instead of repeating the same failed action: reload/refill, direct ATS URL, embedded form, official company page, PDF -> DOCX, `.txt` resume fallback, account creation/reset, Gmail code, or Chrome reconnect.
-5. For high-fit roles, use up to 3 serious attempts when safe paths remain.
-6. Check Gmail when a submit might already have completed or an ATS asks for an email/security code; use only the newest relevant code for the active job.
-7. If recovery fails, record the real blocker in `Blockers` with `Attempt Count`, `Recovery Tried`, `Next Action`, and exact non-private notes.
-8. Continue the batch.
+Add to `LEARNING_LOOP.md` only when a genuinely new observed pattern produced a reusable successful action. Search it by ATS/company/error; never read or rewrite it end to end during a run.
 
-## CAPTCHA Parking
+## Finish
 
-- Do not bypass CAPTCHA, hCaptcha, visual puzzles, anti-abuse pages, or visual security puzzles.
-- For high-fit roles that already pass freshness, sponsorship, quality, location, and duplicate gates, fill every truthful field possible and leave the CAPTCHA/anti-abuse tab open for Yaswanth.
-- Record the row in `Blockers` as `Blocked - CAPTCHA`, `Blocker Type = CAPTCHA Parked`, `Retry Eligible = Manual Review`, `Parked Tab = Yes`, and `Next Action = Yaswanth solve CAPTCHA, then submit/resume from same tab`.
-- Keep at most 5 parked CAPTCHA tabs open. If 5 are already parked, record the CAPTCHA without parking another tab and move on.
-- Never park low-quality, stale, no-sponsorship, duplicate, staffing/vendor, or poor-fit roles.
+Stop only for a full-batch end condition in `START_HERE_AUTOPILOT.md`. Report:
 
-## Chrome Loop
+- Current-batch proof-confirmed submissions versus target.
+- `Already Applied` outcomes.
+- Technical, CAPTCHA, and manual-review blockers.
+- Proof-pending/unconfirmed outcomes.
+- Parked tabs and their exact one-step handoffs.
+- Recruiter or Gmail items requiring attention.
 
-- Use only the `Job Apply - Yaswanth` Chrome profile.
-- Prefer one reusable application tab.
-- Keep at most 3-5 live tabs: active application, discovery/source, Gmail/security-code, and one temporary verification tab.
-- After every submitted, skipped, blocked, or already-applied outcome, update tracker first, then close/finalize unneeded tabs.
-- Every 10-20 attempts, run a hygiene cycle: close stale tabs, confirm the profile, save tracker state, and continue from the next eligible role.
-- If Chrome gets stuck, reduce tab pressure, reconnect/reopen `Job Apply - Yaswanth`, reopen the exact official job URL from the tracker, increment attempt count, and keep going.
-- Do not switch to personal/dev Chrome profiles unless Yaswanth explicitly says to.
-
-## Checkpoints
-
-After every role:
-
-- `JOB_APPLICATION_TRACKER.xlsx` has current status.
-- Proof, skip reason, or blocker detail is recorded.
-- `Blocked - ATS` and non-CAPTCHA `Blocked - Other` rows have recovery fields filled in `Blockers`.
-- Gmail confirmation was checked when practical.
-- Tabs are clean enough for the next role.
-
-Every 2-3 hours, or every 50 submitted applications:
-
-- Add 5-6 high-value sentences to `LEARNING_LOOP.md` only if new reusable observations exist.
-- Focus on ATS-specific patterns, field mappings, upload/account/code recovery, Gmail confirmation behavior, source-mixing/CAPTCHA lessons, and tracker classification.
-- Do not add generic narration, motivation, copied policy, credentials, passwords, codes, private identity values, or private email content.
-
-## Morning Summary
-
-Report:
-
-- Submitted total.
-- Confirmation-proof mix from `Confirmation Proof` and `Notes`.
-- Skipped no-sponsorship/ineligible/closed/stale total.
-- Blocked CAPTCHA/ATS/upload/account/manual-legal total.
-- Parked CAPTCHA tabs needing Yaswanth.
-- Best manual retries worth Yaswanth attention.
-- Gmail replies or recruiter messages needing action.
+Do not report routine skip totals unless they were maintained reliably in current runtime state.
